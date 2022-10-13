@@ -2,12 +2,13 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Product_list from '../Product_list';
+
 const ShowProducts = ()=> {
 
 const [equips, setEquips] = useState([]);
         
 useEffect(() => {
-    Axios.get("http://localhost:3001/")
+    Axios.get("http://localhost:3001/ShowProducts")
     .then((response) =>{
     setEquips(response.data);
     });
@@ -18,7 +19,6 @@ useEffect(() => {
 }, [])
 
 return (  <div>
-
     <Product_list />
    
         <select id = "products">

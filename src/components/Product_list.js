@@ -8,7 +8,7 @@ function Product_list() {
 const [products, setProducts] = useState([]);
         
 useEffect(() => {
-    Axios.get("http://localhost:3001/")
+    Axios.get("http://localhost:3001/ShowProducts")
     .then((response) =>{
     setProducts(response.data);
     });
@@ -17,18 +17,28 @@ useEffect(() => {
 
 
 return (
-    <><h3>
-    {products.length >0 ? (
+    <>
+    <div>
+    <table className={styles.products_table}>
+    <tr><th className={styles.th} colSpan={4}>
+    <td className={styles.td}>Produto</td>
+    <td className={styles.td}>Marca</td>
+    <td className={styles.td}>Qtd</td>
+    <td className={styles.td}>Preço</td>
+    </th></tr>
+    </table>
+        <tbody>
+        {products.length >0 ? (
         products.map((products, index) => (
-        <h3 key = {index}>
-        <table className={styles.products_table}><tr><th className={styles.th} colSpan={4}><td>Produto</td><td>Marca</td><td>Qtd</td><td>Preço</td></th>  </tr>
-        <tr><td>{products.product}</td><td>{products.marca}</td><td>{products.qtd}</td><td> {products.price}</td>   
-        </tr>
-        </table>
-        </h3> ))) : (
+        <tr key = {index}>
+        <td width="25%"className={styles.td}>{products.product}</td>
+        <td width="25%"className={styles.td}>{products.marca}</td>
+        <td width="25%"className={styles.td}>{products.qtd}</td>
+        <td width="25%"className={styles.td}>{products.price}</td></tr>
+        ))) : (
          <p1>Não há itens na lista</p1>
-        )}
-    </h3></>
+        )} </tbody>
+    </div></>
     )
 }
 export default Product_list

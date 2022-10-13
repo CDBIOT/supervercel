@@ -1,6 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
+import styles from './Show_Prod.module.css';
 
 function ShowUsers() {
 
@@ -16,17 +17,28 @@ useEffect(() => {
 
 return ( 
     <><h3>
-    {users.length >0 ? (
+  
+        <table>
+            <tr>
+        <th colSpan={3}>
+            <td>Nome</td>
+            <td>Função</td>
+            <td>Senha</td>
+        </th>  
+            </tr>
+            </table>
+            <tbody> 
+        {users.length >0 ? (
          users.map((users,index)=> (
-        <h3 key={index}> 
-        <table><tr><th colSpan={3}><td>Nome</td><td>Função</td><td>Senha</td></th>  </tr>
-        <tr><td>{users.name} </td><td> {users.role} </td><td>{users.password}</td>  
+        <tr key={index}> 
+            <td width="30%" className={styles.td}>{users.name} </td>
+            <td width="30%" className={styles.td}>{users.role} </td>
+            <td width="30%" className={styles.td}>{users.password}</td>  
         </tr>
-        </table>
         
-        </h3>))) : (
+        ))) : (
         <p1>Não há itens na lista</p1>
-        )}
+        )}</tbody>
     </h3>
     </>
    ) 
