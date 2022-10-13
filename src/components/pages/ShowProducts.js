@@ -34,6 +34,7 @@ return (  <div>
                 )  
         })}
         </select>
+        <h1>{equips.product}</h1>
         </div>
         )
         

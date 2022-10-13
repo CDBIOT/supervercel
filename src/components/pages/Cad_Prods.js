@@ -7,19 +7,30 @@ function Cad_Prods(){
     
   const [values, setValues] = useState()
     
-  const handleClick = ()=>{
-    Axios.post("http://localhost:3001/",{
+  const handleClick = (value)=>{
+    Axios.post("http://localhost:3001/Cad_Prods",{
     product: values.product,
       marca: values.marca,
       qtd:values.qtd,
       price: values.price
+    }).then((response)=>{
+    console.log(response)
     });
   }
 
 function CadProducts(e){
  e.preventDefault()
     console.log(`O produto ${product} com preço ${price}`)
-    console.log("Produto cadastrado")
+
+    Axios.post("http://localhost:3001/Cad_Prods",{
+
+        product: {product},
+        marca: {marca},
+        qtd:{qtd},
+        price: {price}
+        }).then((response)=>{
+        console.log(response)
+        });
     
 }
 const [product, setProduct] = useState()
@@ -49,7 +60,7 @@ return(
         <div>
        
         <input type="submit" value="Cadastrar"/>
-        <p><button onClick={handleClick}>Cadastrar Produto</button></p>
+       
         </div>
        
     </form>

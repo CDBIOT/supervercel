@@ -1,4 +1,4 @@
-
+import Axios from 'axios'
 import { useState } from 'react'
 import ShowUsers from '../ShowUsers'
 function Users(){
@@ -6,8 +6,16 @@ function Users(){
 function cadastrarUsuario(e){
  e.preventDefault()
     console.log(`O usuario ${name} usa a senha ${password}`)
-    console.log("Cadastrou usuário")
+    
    
+Axios.post("http://localhost:3001/users",{
+
+        name: {name},
+        role: {role},
+        password:{password},
+        }).then((response)=>{
+        console.log(response)
+        });
 }
 
 const [name, setName] = useState()
