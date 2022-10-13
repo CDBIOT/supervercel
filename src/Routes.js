@@ -18,7 +18,7 @@ return (
             <Route path="/Contato" component={Contato}><Contato /></Route>
             <Route path="/Cad_Prods"component={Cad_Prods} ><Cad_Prods /></Route>
             <Route path="/ShowProducts" component={ShowProducts}><ShowProducts /></Route>
-            <Route path="/users" component={Users}><Users /></Route>
+            <Route path="/Users" component={Users}><Users /></Route>
          </Switch>
     </Router>
 )
