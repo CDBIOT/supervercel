@@ -7,15 +7,14 @@ function Navbar(){
 
 return(
     
-
-    <ul className={styles.list}>
-    <li>
-    <p>
+<nav class={styles.navbar}>
+   <p>
     <img src={logo} alt="Logo"/>
     <img src={logo_toi} alt="Logo"/>
-  </p>
+    </p>
     <p><h1> Supermarket </h1></p>
-    </li>
+
+    <ul className={styles.list}>
 
         <li className={styles.item}>
             <Link to="/">Home</Link>
@@ -33,6 +32,7 @@ return(
             <Link to="/users">Users</Link>
         </li>
     </ul>
+    </nav>
    
 )
 }
