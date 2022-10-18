@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Product_list from '../Product_list';
 
+
 const ShowProducts = ()=> {
 
 const [equips, setEquips] = useState([]);
@@ -19,8 +20,7 @@ useEffect(() => {
 }, [])
 
 return (  <div>
-    <Product_list />
-   
+    
         <select id = "products">
         <option value = "" >Selecione o produto...</option>
         {equips.map(equips => {
@@ -33,8 +33,12 @@ return (  <div>
                 {equips.price} </option>
                 )  
         })}
+         
         </select>
-        <h1>{equips.product}</h1>
+      
+    <h1>{equips.product}</h1>
+    <h3>{equips.product}{equips.marca}{equips.qtd}{equips.price}</h3>
+  
         </div>
         )
         

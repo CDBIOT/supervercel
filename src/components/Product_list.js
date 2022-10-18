@@ -21,13 +21,14 @@ return (
     <div>
     <table className={styles.products_table}>
     <tr><th className={styles.th} colSpan={4}>
-    <td className={styles.td}>Produto</td>
-    <td className={styles.td}>Marca</td>
-    <td className={styles.td}>Qtd</td>
-    <td className={styles.td}>Preço</td>
+    <td width="25%"className={styles.th}>Produto</td>
+    <td width="25%" className={styles.th}>Marca</td>
+    <td width="25%" className={styles.th}>Qtd</td>
+    <td width="25%" className={styles.th}>Preço</td>
     </th></tr>
     </table>
-        <tbody>
+  
+        <tbody className={styles.tbody}>
         {products.length >0 ? (
         products.map((products, index) => (
         <tr key = {index}>
@@ -38,6 +39,9 @@ return (
         ))) : (
          <p1>Não há itens na lista</p1>
         )} </tbody>
+        <tfooter>
+       
+        </tfooter>
     </div></>
     )
 }
