@@ -4,10 +4,16 @@ import Axios from "axios";
 import Product_list from '../Product_list';
 
 
-const ShowProducts = ()=> {
+const ShowProducts = (props)=> {
 
 const [equips, setEquips] = useState([]);
+const [selectValue, setSelectValue] = useState([])
         
+function handleCreate(e){
+    e.preventDefault()
+    alert(selectValue)
+}
+
 useEffect(() => {
     Axios.get("http://localhost:3001/ShowProducts")
     .then((response) =>{
@@ -20,8 +26,9 @@ useEffect(() => {
 }, [])
 
 return (  <div>
-    
-        <select id = "products">
+        <h3 >{selectValue}</h3>
+        
+        <select id = "products" value={selectValue} onChange={e => setSelectValue(e.target.value)}>
         <option value = "" >Selecione o produto...</option>
         {equips.map(equips => {
 
@@ -36,7 +43,7 @@ return (  <div>
          
         </select>
       
-    <h1>{equips.product}</h1>
+    <h1>{selectValue}</h1>
     <h3>{equips.product}{equips.marca}{equips.qtd}{equips.price}</h3>
   
         </div>

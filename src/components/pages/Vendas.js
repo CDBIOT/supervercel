@@ -53,7 +53,7 @@ function CadVendas(e){
 
 return(
     <div>
-        <span>{price}</span>
+        <span>{props.price}</span>
         <span>{total}</span>
         <span><h1>{resultado}</h1></span>
      
@@ -86,7 +86,7 @@ return(
         </div>
         <div>
             <label htmlFor="price">Preço</label>
-            <input type="number" id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
+            <input type="number" id= "price" name="price" placeholder = "Digite o Preço" value={price}/>
         </div>
         <div>
             <label htmlFor="total">Total</label>
