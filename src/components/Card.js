@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import {useEffect, useState} from 'react';
 
-function Card(){
+function Card(props){
 
     const [products, setProducts] = useState()
 
