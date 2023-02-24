@@ -7,7 +7,7 @@ function Navbar(){
 
 return(
     
-<nav class={styles.navbar}>
+<nav className={styles.navbar}>
    <p>
     <img src={logo} alt="Logo"/>
     <img src={logo_toi} alt="Logo"/>

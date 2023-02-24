@@ -1,29 +1,26 @@
 import React from "react";
-import Axios from "axios";
-import {useEffect, useState} from 'react';
 
 function Card(props){
 
-    const [products, setProducts] = useState()
-
-    useEffect(() => {
-        Axios.get("http://localhost:3001/vendas")
-        .then((response) =>{
-        setProducts(response.data);
-        });
-        {
-        console.log(products)
-        }
-    }, [])
-
 return(
-<div>
-    {products.map((p,index)=> (
-        <h3 key={index}> 
-     {p.product}</h3>
+   
+<div> 
+    <div>
+    <span >{props.Total}</span> 
+    <h4> {props.idvendas}</h4> 
+    <span> Id: {props.idproduct}</span>
+    <span> Prod: {props.product}</span>
+    <span> Marca: {props.marca}</span>
+    <span> Qtd: {props.qtd}</span>
+    <span> Preço: {props.price}</span>
+    <span> Total: {props.total}</span>
+      
+    
+      {/*<p>Soma das notas: </p>   
+    <h3>)=>setQuant=(sales[1].qtd)}</h3>  */}
+    </div>
+   
+    </div>
     )
-    )}
-</div>
-)
 }
 export default Card

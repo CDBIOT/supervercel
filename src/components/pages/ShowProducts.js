@@ -1,37 +1,32 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
-import Product_list from '../Product_list';
-
+import Loader from '../Loader';
 
 const ShowProducts = (props)=> {
 
 const [equips, setEquips] = useState([]);
-const [selectValue, setSelectValue] = useState([])
-        
-function handleCreate(e){
-    e.preventDefault()
-    alert(selectValue)
-}
+const [loading, setLoading] = useState(false);
 
 useEffect(() => {
     Axios.get("http://localhost:3001/ShowProducts")
     .then((response) =>{
     setEquips(response.data);
+    const data = response.data
     });
     {
     console.log(equips)
+    setLoading(true)
+   
     }
    
 }, [])
 
-return (  <div>
-        <h3 >{selectValue}</h3>
-        
-        <select id = "products" value={selectValue} onChange={e => setSelectValue(e.target.value)}>
-        <option value = "" >Selecione o produto...</option>
+return (  
+    <div>        
+    <select id = "products" value={props.value} onChange={(e) => props.selectValue(e.target.value)}>
+    <option value = "" >Selecione o produto...</option>
         {equips.map(equips => {
-
         return (
                 <option value={equips.id} key={equips.id}> 
                 {equips.product}
@@ -39,13 +34,11 @@ return (  <div>
                 {equips.qtd}
                 {equips.price} </option>
                 )  
-        })}
-         
+        })} 
+         {!loading && <Loader/>}
         </select>
-      
-    <h1>{selectValue}</h1>
-    <h3>{equips.product}{equips.marca}{equips.qtd}{equips.price}</h3>
-  
+        <h3 >{props.value}  </h3>
+
         </div>
         )
         

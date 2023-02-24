@@ -5,7 +5,7 @@ import Axios from "axios";
 
 function Cad_Prods(){
     
-  const [values, setValues] = useState()
+const [values, setValues] = useState()
   
 const [idproduct, setIdProduct] = useState()
 const [product, setProduct] = useState()
