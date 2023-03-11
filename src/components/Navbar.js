@@ -8,13 +8,15 @@ function Navbar(){
 return(
     
 <nav className={styles.navbar}>
-   <p>
+<ul className={styles.list}>
+<li>
+   <div>
     <img src={logo} alt="Logo"/>
     <img src={logo_toi} alt="Logo"/>
-    </p>
-    <p><h1> Supermarket </h1></p>
+    </div>
+</li>
+    <h1> Supermarket </h1>
 
-    <ul className={styles.list}>
 
         <li className={styles.item}>
             <Link to="/">Home</Link>

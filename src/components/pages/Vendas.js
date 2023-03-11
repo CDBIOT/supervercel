@@ -39,8 +39,17 @@ function NovaVenda(values){
       
       }
   
+  // useEffect(() => {
+  
+  //   API.get("serverAwsIot","/dev/temps")
+  //    .then((response)=> {(response.data.temps);
+  //   console.log(response.data)
+  //   });
+
+  // }, []);
 
 useEffect(() => {
+    
     Axios.get("http://localhost:3001/vendas")
     .then((response) =>{
     setSales(response.data);
