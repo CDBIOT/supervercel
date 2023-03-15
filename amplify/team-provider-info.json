@@ -1,4 +1,28 @@
 {
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify508dbcdb9bb54-staging-203147-authRole",
+      "UnauthRoleArn": "arn:aws:iam::560912688697:role/amplify-amplify508dbcdb9bb54-staging-203147-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::560912688697:role/amplify-amplify508dbcdb9bb54-staging-203147-authRole",
+      "Region": "sa-east-1",
+      "DeploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
+      "UnauthRoleName": "amplify-amplify508dbcdb9bb54-staging-203147-unauthRole",
+      "StackName": "amplify-amplify508dbcdb9bb54-staging-203147",
+      "StackId": "arn:aws:cloudformation:sa-east-1:560912688697:stack/amplify-amplify508dbcdb9bb54-staging-203147/bf149230-c04b-11ed-b8f3-06c3a6412a9e",
+      "AmplifyAppId": "d2oy35fdsyxaw7"
+    },
+    "categories": {
+      "function": {
+        "superHandlerApi": {
+          "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
+          "s3Key": "amplify-builds/superHandlerApi-4b63724b397735565079-build.zip"
+        }
+      },
+      "api": {
+        "superApi": {}
+      }
+    }
+  },
   "api": {
     "awscloudformation": {}
   }

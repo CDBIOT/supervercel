@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.7.3\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.8.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "supermktlamb",
+            "superHandlerApi",
             {
               "Fn::Join": [
                 "",
                 [
-                  "supermktlamb",
+                  "superHandlerApi",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "supermktawsLambdaRoleb3293d9f",
+            "supermarketLambdaRolea447ea68",
             {
               "Fn::Join": [
                 "",
                 [
-                  "supermktawsLambdaRoleb3293d9f",
+                  "supermarketLambdaRolea447ea68",
                   "-",
                   {
                     "Ref": "env"

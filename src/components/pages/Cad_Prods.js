@@ -2,10 +2,13 @@
 import React from 'react'
 import { useState } from 'react'
 import Axios from "axios";
-
+import {API} from "aws-amplify"
 function Cad_Prods(){
+
     
 const [values, setValues] = useState()
+const [input, setInput] = useState("")
+const [customers, setCustomers] = useState([])
   
 const [idproduct, setIdProduct] = useState()
 const [product, setProduct] = useState()
@@ -28,10 +31,34 @@ function CadProducts(e){
         });
     
 }
+
+const myAPI = 'superApi'
+const path = '/customers'
+function getCustomers(e) {
+
+    let customerId = e.input
+    API.get(myAPI,path + "/",customerId)
+    .then(response => {
+        console.log(response)
+        let newCustomers = [...customers]
+        newCustomers.push(response)
+        setCustomers(newCustomers)
+    }).catch (error=> {
+        console.log(error)
+    })
+   
+}
+
+
 return(
 <div>
     <h1> Cadastro de Produtos</h1>
-    <form onSubmit={CadProducts}>
+    <form onSubmit={getCustomers}>
+    <div>
+            <label htmlFor="customer id"></label>
+            <input type="text" value= {input} name="idproduct" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
+            <label>{input} {customers}</label>
+        </div>
     <div>
             <label htmlFor="idproduct"></label>
             <input type="number" id ="idproduct" name="idproduct" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
