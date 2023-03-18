@@ -1,5 +1,43 @@
 
+// const express = require('express');
+// const app = express();
+// const mongoose = require('mongoose')
+// const route = express.Router("./rotas_temps, ./mqtt");
 
+// require('dotenv').config()
+// //const Temps = require('../temps')
+// app.use (route)
+
+// //Read
+// //if(process.env.NODE_ENV == "production"){
+//    // module.exports = 
+//    //{
+//     const MONGODB_URI= 'mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASS+'@cluster0.mvho6.mongodb.net/'
+//     +process.env.DB_NAME+'?retryWrites=true&w=majority'
+//    // },
+//    //{
+//     useNewUrlParser: true,
+//     //useUnifiedTopology: true
+//     //}
+//     //}
+
+// mongoose.connect(MONGODB_URI).then(db => 
+//         console.log("MongodB conectado com sucesso!", db.connection.host))
+        
+//         .catch((err) => {
+//             console.log("Houve um erro ao se conectar ao mongodB: " + err)
+//         })
+        
+//         //Model Temperaturas Dia Mes Ano
+        
+//         const Temps = mongoose.model('Temps',{
+//             //_id: Number,
+//             local: String  ,
+//             temperatura: Number,
+//             dia: Number,
+//             mes: Number,
+//             ano: Number
+//         })
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
@@ -27,6 +65,29 @@ exports.handler = async (event) => {
 //         }  
 //     })
     
+// routers.post('/produtos',async(req, res) =>{
+//     const  produto = {
+//     //Utiliza as inf do form html
+//       nome: req.body.nome,
+//       preco: req.body.preco
+//     }
+//     res.status(201).send({
+//     mensagem: 'inserido',
+//     produtoCriado: produto
+//     })
+//   });
+  
+//  //Create user
+//  routers.post('/user', async (req, res) =>{
+//     const {nome, email, senha } = req.body
+//     const person = { nome,email,senha }
+//     try{
+//         await Person.create(person)
+//         res.status(201).json({message: "Pessoa inserida com sucesso"})
+//     }catch(error){
+//         res.status(500).json({error: error})
+//     }  
+// })
     
     //Read
     // routers.get('/temps', async (req, res) =>{
@@ -38,20 +99,16 @@ exports.handler = async (event) => {
     //     }  
     // })
     
-
-
-
-
     
     return {
         statusCode: 200,
     //  Uncomment below to enable CORS requests
      headers: {
          "Access-Control-Allow-Origin": "*",
-         "Access-Control-Allow-Headers": "*"
-
-
-
+         "Access-Control-Allow-Headers": "*",
+         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, X-Content-Type-Options:nosniff, Accept,Authorization",
+         "Access-Control-Allow-Methods":"GET, POST, PUT, PATCH, DELETE, OPTIONS"
+         
      }, 
         body: JSON.stringify(customer),
     };

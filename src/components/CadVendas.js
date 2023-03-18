@@ -18,7 +18,7 @@ function CadVendas() {
 
 function CadVendas(e){
 
-    Axios.post("http://localhost:3001/vendas", {
+    Axios.post("http://localhost:3000/vendas", {
         idvendas: idvendas,
         idproduct: idproduct,
         product: product,

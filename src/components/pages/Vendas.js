@@ -11,6 +11,8 @@ import ShowProducts from './ShowProducts';
 import Notas from '../Notas';
 import Resultado from '../Resultado';
 
+import {API} from "aws-amplify"
+
 function Vendas(props){
 const [idvendas,setIdvendas] = useState();
 const [idproduct,setIdproduct] = useState();
@@ -23,8 +25,42 @@ const [resultado,setResultado]= useState()
 const [value, selectValue] = useState()
 const[sales, setSales] = useState('')
 
+
+const [customers, setCustomers] = useState([])
+  
+const myAPI2 = 'super-api'
+const path2 = '/'
+
+function getData(e) {
+  
+   // let customerId = e.input
+    API.get('super-api','/vendas')
+    .then(response => {
+        console.log(response)
+        let newCustomers = [...customers]
+        newCustomers.push(response)
+        setCustomers(newCustomers)
+    }).catch (error=> {
+        console.log(error)
+    })
+   
+}
+
+  // useEffect(() => {
+  
+  //   API.get("serverAwsIot","/dev/temps")
+  //    .then((response)=> {(response.data.temps);
+  //   console.log(response.data)
+  //   });
+
+  // }, []);
+
+useEffect(() => {
+  getData()  
+  
+   }, []);
 function NovaVenda(values){
-      Axios.post("http://localhost:3001/vendas",{
+      Axios.post("http://localhost:3000/vendas",{
       
           idproduct: idproduct,
           product: props.product,
@@ -39,18 +75,10 @@ function NovaVenda(values){
       
       }
   
-  // useEffect(() => {
-  
-  //   API.get("serverAwsIot","/dev/temps")
-  //    .then((response)=> {(response.data.temps);
-  //   console.log(response.data)
-  //   });
-
-  // }, []);
 
 useEffect(() => {
     
-    Axios.get("http://localhost:3001/vendas")
+    Axios.get("http://localhost:3000/vendas")
     .then((response) =>{
     setSales(response.data);
     });
@@ -61,8 +89,8 @@ useEffect(() => {
 
 return(
     <div>
-    <HiPlusCircle/> <HiTrash/> <HiShoppingCart/>
-
+    <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
+    <Button onClick={()=>getData()}>get</Button>
 
     <ShowProducts 
     idproduct = {idproduct} setIdproduct = {setIdproduct} 

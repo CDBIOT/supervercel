@@ -32,12 +32,33 @@ function CadProducts(e){
     
 }
 
-const myAPI = 'superApi'
-const path = '/customers'
+
+const myAPI2 = 'super-api'
+const path2 = '/'
 function getCustomers(e) {
 
     let customerId = e.input
-    API.get(myAPI,path + "/",customerId)
+    API.get(myAPI2,path2 + "/",customerId)
+    .then(response => {
+        console.log(response)
+        let newCustomers = [...customers]
+        newCustomers.push(response)
+        setCustomers(newCustomers)
+    }).catch (error=> {
+        console.log(error)
+    })
+   
+}
+const myAPI = 'superApi'
+const path = '/customers'
+const requestInfo = {
+    header : { Authorization: ''}
+
+}
+function getData(e) {
+
+    let customerId = e.input
+    API.get(myAPI,path + "/vendas")
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
