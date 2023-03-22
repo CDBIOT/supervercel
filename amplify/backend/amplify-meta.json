@@ -17,19 +17,19 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2023-03-18T12:18:48.631Z",
+      "lastBuildTimeStamp": "2023-03-22T22:27:43.437Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2023-03-18T12:18:48.909Z",
-      "distZipFilename": "superHandlerApi-673765646630424a502f-build.zip",
+      "lastPackageTimeStamp": "2023-03-22T22:27:44.688Z",
+      "distZipFilename": "superHandlerApi-776d71432b355a62784b-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-        "s3Key": "amplify-builds/superHandlerApi-673765646630424a502f-build.zip"
+        "s3Key": "amplify-builds/superHandlerApi-776d71432b355a62784b-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/superHandlerApi-cloudformation-template.json",
         "logicalId": "functionsuperHandlerApi"
       },
-      "lastPushTimeStamp": "2023-03-18T12:20:20.260Z",
+      "lastPushTimeStamp": "2023-03-22T22:28:54.748Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::560912688697:role/supermarketLambdaRolea447ea68-staging",
         "Region": "sa-east-1",
@@ -37,7 +37,7 @@
         "Name": "superHandlerApi-staging",
         "LambdaExecutionRole": "supermarketLambdaRolea447ea68-staging"
       },
-      "lastPushDirHash": "JXDxjNa43rneTh65OQ/6rN8GFb4="
+      "lastPushDirHash": "TmmkQ5EecjakEcXhY/EINMgj71I="
     }
   },
   "api": {
@@ -58,7 +58,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/api/superApi-cloudformation-template.json",
         "logicalId": "apisuperApi"
       },
-      "lastPushTimeStamp": "2023-03-18T12:20:19.657Z",
+      "lastPushTimeStamp": "2023-03-22T22:28:53.878Z",
       "output": {
         "ApiName": "superApi",
         "RootUrl": "https://dg801j76g8.execute-api.sa-east-1.amazonaws.com/staging",

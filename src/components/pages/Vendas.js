@@ -10,8 +10,8 @@ import {HiShoppingCart} from 'react-icons/hi';
 import ShowProducts from './ShowProducts';
 import Notas from '../Notas';
 import Resultado from '../Resultado';
+import {API} from 'aws-amplify';
 
-import {API} from "aws-amplify"
 
 function Vendas(props){
 const [idvendas,setIdvendas] = useState();

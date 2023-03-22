@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import { Button , Span} from "./styles/styles";
+import {API} from 'aws-amplify';
+
+
 import Navbar from './components/Navbar';
 
 import Home from './components/pages/Home';
@@ -11,6 +15,26 @@ import ShowProducts from './components/pages/ShowProducts';
 import Product_list from './components/Product_list';
 
 function App() {
+  
+const [customers, setCustomers] = useState([])
+  
+const myAPI = 'apisuperApi'
+const path = '/'
+
+function getData(e) {
+  
+   // let customerId = e.input
+    API.get(myAPI,path + '/vendas')
+    .then(response => {
+        console.log(response)
+        let newCustomers = [...customers]
+        newCustomers.push(response)
+        setCustomers(newCustomers)
+    }).catch (error=> {
+        console.log(error)
+    })
+   
+}
 
   return (
    
@@ -26,6 +50,10 @@ function App() {
             <Route path="/Users"        element={<Users/>}></Route>
          </Routes>
     </Router>
+    <Button onClick={()=>getData()}>get</Button>
+
+
+
 </div>
   
   );
