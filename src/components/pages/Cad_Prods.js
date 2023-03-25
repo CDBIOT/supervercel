@@ -33,12 +33,10 @@ function CadProducts(e){
 }
 
 
-const myAPI2 = 'super-api'
-const path2 = '/'
 function getCustomers(e) {
 
     let customerId = e.input
-    API.get(myAPI2,path2 + "/",customerId)
+    API.get('superApi','/customers/',customerId)
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -49,6 +47,7 @@ function getCustomers(e) {
     })
    
 }
+
 const myAPI = 'superApi'
 const path = '/customers'
 const requestInfo = {
@@ -56,9 +55,9 @@ const requestInfo = {
 
 }
 function getData(e) {
-
+e.preventDefault()
     let customerId = e.input
-    API.get(myAPI,path + "/vendas")
+    API.get('superApi','/')
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -77,14 +76,28 @@ return(
     <form onSubmit={getCustomers}>
     <div>
             <label htmlFor="customer id"></label>
-            <input type="text" value= {input} name="idproduct" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
+            <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
             <label>{input} {customers}</label>
+    </div>
+
+        <button  onClick={()=>getCustomers({input})}>Get Data </button>
+        <label>{input} {customers}</label>
+{
+customers.map((thisCustomer,index)=>{
+    return(
+        <div key = {thisCustomer.customerId}>
+        <span>CustomerId: {thisCustomer.customerId}</span>
+        <span>CustomerName: {thisCustomer.customerName}</span>
         </div>
-    <div>
+        )
+})
+}
+
+    {/* <div>
             <label htmlFor="idproduct"></label>
             <input type="number" id ="idproduct" name="idproduct" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
-        </div>
-        <div>
+        </div> 
+         <div>
             <label htmlFor="product"></label>
             <input type="text" id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
         </div>
@@ -99,7 +112,7 @@ return(
         <div>
             <label htmlFor="price"></label>
             <input type="number" id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
-        </div>
+</div> */}
         <div>
         <input type="submit" value="Cadastrar"/>
         </div>

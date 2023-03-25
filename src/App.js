@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 import { Button , Span} from "./styles/styles";
-import {API} from 'aws-amplify';
 
+import {API} from "aws-amplify"
 
 import Navbar from './components/Navbar';
 
@@ -17,23 +17,21 @@ import Product_list from './components/Product_list';
 function App() {
   
 const [customers, setCustomers] = useState([])
-  
-const myAPI = 'apisuperApi'
-const path = '/'
+const [input, setInput] = useState("")
 
-function getData(e) {
-  
-   // let customerId = e.input
-    API.get(myAPI,path + '/vendas')
-    .then(response => {
-        console.log(response)
-        let newCustomers = [...customers]
-        newCustomers.push(response)
-        setCustomers(newCustomers)
-    }).catch (error=> {
-        console.log(error)
-    })
-   
+function getCustomers(e) {
+
+  let customerId = e.input
+  API.get('superApi','/customers/',customerId)
+  .then(response => {
+      console.log(response)
+      let newCustomers = [...customers]
+      newCustomers.push(response)
+      setCustomers(newCustomers)
+  }).catch (error=> {
+      console.log(error)
+  })
+ 
 }
 
   return (
@@ -50,9 +48,26 @@ function getData(e) {
             <Route path="/Users"        element={<Users/>}></Route>
          </Routes>
     </Router>
-    <Button onClick={()=>getData()}>get</Button>
 
+    
+    <div>
+            <label htmlFor="customer id"></label>
+            <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
+            <label>{input} {customers}</label>
+    </div>
 
+        <button  onClick={()=>getCustomers({input})}>Get Data </button>
+        <label>{input} {customers}</label>
+{
+customers.map((thisCustomer,index)=>{
+    return(
+        <div key = {thisCustomer.customerId}>
+        <span>CustomerId: {thisCustomer.customerId}</span>
+        <span>CustomerName: {thisCustomer.customerName}</span>
+        </div>
+        )
+})
+}
 
 </div>
   

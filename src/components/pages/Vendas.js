@@ -10,7 +10,11 @@ import {HiShoppingCart} from 'react-icons/hi';
 import ShowProducts from './ShowProducts';
 import Notas from '../Notas';
 import Resultado from '../Resultado';
-import {API} from 'aws-amplify';
+import {API,Amplify} from 'aws-amplify';
+import config from '../../aws-exports'
+
+Amplify.configure(config)
+API.configure(config)
 
 
 function Vendas(props){
@@ -28,13 +32,20 @@ const[sales, setSales] = useState('')
 
 const [customers, setCustomers] = useState([])
   
-const myAPI2 = 'super-api'
-const path2 = '/'
+const myAPI2 = 'superApi'
+const path2 = '/customers'
 
 function getData(e) {
   
+let myInit = { // OPTIONAL
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }, // OPTIONAL
+      response: true
+    };
    // let customerId = e.input
-    API.get('super-api','/vendas')
+    API.get('superApi','/customers/'+"customerId",myInit)
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -60,7 +71,16 @@ useEffect(() => {
   
    }, []);
 function NovaVenda(values){
-      Axios.post("http://localhost:3000/vendas",{
+    
+let myInit = { // OPTIONAL
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }, // OPTIONAL
+      response: true
+    };
+
+      Axios.post("https://r72wtdts5a.execute-api.sa-east-1.amazonaws.com/vendas",myInit,{
       
           idproduct: idproduct,
           product: props.product,
