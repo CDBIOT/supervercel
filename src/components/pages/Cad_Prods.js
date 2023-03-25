@@ -36,7 +36,7 @@ function CadProducts(e){
 function getCustomers(e) {
 
     let customerId = e.input
-    API.get('superApi','/customers/',customerId)
+    API.get('superApi','/customers/' + customerId)
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -48,25 +48,9 @@ function getCustomers(e) {
    
 }
 
-const myAPI = 'superApi'
-const path = '/customers'
 const requestInfo = {
     header : { Authorization: ''}
 
-}
-function getData(e) {
-e.preventDefault()
-    let customerId = e.input
-    API.get('superApi','/')
-    .then(response => {
-        console.log(response)
-        let newCustomers = [...customers]
-        newCustomers.push(response)
-        setCustomers(newCustomers)
-    }).catch (error=> {
-        console.log(error)
-    })
-   
 }
 
 
@@ -80,7 +64,7 @@ return(
             <label>{input} {customers}</label>
     </div>
 
-        <button  onClick={()=>getCustomers({input})}>Get Data </button>
+        <button  onClick={()=>getCustomers({input})}>Get Data Onclick </button>
         <label>{input} {customers}</label>
 {
 customers.map((thisCustomer,index)=>{
@@ -114,7 +98,7 @@ customers.map((thisCustomer,index)=>{
             <input type="number" id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
 </div> */}
         <div>
-        <input type="submit" value="Cadastrar"/>
+        <input type="submit" value="Submit"/>
         </div>
         <div>
     

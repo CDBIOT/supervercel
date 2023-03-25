@@ -46,7 +46,7 @@ exports.handler = async (event) => {
 
     console.log(`EVENT: ${JSON.stringify(event)}`);
     const customerId = event.pathParameters.customerId;
-    const customer = {'customerID': customerId, 'customerName': "Customer"+ customerId};
+    const customer = {'customerID': customerId, 'customerName': "CustomerN"+ customerId};
 
 //  //Create temps
 // module.exports.create = (event,context,callback) =>{
