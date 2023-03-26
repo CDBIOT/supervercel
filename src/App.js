@@ -61,25 +61,20 @@ async function getCustomers(e) {
     <div>
             <label htmlFor="customer id"></label>
             <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
-            <label>{input}</label>
+            <label> Value: {input}</label>
     </div>
 
         <button  onClick={()=>getCustomers({input})}>Get Data </button>
-       
-        <label>{input} {customers}</label>
 {
-//</div>customers.map((Custom,index)=>{
-  //  return(
-        //<div key = {index}>
-        <div>
-        <span>CustomerId: {customers}</span>
-        <span>CustomerName: {customers}</span>
+
+customers.map((Custom,index)=>(
+      <div key = {index}>
+        <span>CustomerId: {Custom.customerID}</span>
+        <span>CustomerName: {Custom.customerName}</span>
        </div>
-        //)
+       ))
 }
-        <div>
-        <input type="submit" value="Cadastrar"/>
-        </div>
+
 </div>
   
   );
