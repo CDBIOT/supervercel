@@ -35,7 +35,7 @@ const [customers, setCustomers] = useState([])
 const myAPI2 = 'superApi'
 const path2 = '/customers'
 
-function getData(e) {
+async function getData(e) {
   
 let myInit = { // OPTIONAL
     headers: {
@@ -45,7 +45,7 @@ let myInit = { // OPTIONAL
       response: true
     };
    // let customerId = e.input
-    API.get('superApi','/customers/'+"customerId",myInit)
+   await API.get('superApi','/customers/'+"customerId",myInit)
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -57,19 +57,25 @@ let myInit = { // OPTIONAL
    
 }
 
-  // useEffect(() => {
-  
-  //   API.get("serverAwsIot","/dev/temps")
-  //    .then((response)=> {(response.data.temps);
-  //   console.log(response.data)
-  //   });
-
-  // }, []);
-
 useEffect(() => {
   getData()  
   
    }, []);
+
+async function getSales(e){
+
+  await API.get("superApi","/vendas")
+  .then((response)=> {(setSales(response.data));
+ console.log(sales)
+ });
+
+
+}
+
+useEffect(() => {
+  getSales()
+   }, []);
+
 function NovaVenda(values){
     
 let myInit = { // OPTIONAL
@@ -110,7 +116,8 @@ useEffect(() => {
 return(
     <div>
     <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
-    <Button onClick={()=>getData()}>get</Button>
+    <Button onClick={()=>getData()}>API</Button>
+    <Button onClick={()=>getSales()}>Sales</Button>
 
     <ShowProducts 
     idproduct = {idproduct} setIdproduct = {setIdproduct} 
