@@ -18,6 +18,8 @@ const [price, setPrice] = useState()
     
 function CadProducts(e){
  e.preventDefault()
+
+
     console.log(`O produto ${product} com preço ${price}`)
 
     Axios.post("http://localhost:3001/Cad_Prods",{
@@ -61,7 +63,6 @@ return(
     <div>
             <label htmlFor="customer id"></label>
             <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
-            <label>{input} {customers}</label>
     </div>
 
         <button  onClick={()=>getCustomers({input})}>Get Data Onclick </button>
@@ -77,7 +78,7 @@ customers.map((thisCustomer,index)=>{
 })
 }
 
-    {/* <div>
+     <div>
             <label htmlFor="idproduct"></label>
             <input type="number" id ="idproduct" name="idproduct" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
         </div> 
@@ -96,9 +97,9 @@ customers.map((thisCustomer,index)=>{
         <div>
             <label htmlFor="price"></label>
             <input type="number" id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
-</div> */}
+</div>
         <div>
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Cadastrar Produto"/>
         </div>
         <div>
     

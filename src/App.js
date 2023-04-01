@@ -16,31 +16,7 @@ import Product_list from './components/Product_list';
 
 function App() {
   
-const [customers, setCustomers] = useState([])
-const [input, setInput] = useState("")
 
-async function getCustomers(e) {
-
-  let reqInfo = { // OPTIONAL
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }, // OPTIONAL
-      response: true
-    };
-
-  let customerId = e.input
-  await API.get('superApi','/customers/'+ customerId)
-  .then(response => {
-      console.log(response)
-      let newCustomers = [...customers]
-      newCustomers.push(response)
-      setCustomers(newCustomers)
-  }).catch (error=> {
-      console.log(error)
-  })
- 
-}
 
   return (
    
@@ -57,23 +33,6 @@ async function getCustomers(e) {
          </Routes>
     </Router>
 
-    
-    <div>
-            <label htmlFor="customer id"></label>
-            <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
-            <label> Value: {input}</label>
-    </div>
-
-        <button  onClick={()=>getCustomers({input})}>Get Data </button>
-{
-
-customers.map((Custom,index)=>(
-      <div key = {index}>
-        <span>CustomerId: {Custom.customerID}</span>
-        <span>CustomerName: {Custom.customerName}</span>
-       </div>
-       ))
-}
 
 </div>
   

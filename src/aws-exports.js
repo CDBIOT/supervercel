@@ -8,6 +8,11 @@ const awsmobile = {
             "name": "superApi",
             "endpoint": "https://dg801j76g8.execute-api.sa-east-1.amazonaws.com/staging",
             "region": "sa-east-1"
+        },
+        {
+            "name": "APIsuper",
+            "endpoint": "https://2lfxx71eca.execute-api.sa-east-1.amazonaws.com/staging",
+            "region": "sa-east-1"
         }
     ]
 };
