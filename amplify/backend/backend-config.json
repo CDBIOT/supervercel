@@ -1,5 +1,19 @@
 {
   "api": {
+    "APIsuper": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "APILambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "superApi": {
       "dependsOn": [
         {
@@ -16,6 +30,11 @@
     }
   },
   "function": {
+    "APILambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "superHandlerApi": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -23,6 +42,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_APILambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "APILambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_APILambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "APILambda"
+        }
+      ]
+    },
     "AMPLIFY_function_superHandlerApi_deploymentBucketName": {
       "usedBy": [
         {

@@ -22,7 +22,7 @@ function CadProducts(e){
 
     console.log(`O produto ${product} com preço ${price}`)
 
-    Axios.post("http://localhost:3001/Cad_Prods",{
+    API.post("superApi","products",{
         idproduct: idproduct,
         product: product,
         marca: marca,

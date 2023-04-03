@@ -1,52 +1,61 @@
 
-// const express = require('express');
-// const app = express();
-// const mongoose = require('mongoose')
-// const route = express.Router("./rotas_temps, ./mqtt");
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose')
+const route = express.Router("./rotas_temps, ./mqtt");
+const awsServerlessExpress = require('aws-serverless-express');
+//const app = require('./app');
 
-// require('dotenv').config()
+/**
+ * @type {import('http').Server}
+ */
+const server = awsServerlessExpress.createServer(app);
+
+require('dotenv').config()
 //const Temps = require('../../..models/temps')
 //const User = require('../../..models/user')
-// app.use (route)
+app.use (route)
 
-// //Read
-// //if(process.env.NODE_ENV == "production"){
-//    // module.exports = 
-//    //{
-//     const MONGODB_URI= 'mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASS+'@cluster0.mvho6.mongodb.net/'
-//     +process.env.DB_NAME+'?retryWrites=true&w=majority'
-//    // },
-//    //{
-//     useNewUrlParser: true,
-//     //useUnifiedTopology: true
-//     //}
-//     //}
+//Read
+//if(process.env.NODE_ENV == "production"){
+   // module.exports = 
+   //{
+    const MONGODB_URI= 'mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASS+'@cluster0.mvho6.mongodb.net/'
+    +process.env.DB_NAME+'?retryWrites=true&w=majority'
+   // },
+   //{
+    useNewUrlParser: true,
+    //useUnifiedTopology: true
+    //}
+    //}
 
-// mongoose.connect(MONGODB_URI).then(db => 
-//         console.log("MongodB conectado com sucesso!", db.connection.host))
+mongoose.connect(MONGODB_URI).then(db => 
+        console.log("MongodB conectado com sucesso!", db.connection.host))
         
-//         .catch((err) => {
-//             console.log("Houve um erro ao se conectar ao mongodB: " + err)
-//         })
+        .catch((err) => {
+            console.log("Houve um erro ao se conectar ao mongodB: " + err)
+        })
         
-//         //Model Temperaturas Dia Mes Ano
+        //Model Temperaturas Dia Mes Ano
         
-//         const Temps = mongoose.model('Temps',{
-//             //_id: Number,
-//             local: String  ,
-//             temperatura: Number,
-//             dia: Number,
-//             mes: Number,
-//             ano: Number
-//         })
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
-exports.handler = async (event) => {
+        const Temps = mongoose.model('Temps',{
+            //_id: Number,
+            local: String  ,
+            temperatura: Number,
+            dia: Number,
+            mes: Number,
+            ano: Number
+        })
+        
+//Model User
+//Definindo o model
+//Tabela User
+        const Person = mongoose.model('Person',{
+          nome: String  ,
+          email: String,
+          senha: String,
+        })
 
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    const customerId = event.pathParameters.customerId;
-    const customer = {'customerID': customerId, 'customerName': "CustomerN"+ customerId};
 
 //  //Create temps
 // module.exports.create = (event,context,callback) =>{
@@ -67,7 +76,7 @@ exports.handler = async (event) => {
 
 // //Read
 // module.exports.create = (event,context,callback) =>{
-//  routers.get('/temps', async (req, res) =>{
+//  routers.get('/vendas', async (req, res) =>{
 //          try{
 //             const temps = await Temps.find()
 //              res.status(200).json({temps})
@@ -90,34 +99,52 @@ exports.handler = async (event) => {
 //         statusCode: err.statusCode || 500,
 //         headers:{ 'Comtemt-Type': 'text/plain'},
 //         body: 'Could not create the user.'
-//     }));
+   //  }));
 
-// }
+ //}
+ 
+module.exports.post('/vendas',async(req, res) =>{
+    const  produto = {
+       nome: req.body.nome,
+       preco: req.body.preco
+    }
+    res.status(201).send({
+    mensagem: 'Venda Cadastrada',
+    produtoCriado: produto
+    })
+  });
     
-// module.exports.post('/produtos',async(req, res) =>{
-//      const  produto = {
-//         nome: req.body.nome,
-//         preco: req.body.preco
-//      }
-//      res.status(201).send({
-//      mensagem: 'inserido',
-//      produtoCriado: produto
-//      })
-//    });
+module.exports.post('/products',async(req, res) =>{
+     const  produto = {
+        nome: req.body.nome,
+        preco: req.body.preco
+     }
+     res.status(201).send({
+     mensagem: 'inserido',
+     produtoCriado: produto
+     })
+   });
   
-//  //Create user
-//  routers.post('/user', async (req, res) =>{
-//     const {nome, email, senha } = req.body
-//     const person = { nome,email,senha }
-//     try{
-//         await Person.create(person)
-//         res.status(201).json({message: "Pessoa inserida com sucesso"})
-//     }catch(error){
-//         res.status(500).json({error: error})
-//     }  
-// })
+ //Create user
+ route.post('/users', async (req, res) =>{
+    const {nome, email, senha } = req.body
+    const person = { nome,email,senha }
+    try{
+        await Person.create(person)
+        res.status(201).json({message: "Pessoa inserida com sucesso"})
+    }catch(error){
+        res.status(500).json({error: error})
+    }  
+})
     
+/*
+ * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
+ */
+exports.handler = async (event) => {
 
+    console.log(`EVENT: ${JSON.stringify(event)}`);
+    const customerId = event.pathParameters.customerId;
+    const customer = {'customerID': customerId, 'customerName': "CustomerN"+ customerId};
     return {
         statusCode: 200,
      headers: {

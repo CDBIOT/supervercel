@@ -43,7 +43,7 @@ let myInit = { // OPTIONAL
       response: true
     };
     let customerId = e.input
-   await API.get('superApi','/customers/'+ customerId,myInit)
+   await API.get('APIsuper','/items')
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -62,7 +62,7 @@ useEffect(() => {
 
 
 
-function NovaVenda(values){
+async function NovaVenda(values){
     
 let myInit = { // OPTIONAL
     headers: {
@@ -72,14 +72,15 @@ let myInit = { // OPTIONAL
       response: true
     };
 
- API.post("superApi/vendas",myInit,{
-      
+ await API.post('superApi','/vendas',{
+      body: {
           idproduct: idproduct,
           product: props.product,
           marca: props.marca,
           qtd: props.qtd,
           price: price,
           total: total
+      }
           }).then((response)=>
           {
           console.log(response)
@@ -89,12 +90,7 @@ let myInit = { // OPTIONAL
   
 
 useEffect(() => {
-    
-    API.get("superApi/")
-    .then((response) =>{
-    setSales(response.data);
-    console.log(sales)
-    });
+    NovaVenda()
     
 }, [])
 
@@ -135,7 +131,7 @@ return(
             <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
             <label> Value: {input}</label>
     </div>
-    <Button onClick={()=>getData({input})}>API</Button>
+    <Button onClick={()=>getData({input})}>API getData</Button>
 {
 
 customers.map((Custom,index)=>(

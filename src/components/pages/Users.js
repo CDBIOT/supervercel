@@ -1,20 +1,21 @@
 import Axios from 'axios'
 import { useState } from 'react'
 import ShowUsers from '../ShowUsers'
-
+import { HiArrowUpTray } from 'react-icons/hi2'
+import {API} from "aws-amplify"
 
 function Users(){
 
-function cadastrarUsuario(e){
+async function cadastrarUsuario(e){
  e.preventDefault()
     console.log(`O usuario ${name} usa a senha ${password}`)
     
-   
-Axios.post("http://localhost:3001/users",{
+//Axios.post("http://localhost:3001/users",{
+    await API.post("superApi", "/users",{
 
         name: {name},
         role: {role},
-        password:{password},
+        password:{password}
         }).then((response)=>{
         console.log(response)
         });

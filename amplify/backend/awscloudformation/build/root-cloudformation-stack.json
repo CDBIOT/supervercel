@@ -158,7 +158,18 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/superHandlerApi-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superHandlerApi-776d71432b355a62784b-build.zip",
+          "s3Key": "amplify-builds/superHandlerApi-73593447443638627055-build.zip",
+          "env": "staging"
+        }
+      }
+    },
+    "functionAPILambda": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/APILambda-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
+          "s3Key": "amplify-builds/APILambda-69594a31636b4956536f-build.zip",
           "env": "staging"
         }
       }
@@ -177,6 +188,27 @@
           "functionsuperHandlerApiArn": {
             "Fn::GetAtt": [
               "functionsuperHandlerApi",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "apiAPIsuper": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/api/APIsuper-cloudformation-template.json",
+        "Parameters": {
+          "functionAPILambdaName": {
+            "Fn::GetAtt": [
+              "functionAPILambda",
+              "Outputs.Name"
+            ]
+          },
+          "functionAPILambdaArn": {
+            "Fn::GetAtt": [
+              "functionAPILambda",
               "Outputs.Arn"
             ]
           },
