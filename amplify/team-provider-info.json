@@ -15,7 +15,7 @@
       "function": {
         "superHandlerApi": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superHandlerApi-73593447443638627055-build.zip"
+          "s3Key": "amplify-builds/superHandlerApi-69764e75434255774354-build.zip"
         },
         "APILambda": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",

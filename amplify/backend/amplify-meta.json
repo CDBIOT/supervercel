@@ -17,19 +17,19 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2023-03-27T19:50:35.193Z",
+      "lastBuildTimeStamp": "2023-04-03T23:50:29.227Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2023-03-27T19:50:35.654Z",
-      "distZipFilename": "superHandlerApi-73593447443638627055-build.zip",
+      "lastPackageTimeStamp": "2023-04-03T23:50:29.640Z",
+      "distZipFilename": "superHandlerApi-69764e75434255774354-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-        "s3Key": "amplify-builds/superHandlerApi-73593447443638627055-build.zip"
+        "s3Key": "amplify-builds/superHandlerApi-69764e75434255774354-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/superHandlerApi-cloudformation-template.json",
         "logicalId": "functionsuperHandlerApi"
       },
-      "lastPushTimeStamp": "2023-04-03T19:41:09.372Z",
+      "lastPushTimeStamp": "2023-04-04T00:26:32.322Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::560912688697:role/supermarketLambdaRolea447ea68-staging",
         "Region": "sa-east-1",
@@ -37,7 +37,7 @@
         "Name": "superHandlerApi-staging",
         "LambdaExecutionRole": "supermarketLambdaRolea447ea68-staging"
       },
-      "lastPushDirHash": "osGVDb2IxgDaZktKhQB+zOoRQIQ="
+      "lastPushDirHash": "I6WlPFf8RRoe3zECG+W5LB+4oIM="
     },
     "APILambda": {
       "build": true,
@@ -55,7 +55,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/APILambda-cloudformation-template.json",
         "logicalId": "functionAPILambda"
       },
-      "lastPushTimeStamp": "2023-04-03T19:41:09.390Z",
+      "lastPushTimeStamp": "2023-04-04T00:26:32.452Z",
       "output": {
         "LambdaExecutionRoleArn": "arn:aws:iam::560912688697:role/supermarketLambdaRole5cbdeb11-staging",
         "Region": "sa-east-1",
@@ -84,7 +84,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/api/superApi-cloudformation-template.json",
         "logicalId": "apisuperApi"
       },
-      "lastPushTimeStamp": "2023-04-03T19:41:09.405Z",
+      "lastPushTimeStamp": "2023-04-04T00:26:32.482Z",
       "output": {
         "ApiName": "superApi",
         "RootUrl": "https://dg801j76g8.execute-api.sa-east-1.amazonaws.com/staging",
@@ -109,7 +109,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/api/APIsuper-cloudformation-template.json",
         "logicalId": "apiAPIsuper"
       },
-      "lastPushTimeStamp": "2023-04-03T19:41:09.420Z",
+      "lastPushTimeStamp": "2023-04-04T00:26:32.505Z",
       "output": {
         "ApiName": "APIsuper",
         "RootUrl": "https://2lfxx71eca.execute-api.sa-east-1.amazonaws.com/staging",
