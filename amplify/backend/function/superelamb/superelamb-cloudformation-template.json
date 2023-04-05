@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "superHandlerApi",
+            "superelamb",
             {
               "Fn::Join": [
                 "",
                 [
-                  "superHandlerApi",
+                  "superelamb",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "supermarketLambdaRolea447ea68",
+            "supermarketLambdaRole6925b8a2",
             {
               "Fn::Join": [
                 "",
                 [
-                  "supermarketLambdaRolea447ea68",
+                  "supermarketLambdaRole6925b8a2",
                   "-",
                   {
                     "Ref": "env"
@@ -163,16 +163,6 @@
             }
           ]
         }
-      }
-    },
-    "PermissionForAppSyncToInvokeLambda": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "LambdaFunction"
-        },
-        "Action": "lambda:InvokeFunction",
-        "Principal": "appsync.amazonaws.com"
       }
     }
   },

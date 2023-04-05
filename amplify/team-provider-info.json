@@ -15,17 +15,21 @@
       "function": {
         "superHandlerApi": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superHandlerApi-32565a7a302f427a6c4a-build.zip"
+          "s3Key": "amplify-builds/superHandlerApi-4167596f4c67506a4278-build.zip"
         },
         "APILambda": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
           "s3Key": "amplify-builds/APILambda-69594a31636b4956536f-build.zip"
         },
-        "superAPI2": {}
+        "superAPI2": {},
+        "superelamb": {}
       },
       "api": {
         "superApi": {},
         "APIsuper": {}
+      },
+      "auth": {
+        "supermarket": {}
       }
     }
   },
