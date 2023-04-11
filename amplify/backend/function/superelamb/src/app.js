@@ -1,12 +1,3 @@
-/*
-Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
-    http://aws.amazon.com/apache2.0/
-or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
-*/
-
-
 
 const AWS = require('aws-sdk')
 const express = require('express')
@@ -34,6 +25,66 @@ app.use(function(req, res, next) {
   next()
 });
 
+
+/**********************
+ * Example get method *
+ **********************/
+
+app.get('/products', function(req, res) {
+  
+  let getItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+
+  dynamodb.get(getItemParams,(err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err.message});
+    } else {
+      if (data.Item) {
+        res.json(data.Item);
+      } else {
+        res.json(data) ;
+      }
+    }
+  });
+  
+
+  // Add your code here
+  res.json({success: 'get call products succeed!', url: req.url});
+
+});
+
+/**********************
+ * Example get method *
+ **********************/
+
+app.get('/vendas', function(req, res) {
+  
+  let getItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+
+  dynamodb.get(getItemParams,(err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err.message});
+    } else {
+      if (data.Item) {
+        res.json(data.Item);
+      } else {
+        res.json(data) ;
+      }
+    }
+  });
+  
+
+  // Add your code here
+  res.json({success: 'get call  vendas succeed!', url: req.url});
+
+});
 
 /**********************
  * Example get method *
@@ -76,11 +127,9 @@ app.get('/users/*', function(req, res) {
 
 app.post('/users', function(req, res) {
   
-  let putItemParams = {
-    TableName: tableName,
-    id: req.body.id,
-    email: req.body.email,
+  let putItemParams = {  
     nome: req.body.nome,
+    email: req.body.email,
     senha: req.body.senha
   }
   dynamodb.put(putItemParams, (err, data) => {

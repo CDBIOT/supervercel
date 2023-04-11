@@ -21,6 +21,66 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
+app.get('/products', function(req, res) {
+  
+  let getItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+
+  dynamodb.get(getItemParams,(err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err.message});
+    } else {
+      if (data.Item) {
+        res.json(data.Item);
+      } else {
+        res.json(data) ;
+      }
+    }
+  });
+  
+
+  // Add your code here
+  res.json({success: 'get call products succeed!', url: req.url});
+
+});
+
+/**********************
+ * Example get method *
+ **********************/
+
+app.get('/vendas', function(req, res) {
+  
+  let getItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+
+  dynamodb.get(getItemParams,(err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err.message});
+    } else {
+      if (data.Item) {
+        res.json(data.Item);
+      } else {
+        res.json(data) ;
+      }
+    }
+  });
+  
+
+  // Add your code here
+  res.json({success: 'get call  vendas succeed!', url: req.url});
+
+});
+
+/**********************
+ * Example get method *
+ **********************/
+
 app.get('/users', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});

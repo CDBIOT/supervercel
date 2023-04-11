@@ -43,7 +43,7 @@ let myInit = { // OPTIONAL
       response: true
     };
     let customerId = e.input
-   await API.get('superExpress','/vendas')
+   await API.get('superApi','/vendas')
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
