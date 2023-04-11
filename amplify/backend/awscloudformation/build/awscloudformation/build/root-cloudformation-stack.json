@@ -219,7 +219,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/superelamb-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superelamb-3156546b685271536b66-build.zip",
+          "s3Key": "amplify-builds/superelamb-636245316b7749597476-build.zip",
           "env": "staging"
         }
       }
@@ -262,20 +262,6 @@
               "Outputs.Arn"
             ]
           },
-          "env": "staging"
-        }
-      }
-    },
-    "apisupermarket": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-        "Parameters": {
-          "AppSyncApiName": "supermarket",
-          "DynamoDBBillingMode": "PAY_PER_REQUEST",
-          "DynamoDBEnableServerSideEncryption": false,
-          "S3DeploymentBucket": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/2b341621e4e645607c42a730f6d79c5a8fc4fd6a",
           "env": "staging"
         }
       }

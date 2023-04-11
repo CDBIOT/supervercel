@@ -55,23 +55,6 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
-    },
-    "supermarket": {
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "additionalAuthenticationProviders": [],
-          "defaultAuthentication": {
-            "authenticationType": "AWS_LAMBDA",
-            "lambdaAuthorizerConfig": {
-              "lambdaFunction": "superHandlerApi",
-              "ttlSeconds": "300"
-            }
-          }
-        }
-      },
-      "providerPlugin": "awscloudformation",
-      "service": "AppSync"
     }
   },
   "auth": {
@@ -149,6 +132,162 @@
           "resourceName": "superHandlerApi"
         }
       ]
+    },
+    "AMPLIFY_function_superelamb_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "superelamb"
+        }
+      ]
+    },
+    "AMPLIFY_function_superelamb_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "superelamb"
+        }
+      ]
+    },
+    "AMPLIFY_storage_products_arn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "products"
+        }
+      ]
+    },
+    "AMPLIFY_storage_products_partitionKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "products"
+        }
+      ]
+    },
+    "AMPLIFY_storage_products_partitionKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "products"
+        }
+      ]
+    },
+    "AMPLIFY_storage_products_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "products"
+        }
+      ]
+    },
+    "AMPLIFY_storage_products_tableName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "products"
+        }
+      ]
+    },
+    "AMPLIFY_storage_users_arn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ]
+    },
+    "AMPLIFY_storage_users_partitionKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ]
+    },
+    "AMPLIFY_storage_users_partitionKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ]
+    },
+    "AMPLIFY_storage_users_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ]
+    },
+    "AMPLIFY_storage_users_tableName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "users"
+        }
+      ]
+    },
+    "AMPLIFY_storage_vendas_arn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "vendas"
+        }
+      ]
+    },
+    "AMPLIFY_storage_vendas_partitionKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "vendas"
+        }
+      ]
+    },
+    "AMPLIFY_storage_vendas_partitionKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "vendas"
+        }
+      ]
+    },
+    "AMPLIFY_storage_vendas_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "vendas"
+        }
+      ]
+    },
+    "AMPLIFY_storage_vendas_tableName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "vendas"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "products": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "serviceType": "imported"
+    },
+    "users": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "serviceType": "imported"
+    },
+    "vendas": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "serviceType": "imported"
     }
   }
 }

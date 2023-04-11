@@ -8,10 +8,19 @@ See the License for the specific language governing permissions and limitations 
 
 
 
-
+const AWS = require('aws-sdk')
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+
+AWS.config.update({ region: process.env.TABLE_REGION });
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+
+
+let tableName = "users";
+if (process.env.ENV && process.env.ENV !== "NONE") {
+  tableName = tableName + '-' + process.env.ENV;
+}
 
 // declare a new express app
 const app = express()
@@ -31,8 +40,29 @@ app.use(function(req, res, next) {
  **********************/
 
 app.get('/users', function(req, res) {
+  
+  let getItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+
+  dynamodb.get(getItemParams,(err, data) => {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err.message});
+    } else {
+      if (data.Item) {
+        res.json(data.Item);
+      } else {
+        res.json(data) ;
+      }
+    }
+  });
+
+
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
+
 });
 
 app.get('/users/*', function(req, res) {
@@ -45,8 +75,22 @@ app.get('/users/*', function(req, res) {
 ****************************/
 
 app.post('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  
+  let putItemParams = {
+    TableName: tableName,
+    id: req.body.id,
+    email: req.body.email,
+    nome: req.body.nome,
+    senha: req.body.senha
+  }
+  dynamodb.put(putItemParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url, body: req.body});
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, data: data})
+    }
+  });
 });
 
 app.post('/users/*', function(req, res) {
@@ -59,8 +103,22 @@ app.post('/users/*', function(req, res) {
 ****************************/
 
 app.put('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+  
+app.put(path, function(req, res) {
+
+  let putItemParams = {
+    TableName: tableName,
+    Item: req.body
+  }
+  dynamodb.put(putItemParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({ error: err, url: req.url, body: req.body });
+    } else{
+      res.json({ success: 'put call succeed!', url: req.url, data: data })
+    }
+  });
+});
 });
 
 app.put('/users/*', function(req, res) {
@@ -73,8 +131,19 @@ app.put('/users/*', function(req, res) {
 ****************************/
 
 app.delete('/users', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+
+  let removeItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+  dynamodb.delete(removeItemParams, (err, data)=> {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url});
+    } else {
+      res.json({url: req.url, data: data});
+    }
+  });
 });
 
 app.delete('/users/*', function(req, res) {

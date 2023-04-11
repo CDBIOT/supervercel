@@ -19,7 +19,6 @@ const [price, setPrice] = useState()
 function CadProducts(e){
  e.preventDefault()
 
-
     console.log(`O produto ${product} com preço ${price}`)
 
     API.post("superApi","products",{

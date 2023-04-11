@@ -13,6 +13,52 @@ const awsmobile = {
             "name": "APIsuper",
             "endpoint": "https://2lfxx71eca.execute-api.sa-east-1.amazonaws.com/staging",
             "region": "sa-east-1"
+        },
+        {
+            "name": "super",
+            "endpoint": "https://i9cjrxdrn2.execute-api.sa-east-1.amazonaws.com/staging",
+            "region": "sa-east-1"
+        },
+        {
+            "name": "superExpress",
+            "endpoint": "https://zu7mdvfki3.execute-api.sa-east-1.amazonaws.com/staging",
+            "region": "sa-east-1"
+        }
+    ],
+    "aws_cognito_identity_pool_id": "sa-east-1:2791fa3d-ff18-42ec-857c-f3daacc55e53",
+    "aws_cognito_region": "sa-east-1",
+    "aws_user_pools_id": "sa-east-1_rhUVkfrNj",
+    "aws_user_pools_web_client_id": "7jgvbedb9op7og1odhef3m8emk",
+    "oauth": {},
+    "aws_cognito_username_attributes": [],
+    "aws_cognito_social_providers": [],
+    "aws_cognito_signup_attributes": [
+        "EMAIL"
+    ],
+    "aws_cognito_mfa_configuration": "OFF",
+    "aws_cognito_mfa_types": [
+        "SMS"
+    ],
+    "aws_cognito_password_protection_settings": {
+        "passwordPolicyMinLength": 8,
+        "passwordPolicyCharacters": []
+    },
+    "aws_cognito_verification_mechanisms": [
+        "EMAIL"
+    ],
+    "aws_dynamodb_all_tables_region": "sa-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "users",
+            "region": "sa-east-1"
+        },
+        {
+            "tableName": "products",
+            "region": "sa-east-1"
+        },
+        {
+            "tableName": "vendas",
+            "region": "sa-east-1"
         }
     ]
 };

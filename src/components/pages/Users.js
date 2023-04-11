@@ -11,10 +11,10 @@ async function cadastrarUsuario(e){
     console.log(`O usuario ${name} usa a senha ${password}`)
     
 //Axios.post("http://localhost:3001/users",{
-    await API.post("superApi", "/users",{
+    await API.post("superExpress", "/users",{
 
         name: {name},
-        role: {role},
+        email: {email},
         password:{password}
         }).then((response)=>{
         console.log(response)
@@ -22,7 +22,7 @@ async function cadastrarUsuario(e){
 }
 
 const [name, setName] = useState()
-const [role, setFunção] = useState()
+const [email, setEmail] = useState()
 const [password, setPassword] = useState()
 
 return(
@@ -35,7 +35,7 @@ return(
         </div>
         <div>
             <label htmlFor="role"></label>
-            <input type="text" id= "role" name="role" placeholder = "Digite sua função" onChange={(e)=> setFunção(e.target.value)}/>
+            <input type="text" id= "email" name="email" placeholder = "Digite seu e-mail" onChange={(e)=> setEmail(e.target.value)}/>
         </div>
         <div>
             <label htmlFor="password"></label>
@@ -46,7 +46,7 @@ return(
         </div>
         <h1 >
     {name}
-    {role}
+    {email}
     {password}
     </h1>
    

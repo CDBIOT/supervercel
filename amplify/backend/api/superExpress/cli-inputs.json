@@ -7,6 +7,20 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/vendas": {
+      "name": "/vendas",
+      "lambdaFunction": "superelamb",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/products": {
+      "name": "/products",
+      "lambdaFunction": "superelamb",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

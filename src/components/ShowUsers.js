@@ -1,17 +1,25 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
-import styles from './Show_Prod.module.css';
+import styles from './Show_Prod.module.css'
+import{API} from "aws-amplify"
 
 function ShowUsers() {
 
 const [users, setUsers] = useState([]);
-        
-useEffect(() => {
-    Axios.get("http://localhost:3001/users")
+
+async function getUsers(e){
+    e.preventDefault()
+
+    await API.get("superExpress", "/users")
     .then((response) => {
     setUsers(response.data)
     });
+
+}
+        
+useEffect(() => {
+ getUsers()
 
 },[])
 
@@ -22,7 +30,7 @@ return (
             <tr>
         <th colSpan={3}>
             <td>Nome</td>
-            <td>Função</td>
+            <td>E-mail</td>
             <td>Senha</td>
         </th>  
             </tr>
@@ -31,8 +39,8 @@ return (
         {users.length >0 ? (
          users.map((users,index)=> (
         <tr key={index}> 
-            <td width="30%" className={styles.td}>{users.name} </td>
-            <td width="30%" className={styles.td}>{users.role} </td>
+            <td width="30%" className={styles.td}>{users.nome} </td>
+            <td width="30%" className={styles.td}>{users.email} </td>
             <td width="30%" className={styles.td}>{users.password}</td>  
         </tr>
         

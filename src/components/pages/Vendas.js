@@ -34,7 +34,7 @@ const [customers, setCustomers] = useState([])
 const [input, setInput] = useState("")
 
 async function getData(e) {
-  
+//e.preventDefault()
 let myInit = { // OPTIONAL
     headers: {
         'Accept': 'application/json',
@@ -43,7 +43,7 @@ let myInit = { // OPTIONAL
       response: true
     };
     let customerId = e.input
-   await API.get('APIsuper','/items')
+   await API.get('superExpress','/vendas')
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -62,7 +62,8 @@ useEffect(() => {
 
 
 
-async function NovaVenda(values){
+async function NovaVenda(e){
+    e.preventDefault()
     
 let myInit = { // OPTIONAL
     headers: {
@@ -72,7 +73,7 @@ let myInit = { // OPTIONAL
       response: true
     };
 
- await API.post('superApi','/vendas',{
+ await API.post('superExpress','/vendas',{
       body: {
           idproduct: idproduct,
           product: props.product,
