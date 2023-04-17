@@ -25,7 +25,7 @@ app.get('/products', function(req, res) {
   
   let getItemParams = {
     TableName: tableName,
-    Key: params
+    Key: id
   }
 
   dynamodb.get(getItemParams,(err, data) => {
@@ -41,8 +41,8 @@ app.get('/products', function(req, res) {
     }
   });
   
-
   // Add your code here
+  res.statusCode = 200;
   res.json({success: 'get call products succeed!', url: req.url});
 
 });
@@ -55,7 +55,7 @@ app.get('/vendas', function(req, res) {
   
   let getItemParams = {
     TableName: tableName,
-    Key: params
+    Key: "salesid"
   }
 
   dynamodb.get(getItemParams,(err, data) => {
@@ -73,6 +73,7 @@ app.get('/vendas', function(req, res) {
   
 
   // Add your code here
+  res.statusCode = 200;
   res.json({success: 'get call  vendas succeed!', url: req.url});
 
 });
@@ -83,11 +84,13 @@ app.get('/vendas', function(req, res) {
 
 app.get('/users', function(req, res) {
   // Add your code here
+  res.statusCode = 200;
   res.json({success: 'get call succeed!', url: req.url});
 });
 
 app.get('/users/*', function(req, res) {
   // Add your code here
+  res.statusCode = 200;
   res.json({success: 'get call succeed!', url: req.url});
 });
 

@@ -9,7 +9,7 @@ function ShowUsers() {
 const [users, setUsers] = useState([]);
 
 async function getUsers(e){
-    e.preventDefault()
+   // e.preventDefault()
 
     await API.get("superExpress", "/users")
     .then((response) => {
@@ -24,8 +24,7 @@ useEffect(() => {
 },[])
 
 return ( 
-    <><h3>
-  
+    <>
         <table>
             <tr>
         <th colSpan={3}>
@@ -41,13 +40,13 @@ return (
         <tr key={index}> 
             <td width="30%" className={styles.td}>{users.nome} </td>
             <td width="30%" className={styles.td}>{users.email} </td>
-            <td width="30%" className={styles.td}>{users.password}</td>  
+            <td width="30%" className={styles.td}>{users.senha}</td>  
         </tr>
         
         ))) : (
         <td>Não há itens na lista</td>
         )}</tbody>
-    </h3>
+    
     </>
    ) 
 }

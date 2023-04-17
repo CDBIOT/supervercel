@@ -5,10 +5,17 @@ const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
 AWS.config.update({ region: process.env.TABLE_REGION });
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+const dynamodb = new AWS.DynamoDB.DocumentClient({
+
+  region: 'sa-east-',
+  accessKeyId: process.env.accessKey,
+  secretAccessKey: process.env.secretKey
+
+});
 
 
 let tableName = "users";
+
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
@@ -25,16 +32,13 @@ app.use(function(req, res, next) {
   next()
 });
 
-
-/**********************
- * Example get method *
- **********************/
+ //Get method 
 
 app.get('/products', function(req, res) {
   
   let getItemParams = {
-    TableName: tableName,
-    Key: params
+    TableName: "products",
+    Key: "id"
   }
 
   dynamodb.get(getItemParams,(err, data) => {
@@ -50,21 +54,18 @@ app.get('/products', function(req, res) {
     }
   });
   
-
   // Add your code here
   res.json({success: 'get call products succeed!', url: req.url});
 
 });
 
-/**********************
- * Example get method *
- **********************/
+ //Get method 
 
 app.get('/vendas', function(req, res) {
   
   let getItemParams = {
-    TableName: tableName,
-    Key: params
+    TableName: "vendas",
+    Key: "salesid"
   }
 
   dynamodb.get(getItemParams,(err, data) => {
@@ -90,14 +91,15 @@ app.get('/vendas', function(req, res) {
  * Example get method *
  **********************/
 
-app.get('/users', function(req, res) {
+app.get('/users', async function(req, res) {
   
   let getItemParams = {
     TableName: tableName,
-    Key: params
+    Key: id
+    
   }
 
-  dynamodb.get(getItemParams,(err, data) => {
+  await dynamodb.get(getItemParams,(err, data) => {
     if(err) {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err.message});
@@ -111,8 +113,6 @@ app.get('/users', function(req, res) {
   });
 
 
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
 
 });
 
@@ -125,14 +125,16 @@ app.get('/users/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/users', function(req, res) {
+app.post('/users', async function(req, res) {
   
   let putItemParams = {  
+    tableName: "users",
+    Key: id,
     nome: req.body.nome,
     email: req.body.email,
     senha: req.body.senha
   }
-  dynamodb.put(putItemParams, (err, data) => {
+ await dynamodb.put(putItemParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
@@ -182,8 +184,8 @@ app.put('/users/*', function(req, res) {
 app.delete('/users', function(req, res) {
 
   let removeItemParams = {
-    TableName: tableName,
-    Key: params
+    TableName: "users",
+    Key: id
   }
   dynamodb.delete(removeItemParams, (err, data)=> {
     if (err) {
@@ -200,6 +202,33 @@ app.delete('/users/*', function(req, res) {
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
+/****************************
+* Example post method *
+****************************/
+
+app.post('/products', async function(req, res) {
+  
+  let postItemParams = {  
+    tableName: "products",
+    Key: id,
+    product: req.body.product,
+    marca: req.body.marca,
+    price: req.body.price
+  }
+ await dynamodb.put(postItemParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url, body: req.body});
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, data: data})
+    }
+  });
+});
+
+app.post('/users/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+});
 app.listen(3000, function() {
     console.log("App started")
 });

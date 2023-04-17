@@ -18,6 +18,7 @@ API.configure(config)
 
 
 function Vendas(props){
+    
 const [idvendas,setIdvendas] = useState();
 const [idproduct,setIdproduct] = useState();
 const [product,setProduct] = useState();

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Axios from "axios";
 import {API} from "aws-amplify"
 function Cad_Prods(){
@@ -16,12 +16,12 @@ const [marca, setMarca] = useState()
 const [qtd, setQtd] = useState()
 const [price, setPrice] = useState()
     
-function CadProducts(e){
+async function CadProducts(e){
  e.preventDefault()
 
-    console.log(`O produto ${product} com preço ${price}`)
+ console.log(`O produto ${product} com preço ${price}`)
 
-    API.post("superApi","products",{
+  await API.post("superApi","products",{
         idproduct: idproduct,
         product: product,
         marca: marca,
@@ -33,11 +33,16 @@ function CadProducts(e){
     
 }
 
+useEffect(() => {
+    CadProducts()  
+    
+     }, []);
 
-function getCustomers(e) {
 
+async function getCustomers(e) {
+    e.preventDefault()
     let customerId = e.input
-    API.get('superApi','/customers/' + customerId)
+    await API.get('superApi','/customers/' + customerId)
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -48,6 +53,11 @@ function getCustomers(e) {
     })
    
 }
+
+useEffect(() => {
+    getCustomers()  
+    
+     }, []);
 
 const requestInfo = {
     header : { Authorization: ''}

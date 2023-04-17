@@ -4,18 +4,19 @@ import ShowUsers from '../ShowUsers'
 import { HiArrowUpTray } from 'react-icons/hi2'
 import {API} from "aws-amplify"
 
+
 function Users(){
 
 async function cadastrarUsuario(e){
  e.preventDefault()
-    console.log(`O usuario ${name} usa a senha ${password}`)
+    console.log(`O usuario ${name} usa a senha ${senha}`)
     
 //Axios.post("http://localhost:3001/users",{
     await API.post("superExpress", "/users",{
 
         name: {name},
         email: {email},
-        password:{password}
+        senha:{senha}
         }).then((response)=>{
         console.log(response)
         });
@@ -23,7 +24,7 @@ async function cadastrarUsuario(e){
 
 const [name, setName] = useState()
 const [email, setEmail] = useState()
-const [password, setPassword] = useState()
+const [senha, setSenha] = useState()
 
 return(
 <div>
@@ -38,8 +39,8 @@ return(
             <input type="text" id= "email" name="email" placeholder = "Digite seu e-mail" onChange={(e)=> setEmail(e.target.value)}/>
         </div>
         <div>
-            <label htmlFor="password"></label>
-            <input type="text" id= "password" name="password" placeholder = "Digite sua password" onChange={(e)=> setPassword(e.target.value)}/>
+            <label htmlFor="senha"></label>
+            <input type="text" id= "senha" name="password" placeholder = "Digite sua senha" onChange={(e)=> setSenha(e.target.value)}/>
         </div>
         <div>
             <input type="submit" value="Cadastrar"/>
@@ -47,7 +48,7 @@ return(
         <h1 >
     {name}
     {email}
-    {password}
+    {senha}
     </h1>
    
     </form>
