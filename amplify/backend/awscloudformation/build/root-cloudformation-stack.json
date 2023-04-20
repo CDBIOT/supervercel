@@ -197,7 +197,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/superHandlerApi-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superHandlerApi-37393335472b2b664239-build.zip",
+          "s3Key": "amplify-builds/superHandlerApi-41514967755448346661-build.zip",
           "env": "staging"
         }
       }
@@ -219,7 +219,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-amplify508dbcdb9bb54-staging-203147-deployment/amplify-cfn-templates/function/superelamb-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superelamb-2f575a4b59312b7a5855-build.zip",
+          "s3Key": "amplify-builds/superelamb-6855324e527037763437-build.zip",
           "env": "staging"
         }
       }

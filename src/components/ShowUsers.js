@@ -8,10 +8,10 @@ function ShowUsers() {
 
 const [users, setUsers] = useState([]);
 
-async function getUsers(e){
+ function getUsers(e){
    // e.preventDefault()
 
-    await API.get("superExpress", "/users")
+    API.get("superExpress", "/users")
     .then((response) => {
     setUsers(response.data)
     });

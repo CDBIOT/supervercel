@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Loader from '../Loader';
-//import {Amplify, API}  from 'aws-amplify';
+import {Amplify, API}  from 'aws-amplify';
 
 const ShowProducts = (props)=> {
 
@@ -12,7 +12,8 @@ const [loading, setLoading] = useState(false);
 
 useEffect(() => {
     //API.get("serverAwsIot","/dev/temps")
-    Axios.get("http://localhost:3001/ShowProducts")
+     API.get("superExpress", "/users")
+   // Axios.get("http://localhost:3001/ShowProducts")
     .then((response) =>{
     setEquips(response.data);
     const data = response.data

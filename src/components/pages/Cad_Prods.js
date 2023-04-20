@@ -17,15 +17,13 @@ const [qtd, setQtd] = useState()
 const [price, setPrice] = useState()
     
 async function CadProducts(e){
- e.preventDefault()
+ //e.preventDefault()
 
  console.log(`O produto ${product} com preço ${price}`)
 
-  await API.post("superApi","products",{
-        idproduct: idproduct,
+  await API.post("superApi","/products",{
         product: product,
         marca: marca,
-        qtd:qtd,
         price: price
         }).then((response)=>{
         console.log(response)
@@ -40,14 +38,12 @@ useEffect(() => {
 
 
 async function getCustomers(e) {
-    e.preventDefault()
+ //   e.preventDefault()
     let customerId = e.input
-    await API.get('superApi','/customers/' + customerId)
+    await API.get('superExpress','/products')
     .then(response => {
         console.log(response)
-        let newCustomers = [...customers]
-        newCustomers.push(response)
-        setCustomers(newCustomers)
+        setCustomers(response.data)
     }).catch (error=> {
         console.log(error)
     })
@@ -68,29 +64,17 @@ const requestInfo = {
 return(
 <div>
     <h1> Cadastro de Produtos</h1>
-    <form onSubmit={getCustomers}>
-    <div>
+    <form onSubmit={CadProducts}>
+    {/* <div>
             <label htmlFor="customer id"></label>
             <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
-    </div>
-
-        <button  onClick={()=>getCustomers({input})}>Get Data Onclick </button>
-        <label>{input} {customers}</label>
+    </div> */}
 {
-customers.map((thisCustomer,index)=>{
-    return(
-        <div key = {thisCustomer.customerId}>
-        <span>CustomerId: {thisCustomer.customerId}</span>
-        <span>CustomerName: {thisCustomer.customerName}</span>
-        </div>
-        )
-})
 }
-
-     <div>
+     {/* <div>
             <label htmlFor="idproduct"></label>
             <input type="number" id ="idproduct" name="idproduct" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
-        </div> 
+        </div>  */}
          <div>
             <label htmlFor="product"></label>
             <input type="text" id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
@@ -99,10 +83,10 @@ customers.map((thisCustomer,index)=>{
             <label htmlFor="marca"></label>
             <input type="text" id= "marca" name="marca" placeholder = "Digite a marca" onChange={(e)=> setMarca(e.target.value)}/>
         </div>
-        <div>
+        {/* <div>
             <label htmlFor="qtd"></label>
             <input type="number" id= "qtd" name="modelo" placeholder = "Digite a quantidade" onChange={(e)=> setQtd(e.target.value)}/>
-        </div>
+        </div> */}
         <div>
             <label htmlFor="price"></label>
             <input type="number" id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>

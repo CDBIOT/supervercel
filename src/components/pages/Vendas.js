@@ -44,7 +44,7 @@ let myInit = { // OPTIONAL
       response: true
     };
     let customerId = e.input
-   await API.get('superApi','/vendas')
+   await API.get('superExpress','/vendas')
     .then(response => {
         console.log(response)
         let newCustomers = [...customers]
@@ -64,7 +64,7 @@ useEffect(() => {
 
 
 async function NovaVenda(e){
-    e.preventDefault()
+  //  e.preventDefault()
     
 let myInit = { // OPTIONAL
     headers: {

@@ -16,7 +16,7 @@
       "function": {
         "superHandlerApi": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superHandlerApi-37393335472b2b664239-build.zip"
+          "s3Key": "amplify-builds/superHandlerApi-41514967755448346661-build.zip"
         },
         "APILambda": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
@@ -25,7 +25,7 @@
         "superAPI2": {},
         "superelamb": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superelamb-2f575a4b59312b7a5855-build.zip"
+          "s3Key": "amplify-builds/superelamb-6855324e527037763437-build.zip"
         }
       },
       "api": {
