@@ -35,7 +35,7 @@ const [customers, setCustomers] = useState([])
 const [input, setInput] = useState("")
 
 async function getData(e) {
-//e.preventDefault()
+e.preventDefault()
 let myInit = { // OPTIONAL
     headers: {
         'Accept': 'application/json',
@@ -64,7 +64,7 @@ useEffect(() => {
 
 
 async function NovaVenda(e){
-  //  e.preventDefault()
+    e.preventDefault()
     
 let myInit = { // OPTIONAL
     headers: {
@@ -90,7 +90,6 @@ let myInit = { // OPTIONAL
       
       }
   
-
 useEffect(() => {
     NovaVenda()
     
@@ -113,7 +112,18 @@ return(
     
    <Resultado  Total ={parseFloat(price)*parseFloat(qtd)}/>
 
-    <h3> Produtos </h3>
+   <Button onClick={()=>NovaVenda()}>Nova Venda</Button>
+   
+    <div>
+            <label htmlFor="customer id"></label>
+            <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
+            <label> Value: {input}</label>
+    </div>
+    <Button onClick={()=>getData({input})}>API getData</Button>
+{
+
+sales.map((sales,index)=>(
+      <div key = {index}>
         {sales.length> 0 &&
         sales.map((sale)=>(
         <Card 
@@ -126,20 +136,6 @@ return(
         total={sale.total}
         />
         ))}
-   <Button onClick={()=>NovaVenda()}>Nova Venda</Button>
-   
-    <div>
-            <label htmlFor="customer id"></label>
-            <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
-            <label> Value: {input}</label>
-    </div>
-    <Button onClick={()=>getData({input})}>API getData</Button>
-{
-
-customers.map((Custom,index)=>(
-      <div key = {index}>
-        <span>CustomerId: {Custom.customerId}</span>
-        <span>CustomerName: {Custom.customerName}</span>
        </div>
        ))
 }

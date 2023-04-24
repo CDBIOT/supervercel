@@ -7,8 +7,14 @@ import {API} from "aws-amplify"
 
 function Users(){
 
+    
+const [user_id, setUserId] = useState()
+const [name, setName] = useState()
+const [email, setEmail] = useState()
+const [senha, setSenha] = useState()
+
 async function cadastrarUsuario(e){
- e.preventDefault()
+ //e.preventDefault()
     console.log(`O usuario ${name} usa a senha ${senha}`)
     
 //Axios.post("http://localhost:3001/users",{
@@ -21,17 +27,11 @@ async function cadastrarUsuario(e){
         console.log(response)
         });
 }
-const [user_id, setUserId] = useState()
-const [name, setName] = useState()
-const [email, setEmail] = useState()
-const [senha, setSenha] = useState()
 
 return(
 <div>
     <h1> Submit New User</h1>
-    <form onSubmit={cadastrarUsuario}>
-
-        
+    <form >
         <div>
             <label htmlFor="user_id"></label>
             <input type="text" id ="user_id" name="user_id" placeholder = "Digite seu id" onChange={(e)=> setUserId(e.target.value)}/>
@@ -49,7 +49,7 @@ return(
             <input type="text" id= "senha" name="password" placeholder = "Digite sua senha" onChange={(e)=> setSenha(e.target.value)}/>
         </div>
         <div>
-            <input type="submit" value="Cadastrar"/>
+            <input type="button" onClick={cadastrarUsuario} value="Cadastrar"/>
         </div>
         <h3 >
     {user_id}
@@ -59,7 +59,7 @@ return(
     </h3>
    
     </form>
-    <ShowUsers />
+    {/*<ShowUsers />*/}
 </div>
 
 )

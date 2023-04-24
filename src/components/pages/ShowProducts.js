@@ -9,20 +9,24 @@ const ShowProducts = (props)=> {
 const [equips, setEquips] = useState([]);
 const [loading, setLoading] = useState(false);
 
+function getProducts(e){
+  //API.get("serverAwsIot","/dev/temps")
+  API.get("superExpress", "/users")
+  // Axios.get("http://localhost:3001/ShowProducts")
+   .then((response) =>{
+   setEquips(response.data);
+   const data = response.data
+   });
+   {
+   console.log(equips)
+   setLoading(true)
+  
+   }
+}
+
 
 useEffect(() => {
-    //API.get("serverAwsIot","/dev/temps")
-     API.get("superExpress", "/users")
-   // Axios.get("http://localhost:3001/ShowProducts")
-    .then((response) =>{
-    setEquips(response.data);
-    const data = response.data
-    });
-    {
-    console.log(equips)
-    setLoading(true)
-   
-    }
+  getProducts()
    
 }, [])
 

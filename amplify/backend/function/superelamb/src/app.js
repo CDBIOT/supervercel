@@ -7,6 +7,7 @@ const awsServerlessExpressMiddleware = require('aws-serverless-express/middlewar
 AWS.config.update({ region: process.env.TABLE_REGION });
 const dynamodb = new AWS.DynamoDB.DocumentClient({
 
+//region: 'sa-east-1',
 accessKeyId: process.env.accessKey,
 secretAccessKey: process.env.secretKey
 
@@ -14,10 +15,13 @@ secretAccessKey: process.env.secretKey
 
 
 let tableName = "users";
-
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
-}
+ }
+// let tableProduct = "products"
+// if (process.env.ENV && process.env.ENV !== "NONE") {
+//   tableProduct = tableProduct + '-' + process.env.ENV;
+// }
 
 // declare a new express app
 const app = express()
@@ -32,14 +36,12 @@ app.use(function(req, res, next) {
 });
 
 // Example get users method 
- 
 
 app.get('/users',function(req, res) {
   
   let getItemParams = {
-    TableName: "users",
+    TableName: tableName,
     Key: "user_id"
-    
   }
 
 dynamodb.get(getItemParams,(err, data) => {
@@ -47,8 +49,8 @@ dynamodb.get(getItemParams,(err, data) => {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err.message});
     } else {
-      if (data.Item) {
-        res.json(data.Item);
+      if (data.nome) {
+        res.json(data.nome);
       } else {
         res.json(data) ;
       }
@@ -119,21 +121,69 @@ app.get('/vendas', function(req, res) {
 
 });
 
-/****************************
-* Example post method *
-****************************/
+/* Post users */
 
 app.post('/users', function(req, res) {
   
   let putItemParams = {  
-    tableName: "users",
+    TableName: "users",
     Key: "user_id",
+    Item: {
     user_id: req.body.user_id,
     nome: req.body.nome,
     email: req.body.email,
     senha: req.body.senha
+    }
   }
  dynamodb.put(putItemParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url, body: req.body});
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, data: data})
+    }
+  });
+});
+
+/* Post products */
+
+app.post('/products', async function(req, res) {
+  
+  let postItemParams = {  
+    TableName: "products",
+    Key: "id",
+    Item: {
+    id: req.body.id,
+    product: req.body.product,
+    marca: req.body.marca,
+    price: req.body.price,
+    qtd: req.body.qtd
+    }
+  }
+ await dynamodb.put(postItemParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url, body: req.body});
+    } else {
+      res.json({success: 'Register product sucessfull!', url: req.url, data: data})
+    }
+  });
+});
+
+/* Post vendas */
+
+app.post('/vendas', async function(req, res) {
+  
+  let postItemParams = {  
+    TableName: "vendas",
+    Key: "id",
+    Item: {
+    product: req.body.product,
+    marca: req.body.marca,
+    price: req.body.price
+    }
+  }
+ await dynamodb.put(postItemParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});
@@ -201,28 +251,7 @@ app.delete('/users/*', function(req, res) {
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-/****************************
-* Example post method *
-****************************/
 
-app.post('/products', async function(req, res) {
-  
-  let postItemParams = {  
-    tableName: "products",
-    Key: "id",
-    product: req.body.product,
-    marca: req.body.marca,
-    price: req.body.price
-  }
- await dynamodb.put(postItemParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: err, url: req.url, body: req.body});
-    } else {
-      res.json({success: 'post call succeed!', url: req.url, data: data})
-    }
-  });
-});
 
 app.post('/users/*', function(req, res) {
   // Add your code here
