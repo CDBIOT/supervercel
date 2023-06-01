@@ -26,11 +26,12 @@ const options = {
     redirect: 'follow'
     };
 
-await API.post("superExpress","/products",options,{
+//await API.post("superExpress","/products",options,{
+await Axios.post("https://super-server-eta.vercel.app/vendas", {
     body:{
         id: id,
         produc: product,
-        marc: marca,
+        marca: marca,
         qtd: qtd,
         pric: price
     }, 

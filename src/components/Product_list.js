@@ -10,7 +10,7 @@ const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
         
 useEffect(() => {
-    Axios.get("https://super-server-eta.vercel.app/ShowProducts")
+    Axios.get("https://super-server-eta.vercel.app/products")
     .then((response) =>{
     setProducts(response.data);
     setLoading(true)
