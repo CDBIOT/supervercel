@@ -4,12 +4,17 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
+//const db_users = require("./db_users.js")
+//const db_sales = require("./db_sales.js")
+//const db_products = require("./db_products.js")
+//const cors = require('cors')
+
 AWS.config.update({ region: process.env.TABLE_REGION });
 const dynamodb = new AWS.DynamoDB.DocumentClient({
 
 //region: 'sa-east-1',
-accessKeyId: process.env.accessKey,
-secretAccessKey: process.env.secretKey
+//accessKeyId: process.env.accessKey,
+//secretAccessKey: process.env.secretKey
 
 });
 
@@ -31,172 +36,227 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 // Enable CORS for all methods
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "*")
+  
   next()
 });
+//app.use(cors());
+//app.use(cors({credentials: true, origin: 'http://localhost:5003'}));
 
 // Example get users method 
 
-app.get('/users',function(req, res) {
+const readAllUsers = async()=>{
   
-  let getItemParams = {
-    TableName: tableName,
-    Key: "user_id"
+  const Params = {
+    TableName: "users",
+  }
+  try{ 
+    const {Items = []}= await dynamodb.scan(Params).promise()
+    return{success:true, data: Items}
+
+  }catch(error){
+    return{success:false, data: null}
+
   }
 
-dynamodb.get(getItemParams,(err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err.message});
-    } else {
-      if (data.nome) {
-        res.json(data.nome);
-      } else {
-        res.json(data) ;
-      }
-    }
-  });
+}
 
-  res.json({success: 'get call succeed!', url: req.url});
 
+app.get('/users',async function(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+  const { success, data } = await readAllUsers()
+
+  if(success){
+      return res.json({success, data})
+  }
+  return res.status(500).json({success:false, messsage: "Error"})
+  
 });
 
 app.get('/users/*', function(req, res) {
-  // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
  //Get products method 
-
-app.get('/products', function(req, res) {
+ const readAllProducts = async()=>{
   
-  let getItemParams = {
+  const Params = {
     TableName: "products",
-    Key: "id"
+  }
+  try{ 
+    const {Items = []}= await dynamodb.scan(Params).promise()
+    return{success:true, data: Items}
+
+  }catch(error){
+    return{success:false, data: null}
+
   }
 
-  dynamodb.get(getItemParams,(err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err.message});
-    } else {
-      if (data.Item) {
-        res.json(data.Item);
-      } else {
-        res.json(data) ;
-      }
-    }
-  });
-  
-  // Add your code here
-  res.json({success: 'get call products succeed!', url: req.url});
+}
 
+
+app.get('/products', async(req, res)=> {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, OPTIONS");
+
+  const { success, data } = await readAllProducts()
+
+  if(success){
+      return res.json({success, data})
+  }
+  return res.status(500).json({success:false, messsage: "Error"})
+  
 });
+  
+  
+const readAllSales = async()=>{
+  
+  try{ 
+    const {Items = []}= await dynamodb.scan(Params).promise()
+    return{success:true, data: Items}
+
+  }catch(error){
+    return{success:false, data: null}
+
+  }
+
+}
+
 
  //Get vendas method 
 
-app.get('/vendas', function(req, res) {
-  
-  let getItemParams = {
-    TableName: "vendas",
-    Key: "salesid"
+app.get('/vendas', async(req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const { success, data } = await readAllSales()
+
+  if(success){
+      return res.json({success, data})
   }
-
-  dynamodb.get(getItemParams,(err, data) => {
-    if(err) {
-      res.statusCode = 500;
-      res.json({error: 'Could not load items: ' + err.message});
-    } else {
-      if (data.Item) {
-        res.json(data.Item);
-      } else {
-        res.json(data) ;
-      }
-    }
-  });
+  return res.status(500).json({success:false, messsage: "Error"})
   
-
-  // Add your code here
-  res.json({success: 'get call  vendas succeed!', url: req.url});
-
 });
+  
 
 /* Post users */
 
-app.post('/users', function(req, res) {
   
-  let putItemParams = {  
+const cadNewUser = async(data = {})=>{
+  
+  const Params = {
     TableName: "users",
-    Key: "user_id",
-    Item: {
-    user_id: req.body.user_id,
-    nome: req.body.nome,
-    email: req.body.email,
-    senha: req.body.senha
-    }
+    Item: data
   }
- dynamodb.put(putItemParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: err, url: req.url, body: req.body});
-    } else {
-      res.json({success: 'post call succeed!', url: req.url, data: data})
-    }
-  });
-});
+  try{ 
+    await dynamodb.put(Params).promise()
+    return{success:true}
+
+  }catch(error){
+    return{success:false}
+
+  }
+
+}
+
+app.post('/users', async(req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  //  {
+  //   data.user_id = parseInt(req.body['user_id']),
+  //   data.nome = req.body['nome'],
+  //   data.email = req.body['email'],
+  //   data.senha = req.body['senha']
+  // }
+ 
+  const {success, data} = await cadNewUser(req.body)
+  
+  if(success){
+    return res.json({success, data})
+}
+
+return res.status(500).json({success: false, message: 'Error'})
+})
 
 /* Post products */
-
-app.post('/products', async function(req, res) {
+ 
+const cadNewProduct = async(data = {})=>{
   
-  let postItemParams = {  
+  const Params = {
     TableName: "products",
-    Key: "id",
-    Item: {
-    id: req.body.id,
-    product: req.body.product,
-    marca: req.body.marca,
-    price: req.body.price,
-    qtd: req.body.qtd
-    }
+    Item: data
   }
- await dynamodb.put(postItemParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: err, url: req.url, body: req.body});
-    } else {
-      res.json({success: 'Register product sucessfull!', url: req.url, data: data})
-    }
-  });
-});
+  try{ 
+    await dynamodb.put(Params).promise()
+    return{success:true}
+
+  }catch(error){
+    return{success:false}
+
+  }
+
+}
+
+app.post('/products', async(req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+ 
+  // let postItemParams = {  
+  //   TableName: "products",
+  //   Key: "id",
+  //   Item: { 
+  //   id:req.body.id,
+  //   product: req.body.product,
+  //   marca: req.body.marca,
+  //   qtd: parserInt(req.body.qtd),
+  //   price: parseInt(req.body.price)
+   
+  //   }
+  // }
+  const {success, data} = await cadNewProduct(req.body)
+  
+  if(success){
+    return res.json({success, data})
+}
+
+return res.status(500).json({success: false, message: 'Error'})
+})
 
 /* Post vendas */
 
-app.post('/vendas', async function(req, res) {
+const cadNewSale = async(data = {})=>{
   
-  let postItemParams = {  
+  const Params = {
     TableName: "vendas",
-    Key: "id",
-    Item: {
-    product: req.body.product,
-    marca: req.body.marca,
-    price: req.body.price
-    }
+    Item: data
   }
- await dynamodb.put(postItemParams, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.json({error: err, url: req.url, body: req.body});
-    } else {
-      res.json({success: 'post call succeed!', url: req.url, data: data})
-    }
-  });
-});
+  try{ 
+    await dynamodb.put(Params).promise()
+    return{success:true}
 
-app.post('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
+  }catch(error){
+    return{success:false}
+
+  }
+
+}
+
+app.post('/vendas', async function(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+  // let postItemParams = {  
+  //   TableName: "vendas",
+  //   Key: "id",
+  //   Item: {
+  //   sales_id: req.body.sales_id,
+  //   product: req.body.product,
+  //   price: req.body.price,
+  //   total: req.body.total
+  //   }
+  // }
+  const {success, data} = await db_sales.cadNewSale(req.body)
+  
+  if(success){
+    return res.json({success, data})
+}
+
+return res.status(500).json({success: false, message: 'Error'})
+})
+
 
 /****************************
 * Example put method *
@@ -221,14 +281,43 @@ app.put(path, function(req, res) {
 });
 });
 
-app.put('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+app.put('/users/:id', async(req, res) => {
+  const user = req.body
+    const { id } = req.params
+    user.id = parseInt(id)
+
+    const { success, data } = await cadNewUser(user)
+
+    if(success){
+        return res.json({success, data})
+    }
+
+    return res.status(500).json({success: false, message: "Error"})
+})
+
 
 /****************************
 * Example delete method *
 ****************************/
+
+const deleteUser = async(value, key = 'user_id')=>{
+  
+  const Params = {
+    TableName: "users",
+    Key: {
+      [key]:parseInt(value)
+    }
+  }
+  try{ 
+    await dynamodb.delete(Params).promise()
+    return{success:true}
+
+  }catch(error){
+    return{success:false}
+
+  }
+
+}
 
 app.delete('/users', function(req, res) {
 
@@ -246,17 +335,16 @@ app.delete('/users', function(req, res) {
   });
 });
 
-app.delete('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+app.delete('/users/*', async(req, res) => {
+  const { id } = req.params
+  const { success, data } = await deleteUser(id)
+  if (success) {
+    return res.json({ success, data })
+  }
+  return res.status(500).json({ success: false, message: 'Error'})
+})
 
 
-
-app.post('/users/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
 app.listen(3000, function() {
     console.log("App started")
 });

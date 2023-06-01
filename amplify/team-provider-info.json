@@ -25,7 +25,7 @@
         "superAPI2": {},
         "superelamb": {
           "deploymentBucketName": "amplify-amplify508dbcdb9bb54-staging-203147-deployment",
-          "s3Key": "amplify-builds/superelamb-6c78304a5a4761337577-build.zip"
+          "s3Key": "amplify-builds/superelamb-47743579774a436f4147-build.zip"
         }
       },
       "api": {

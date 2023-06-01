@@ -34,32 +34,30 @@ const[sales, setSales] = useState('')
 const [customers, setCustomers] = useState([])
 const [input, setInput] = useState("")
 
-async function getData(e) {
-e.preventDefault()
-let myInit = { // OPTIONAL
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }, // OPTIONAL
-      response: true
-    };
-    let customerId = e.input
-   await API.get('superExpress','/vendas')
-    .then(response => {
-        console.log(response)
-        let newCustomers = [...customers]
-        newCustomers.push(response)
-        setCustomers(newCustomers)
-    }).catch (error=> {
-        console.log(error)
-    })
-   
-}
+// async function getData(e) {
+// e.preventDefault()
+// let myInit = { // OPTIONAL
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json',
+//       }, // OPTIONAL
+//       response: true
+//     };
 
-useEffect(() => {
-  getData()  
+
+// await API.get('superExpress','/vendas')
+//     .then(response => {
+//     console.log(response)
+//     setSales()
+//     }).catch (error=> {
+//         console.log(error)
+//     })
+// }
+
+// useEffect(() => {
+//   getData()  
   
-   }, []);
+//    }, []);
 
 
 
@@ -98,7 +96,7 @@ useEffect(() => {
 return(
     <div>
     <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
-  
+{/*   
     <ShowProducts 
     idproduct = {idproduct} setIdproduct = {setIdproduct} 
     product = {product} setProduct = {setProduct} 
@@ -106,38 +104,33 @@ return(
     qtd = {qtd}     setQtd = {setQtd} 
     price = {price} setPrice = {setPrice}
     total = {total} setTot = {setTot}
-    value = {value} selectValue={selectValue} />
+    value = {value} selectValue={selectValue} /> */}
 
     <Card values = {value}/>
     
    <Resultado  Total ={parseFloat(price)*parseFloat(qtd)}/>
 
    <Button onClick={()=>NovaVenda()}>Nova Venda</Button>
-   
-    <div>
-            <label htmlFor="customer id"></label>
-            <input type="text" value= {input} name="costumerId" placeholder = "Digite o idCustomer" onChange={(e)=> setInput(e.target.value)}/>
-            <label> Value: {input}</label>
-    </div>
-    <Button onClick={()=>getData({input})}>API getData</Button>
+
+    {/* <Button onClick={()=>getData({input})}>API getData</Button> */}
 {
 
-sales.map((sales,index)=>(
-      <div key = {index}>
-        {sales.length> 0 &&
-        sales.map((sale)=>(
-        <Card 
-        key= {sale.idvendas}
-        idproduct={sale.idvendas}
-        product = {sale.product} 
-        marca= {sale.marca}
-        qtd={sale.qtd}
-        price={sale.price}
-        total={sale.total}
-        />
-        ))}
-       </div>
-       ))
+// sales.map((sales,index)=>(
+//       <div key = {index}>
+//         {sales.length> 0 &&
+//         sales.map((sale)=>(
+//         <Card 
+//         key= {sale.idvendas}
+//         idproduct={sale.idvendas}
+//         product = {sale.product} 
+//         marca= {sale.marca}
+//         qtd={sale.qtd}
+//         price={sale.price}
+//         total={sale.total}
+//         />
+//         ))}
+//        </div>
+//        ))
 }
 </div>
 )

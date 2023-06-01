@@ -28,7 +28,7 @@ return(
             <Link to="/Cad_Prods">Cadastro Produto</Link>
         </li>
         <li className={styles.item}>
-            <Link to="/Product_list">Products</Link>
+            <Link to="/ShowProducts">Products</Link>
         </li>
         <li className={styles.item}>
             <Link to="/users">Users</Link>

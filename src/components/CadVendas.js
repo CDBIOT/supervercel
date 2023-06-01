@@ -18,7 +18,7 @@ function CadVendas() {
 
 function CadVendas(e){
 
-    Axios.post("http://localhost:3000/vendas", {
+    Axios.post("https://super-server-eta.vercel.app/vendas", {
         idvendas: idvendas,
         idproduct: idproduct,
         product: product,

@@ -6,24 +6,22 @@ import {Amplify, API}  from 'aws-amplify';
 
 const ShowProducts = (props)=> {
 
-const [equips, setEquips] = useState([]);
+const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
 
 function getProducts(e){
-  //API.get("serverAwsIot","/dev/temps")
-  API.get("superExpress", "/users")
-  // Axios.get("http://localhost:3001/ShowProducts")
+  //API.get("superExpress", "/products/")
+   Axios.get("https://super-server-eta.vercel.app//ShowProducts")
    .then((response) =>{
-   setEquips(response.data);
+   setProducts(response.data);
    const data = response.data
    });
    {
-   console.log(equips)
+   console.log(products)
    setLoading(true)
   
    }
 }
-
 
 useEffect(() => {
   getProducts()
@@ -34,13 +32,13 @@ return (
     <div>        
     <select id = "products" value={props.value} onChange={(e) => props.selectValue(e.target.value)}>
     <option value = "" >Selecione o produto...</option>
-        {equips.map(equips => {
+        {products.map(products => {
         return (
-                <option value={equips.id} key={equips.id}> 
-                {equips.product}
-                {equips.marca}
-                {equips.qtd}
-                {equips.price} </option>
+                <option value={products.id} key={products.id}> 
+                {products.marca}
+                {products.product}
+                {products.qtd}
+                {products.price} </option>
                 )  
         })} 
          {!loading && <Loader/>}

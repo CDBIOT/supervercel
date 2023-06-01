@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import ShowUsers from '../ShowUsers'
 import { HiArrowUpTray } from 'react-icons/hi2'
 import {API} from "aws-amplify"
@@ -7,53 +7,78 @@ import {API} from "aws-amplify"
 
 function Users(){
 
-    
 const [user_id, setUserId] = useState()
-const [name, setName] = useState()
+const [nome, setName] = useState()
 const [email, setEmail] = useState()
 const [senha, setSenha] = useState()
 
 async function cadastrarUsuario(e){
- //e.preventDefault()
-    console.log(`O usuario ${name} usa a senha ${senha}`)
+    e.preventDefault()
+    console.log(`O usuario ${nome} usa a senha ${senha}`)
     
-//Axios.post("http://localhost:3001/users",{
-    await API.post("superExpress", "/users",{
-        user_id: {user_id},
-        name: {name},
-        email: {email},
-        senha:{senha}
+// var myHeaders = new Headers();
+// myHeaders.append(
+//     {"Content-type": 'application/json',
+//     "Access-Control-Allow-Origin": "*"}
+//     );
+    
+const options = {
+                method: 'POST',
+                cache: 'default',
+                header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+                'Content-Type': 'application/json' },
+                redirect: 'follow'
+                };
+
+Axios.post("https://super-server-eta.vercel.app/users",{
+ //   await API.post("superExpress", "/users",options,{
+    body:{
+        user_id: user_id,
+        name: nome,
+        email:email,
+        senha:senha
+    } ,
+    
         }).then((response)=>{
+        console.log(response)
+        .catch (error=> {
+        console.log(error.response)
+
+        })
         console.log(response)
         });
 }
 
+useEffect(() => {
+    cadastrarUsuario()  
+ }, []);
+  
 return(
 <div>
     <h1> Submit New User</h1>
-    <form >
+    <form onSubmit={cadastrarUsuario}>
         <div>
             <label htmlFor="user_id"></label>
-            <input type="text" id ="user_id" name="user_id" placeholder = "Digite seu id" onChange={(e)=> setUserId(e.target.value)}/>
+            <input type="text" value = {user_id} id ="user_id" name="user_id" placeholder = "Digite seu id" onChange={(e)=> setUserId(e.target.value)}/>
         </div>
         <div>
-            <label htmlFor="name"></label>
-            <input type="text" id ="name" name="name" placeholder = "Digite seu nome" onChange={(e)=> setName(e.target.value)}/>
+            <label htmlFor="nome"></label>
+            <input type="text" value = {nome} id ="nome" name="nome" placeholder = "Digite seu nome" onChange={(e)=> setName(e.target.value)}/>
         </div>
         <div>
-            <label htmlFor="role"></label>
-            <input type="text" id= "email" name="email" placeholder = "Digite seu e-mail" onChange={(e)=> setEmail(e.target.value)}/>
+            <label htmlFor="email"></label>
+            <input type="text" value = {email} id= "email" name="email" placeholder = "Digite seu e-mail" onChange={(e)=> setEmail(e.target.value)}/>
         </div>
         <div>
             <label htmlFor="senha"></label>
-            <input type="text" id= "senha" name="password" placeholder = "Digite sua senha" onChange={(e)=> setSenha(e.target.value)}/>
+            <input type="text" value = {senha}  id= "senha" name="senha" placeholder = "Digite sua senha" onChange={(e)=> setSenha(e.target.value)}/>
         </div>
         <div>
-            <input type="button" onClick={cadastrarUsuario} value="Cadastrar"/>
+            <input type="submit" value="Cadastrar"/>
         </div>
         <h3 >
     {user_id}
-    {name}
+    {nome}
     {email}
     {senha}
     </h3>
