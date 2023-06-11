@@ -27,7 +27,7 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-eta.vercel.app/vendas", {
+await Axios.post("https://super-server-eta.vercel.app/products", {
     body:{
         id: id,
         produc: product,
