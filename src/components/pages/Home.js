@@ -10,7 +10,10 @@ const [status, setStatus] = useState(false);
 
 function getStatus(e){
 
-   Axios.get("https://super-server-eta.vercel.app/")
+   Axios.get("https://super-server-eta.vercel.app/"),{
+    method: 'GET',
+    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+      'Content-Type': 'application/json' }}
    .then((response) =>{
    setStatus(response.data);
     setBdStatus(response.data);
