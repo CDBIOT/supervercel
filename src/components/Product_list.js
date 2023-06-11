@@ -10,7 +10,13 @@ const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
         
 useEffect(() => {
-    Axios.get("https://super-server-eta.vercel.app/products")
+    Axios.get("https://super-server-eta.vercel.app/products"),{
+        method: 'GET',
+        cache: 'default',
+        header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+        'Content-Type': 'application/json' },
+        redirect: 'follow'
+        }
     .then((response) =>{
     setProducts(response.data);
     setLoading(true)
