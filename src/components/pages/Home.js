@@ -29,11 +29,13 @@ useEffect(() => {
     return( 
     <div>
     <h1> Home </h1>
-    <h1> Bem vindo ao Supermercado AWS</h1>
-    <img src={cart} alt="cart"/>
-
+    <h1> Bem vindo ao Supermercado Vercel</h1>
+    
     <h1>Status{status}</h1>
     <h1>BD_Status{bd_Status}</h1>
+
+    <img src={cart} alt="cart"/>
+
     </div>
     )
 }
