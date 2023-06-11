@@ -27,7 +27,7 @@ function getProducts(e){
     header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
     'Content-Type': 'application/json' },
     redirect: 'follow'
-    };
+    }
    .then((response) =>{
    setProducts(response.data);
    const data = response.data
