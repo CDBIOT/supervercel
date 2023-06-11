@@ -11,7 +11,10 @@ const [loading, setLoading] = useState(false);
 
 function getProducts(e){
   //API.get("superExpress", "/products/")
-   Axios.get("https://super-server-eta.vercel.app/products")
+   Axios.get("https://super-server-eta.vercel.app/products"),{
+    method: 'GET',
+    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+      'Content-Type': 'application/json' }}
    .then((response) =>{
    setProducts(response.data);
    const data = response.data

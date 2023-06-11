@@ -13,6 +13,7 @@ function getStatus(e){
    Axios.get("https://super-server-eta.vercel.app/")
    .then((response) =>{
    setStatus(response.data);
+    setBdStatus(response.data);
    const data = response.data
    });
    {
