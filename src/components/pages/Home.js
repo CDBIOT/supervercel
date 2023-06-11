@@ -1,4 +1,5 @@
 import React from "react"
+import { useState, useEffect } from 'react'
 import cart from "../../blue/cart.png"
 import styles from './Home.module.css'
 
@@ -26,7 +27,7 @@ function getStatus(e){
 }
 
 useEffect(() => {
-  getProducts()
+  getStatus()
    
 }, [])
     return( 
