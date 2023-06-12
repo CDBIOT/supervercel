@@ -1,15 +1,18 @@
 import React from "react"
 import { useState, useEffect } from 'react'
+import Axios from "axios";
 import cart from "../../blue/cart.png"
 import styles from './Home.module.css'
 
-function Home(){
+function Home()  {
 
     
 const [bd_Status, setBdStatus] = useState();
 const [status, setStatus] = useState(false);
 
-function getStatus(e){
+async function getStatus(e){
+  
+  e.preventDefault()
 
    Axios.get("https://super-server-eta.vercel.app/"),{
     method: 'GET',
