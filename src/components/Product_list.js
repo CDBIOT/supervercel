@@ -8,20 +8,23 @@ function Product_list() {
     
 const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
-        
-useEffect(() => {
-    Axios.get("https://super-server-eta.vercel.app/products"),{
-        method: 'GET',
-        cache: 'default',
-        header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
-        'Content-Type': 'application/json' },
-        redirect: 'follow'
-        }
+
+const options = {
+    method: 'GET',
+    cache: 'default',
+    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+    'Content-Type': 'application/json' },
+    redirect: 'follow'
+    };
+     
+    Axios.get("https://super-server-eta.vercel.app/products",options)
     .then((response) =>{
     setProducts(response.data);
     setLoading(true)
     });
-  
+        
+useEffect(() => {
+  Product_list()
 }, [])
 
 

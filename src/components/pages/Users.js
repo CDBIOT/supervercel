@@ -26,15 +26,15 @@ const options = {
                 method: 'POST',
                 cache: 'default',
                 header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
-                'Content-Type': 'application/json' },
+                'Content-Type':  '*/*' },
                 redirect: 'follow'
                 };
 
-Axios.post("https://super-server-eta.vercel.app/users",{
+Axios.post("https://super-server-eta.vercel.app/user",options,{
  //   await API.post("superExpress", "/users",options,{
     body:{
         user_id: user_id,
-        name: nome,
+        nome: nome,
         email:email,
         senha:senha
     } ,

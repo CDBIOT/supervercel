@@ -21,13 +21,14 @@ console.log(`O produto ${product} com preço ${price}`)
 const options = {
     method: 'POST',
     cache: 'default',
-    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
-    'Content-Type': 'application/json' },
+    header: { 'Access-Control-Allow-Origin':'*',
+    mode: 'cors',
+    'Content-Type':  '*/*' },
     redirect: 'follow'
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-eta.vercel.app/products", {
+await Axios.post("https://super-server-eta.vercel.app/products",options, {
     body:{
         id: id,
         produc: product,

@@ -10,24 +10,20 @@ const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
 
 
+
+function getProducts(e){
+  
 const options = {
   method: 'GET',
   cache: 'default',
-  header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
-  'Content-Type': 'application/json' },
+  header: { 'Access-Control-Allow-Origin':'*',
+  mode: 'cors',
+  'Content-Type':  '*/*' },
   redirect: 'follow'
   };
 
-function getProducts(e){
-
   //API.get("superExpress", "/products/")
-   Axios.get("https://super-server-eta.vercel.app/products"),{
-    method: 'GET',
-    cache: 'default',
-    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
-    'Content-Type': 'application/json' },
-    redirect: 'follow'
-    }
+   Axios.get("https://super-server-eta.vercel.app/products",options)
    .then((response) =>{
    setProducts(response.data);
    const data = response.data
