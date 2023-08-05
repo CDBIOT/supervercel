@@ -18,7 +18,8 @@ async function getStatus(e){
 const options = {
   method: 'GET',
   cache: 'default',
-  header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+  header: { 'Access-Control-Allow-Origin':'*',
+  mode: 'cors',
   'Content-Type': 'application/json' },
   redirect: 'follow'
   };
