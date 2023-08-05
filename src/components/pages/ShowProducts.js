@@ -2,7 +2,6 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Loader from '../Loader';
-import {Amplify, API}  from 'aws-amplify';
 
 const ShowProducts = (props)=> {
 
@@ -12,6 +11,7 @@ const [loading, setLoading] = useState(false);
 
 
 function getProducts(e){
+  e.preventDefault()
   
 const options = {
   method: 'GET',
@@ -44,7 +44,8 @@ return (
     <div>        
     <select id = "products" value={props.value} onChange={(e) => props.selectValue(e.target.value)}>
     <option value = "" >Selecione o produto...</option>
-        {products.map(products => {
+        {products.length >0 ?(
+        products.map(products => {
         return (
                 <option value={products.id} key={products.id}> 
                 {products.marca}
@@ -52,7 +53,9 @@ return (
                 {products.qtd}
                 {products.price} </option>
                 )  
-        })} 
+        })):(  
+        !loading && <Loader/>)
+        } 
          {!loading && <Loader/>}
         </select>
         <h3 >{props.value}  </h3>
