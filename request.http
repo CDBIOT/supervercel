@@ -73,7 +73,7 @@ content-type: application/json
 
 
 ###
-GET  https://server-orpin-zeta.vercel.app/temps
+GET https://repo1-iota.vercel.app/temps
 
 
 
