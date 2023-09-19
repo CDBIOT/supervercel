@@ -24,11 +24,12 @@ const options = {
 
    Axios.get("https://super-server-nu.vercel.app/products",options)
    .then((response) =>{
-   setProducts(response.data);
+   setProducts(response.data.products);
    const data = response.data
+   console.log(data)
    });
    {
-   console.log(products)
+    console.log(products)
    setLoading(true)
   
    }
