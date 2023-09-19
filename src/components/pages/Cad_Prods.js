@@ -83,7 +83,13 @@ return(
         <div>
     
         </div>
+    <h4>
+    {product}
+    {marca}
+    {price}
+    {qtd}
         
+        </h4> 
        
     </form>
 </div>
