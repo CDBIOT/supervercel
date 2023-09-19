@@ -13,7 +13,7 @@ const [email, setEmail] = useState()
 const [senha, setSenha] = useState()
 
 async function cadastrarUsuario(e){
-    e.preventDefault()
+  //  e.preventDefault()
     console.log(`O usuario ${nome} usa a senha ${senha}`)
     
 // var myHeaders = new Headers();
@@ -30,7 +30,7 @@ const options = {
                 redirect: 'follow'
                 };
 
-Axios.post("https://super-server-eta.vercel.app/user",options,{
+Axios.post("https://super-server-nu.vercel.app/user",options,{
  //   await API.post("superExpress", "/users",options,{
     body:{
         user_id: user_id,

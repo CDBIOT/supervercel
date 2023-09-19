@@ -11,7 +11,7 @@ const [loading, setLoading] = useState(false);
 
 
 function getProducts(e){
-  e.preventDefault()
+ // e.preventDefault()
   
 const options = {
   method: 'GET',
@@ -22,8 +22,7 @@ const options = {
   redirect: 'follow'
   };
 
-  //API.get("superExpress", "/products/")
-   Axios.get("https://super-server-eta.vercel.app/products",options)
+   Axios.get("https://super-server-nu.vercel.app/products",options)
    .then((response) =>{
    setProducts(response.data);
    const data = response.data

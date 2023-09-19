@@ -24,7 +24,7 @@ const options = {
   redirect: 'follow'
   };
 
-   Axios.get("https://super-server-eta.vercel.app/",options)
+   Axios.get("https://super-server-nu.vercel.app/",options)
    .then((response) =>{
 
         setData(response.data.message) 

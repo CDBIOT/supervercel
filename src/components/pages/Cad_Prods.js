@@ -27,17 +27,17 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-eta.vercel.app/products",options, {
+await Axios.post("https://super-server-nu.vercel.app/products",options, {
     body:{
-        id: id,
-        produc: product,
+        //id: id,
+        product: product,
         marca: marca,
         qtd: qtd,
-        pric: price
+        price: price
     }, 
    
         }).then((response)=>{
-        console.log(id)
+        console.log(product)
         console.log(response)
         .catch (error=> {
         console.log(error.response)
@@ -57,11 +57,11 @@ return(
     <h1> Cadastro de Produtos</h1>
     <form onSubmit={CadProducts}>
     
-        <div>
+        {/* <div>
             <label htmlFor="id"></label>
             <input type="number" value = {id} id ="id" name="id" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
-        </div>  
-         <div>
+        </div>  */}
+         <div> 
             <label htmlFor="product"></label>
             <input type="text"  value = {product} id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
         </div>

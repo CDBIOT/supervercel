@@ -62,7 +62,7 @@ const [input, setInput] = useState("")
 
 
 async function NovaVenda(e){
-    e.preventDefault()
+   // e.preventDefault()
     
 let myInit = { // OPTIONAL
     headers: {
