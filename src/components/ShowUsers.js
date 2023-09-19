@@ -10,11 +10,26 @@ const [users, setUsers] = useState([]);
 
  function getUsers(e){
     e.preventDefault()
-    API.get("superExpress", "/users")
-    .then((response) => {
-    setUsers(response.data)
+  
+const options = {
+    method: 'GET',
+    cache: 'default',
+    header: { 'Access-Control-Allow-Origin':'*',
+    mode: 'cors',
+    'Content-Type':  '*/*' },
+    redirect: 'follow'
+    };
+    Axios.get("https://super-server-nu.vercel.app/user",options)
+    .then((response) =>{
+    setUsers(response.data.users);
+    const data = response.data
+    console.log(data)
     });
-
+    {
+     console.log(users)
+    setLoading(true)
+   
+    }
 }
         
 useEffect(() => {
