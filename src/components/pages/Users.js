@@ -13,7 +13,7 @@ const [email, setEmail] = useState()
 const [senha, setSenha] = useState()
 
 async function cadastrarUsuario(e){
-  //  e.preventDefault()
+    e.preventDefault()
     console.log(`O usuario ${nome} usa a senha ${senha}`)
     
 // var myHeaders = new Headers();
