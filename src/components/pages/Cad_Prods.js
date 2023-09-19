@@ -57,25 +57,25 @@ return(
     <h1> Cadastro de Produtos</h1>
     <form onSubmit={CadProducts}>
     
-        {/* <div>
+        {/* <div> value = {product} value = {marca} value = {qtd}  value = {price}
             <label htmlFor="id"></label>
             <input type="number" value = {id} id ="id" name="id" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
         </div>  */}
          <div> 
             <label htmlFor="product"></label>
-            <input type="text"  value = {product} id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
+            <input type="text"   id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
         </div>
         <div>
             <label htmlFor="marca"></label>
-            <input type="text" value = {marca} id= "marca" name="marca" placeholder = "Digite a marca" onChange={(e)=> setMarca(e.target.value)}/>
+            <input type="text"  id= "marca" name="marca" placeholder = "Digite a marca" onChange={(e)=> setMarca(e.target.value)}/>
         </div>
          <div>
             <label htmlFor="qtd"></label>
-            <input type="number" value = {qtd}  id= "qtd" name="qtd" placeholder = "Digite a quantidade" onChange={(e)=> setQtd(e.target.value)}/>
+            <input type="number"   id= "qtd" name="qtd" placeholder = "Digite a quantidade" onChange={(e)=> setQtd(e.target.value)}/>
         </div> 
         <div>
             <label htmlFor="price"></label>
-            <input type="number"  value = {price} id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
+            <input type="number"  id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
 </div>
         <div>
         <input type="submit" value="Cadastrar Produto"/>
