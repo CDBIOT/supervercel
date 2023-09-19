@@ -9,7 +9,7 @@ function ShowUsers() {
 const [users, setUsers] = useState([]);
 
  function getUsers(e){
-    e.preventDefault()
+   // e.preventDefault()
   
 const options = {
     method: 'GET',
