@@ -76,15 +76,15 @@ return(
         <div>
             <input type="submit" value="Cadastrar"/>
         </div>
-        <h3 >
-    {user_id}
-    {nome}
-    {email}
-    {senha}
-    </h3>
+        <h4 >
+    {user_id }
+    { nome }
+    { email }
+    { senha }
+    </h4>
    
     </form>
-    {/*<ShowUsers />*/}
+    {<ShowUsers />}
 </div>
 
 )

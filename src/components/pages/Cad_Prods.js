@@ -84,10 +84,10 @@ return(
     
         </div>
     <h4>
-    {product}
-    {marca}
-    {price}
-    {qtd}
+    {product }
+    { marca }
+    { price }
+    { qtd }
         
         </h4> 
        
