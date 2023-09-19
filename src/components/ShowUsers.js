@@ -21,7 +21,7 @@ const options = {
     };
     Axios.get("https://super-server-nu.vercel.app/user",options)
     .then((response) =>{
-    setUsers(response.data.users);
+    setUsers(response.data.people);
     const data = response.data
     console.log(data)
     });
