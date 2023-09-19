@@ -22,7 +22,7 @@ const options = {
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
-    'Content-Type':  '*/*' },
+    'Content-Type':  'application/json' },
     redirect: 'follow'
     };
 
