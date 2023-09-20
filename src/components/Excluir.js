@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react'
 import {HiPlusCircle , HiTrash}  from 'react-icons/hi2';
 import Axios from "axios";
 
-function Excluir({idproduct}){
+function Excluir({props}){
 
 const [idproduct, setId] = useState([])
 
