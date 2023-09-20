@@ -7,7 +7,7 @@ function Excluir({props}){
 
 const [idproduct, setId] = useState([])
 
-async function delProduct(e){
+async function exluirProd(e){
 e.preventDefault()
 
 console.log(`Opa fui excluido ${idproduct}`)
@@ -33,7 +33,7 @@ body:{
     })
 
 useEffect(() => {
-        delProduct()  
+        exluirProd()  
      }, []);
     }
 
