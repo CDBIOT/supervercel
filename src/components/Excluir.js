@@ -5,13 +5,12 @@ import Axios from "axios";
 
 function Excluir({idproduct}){
 
+const [idproduct, setId] = useState([])
+
 async function delProduct(e){
 e.preventDefault()
 
 console.log(`Opa fui excluido ${idproduct}`)
-
-
-const [idproduct, setId] = useState()
 
 await Axios.delete()("https://super-server-nu.vercel.app/products",options,{
 body:{
@@ -33,7 +32,7 @@ useEffect(() => {
 
 return(
     <div>
-         <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
+         <HiPlusCircle/> <HiTrash/>
         <div>
             <label htmlFor="id"></label>
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
