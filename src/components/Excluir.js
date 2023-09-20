@@ -12,10 +12,18 @@ e.preventDefault()
 
 console.log(`Opa fui excluido ${idproduct}`)
 
+const options = {
+    method: 'GET',
+    cache: 'default',
+    header: { 'Access-Control-Allow-Origin':'*',
+    mode: 'cors',
+    'Content-Type':  '*/*' },
+    redirect: 'follow'
+    };
+
 await Axios.delete()("https://super-server-nu.vercel.app/products",options,{
 body:{
     idproduct:idproduct
-
 }
 })
     .then(response => {
