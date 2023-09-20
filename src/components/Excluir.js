@@ -1,14 +1,17 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
 import {HiPlusCircle , HiTrash}  from 'react-icons/hi2';
-function Excluir({identifica}){
+import Axios from "axios";
+
+function Excluir({idproduct}){
 
 async function delProduct(e){
-    e.preventDefault()
-console.log(`Opa fui excluido ${identifica}`)
+e.preventDefault()
+
+console.log(`Opa fui excluido ${idproduct}`)
 
 
-const [id, setId] = useState()
+const [idproduct, setId] = useState()
 
 await Axios.delete()("https://super-server-nu.vercel.app/products",options,{
 body:{
@@ -18,7 +21,6 @@ body:{
 })
     .then(response => {
     console.log(response)
-    
     }).catch (error=> {
         console.log(error)
     })
@@ -27,6 +29,8 @@ useEffect(() => {
         delProduct()  
      }, []);
     }
+
+
 return(
     <div>
          <HiPlusCircle/> <HiTrash/> <HiShoppingCart />

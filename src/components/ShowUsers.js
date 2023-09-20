@@ -2,11 +2,12 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
 import styles from './Show_Prod.module.css'
-import{API} from "aws-amplify"
+
 
 function ShowUsers() {
 
 const [users, setUsers] = useState([]);
+const [loading, setLoading] = useState(false);
 
  function getUsers(e){
    // e.preventDefault()
@@ -27,7 +28,7 @@ const options = {
     });
     {
      console.log(users)
-    //setLoading(true)
+    setLoading(true)
     }
 }  
 useEffect(() => {
@@ -56,8 +57,10 @@ return (
         </tr>
         
         ))) : (
+        
         <td>Não há itens na lista</td>
-        )}</tbody>
+        ) }
+        </tbody>
     
     </>
    ) 
