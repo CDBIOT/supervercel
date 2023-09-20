@@ -10,8 +10,6 @@ import {HiShoppingCart} from 'react-icons/hi';
 import ShowProducts from './ShowProducts';
 import Notas from '../Notas';
 import Resultado from '../Resultado';
-import {API,Amplify} from 'aws-amplify';
-import config from '../../aws-exports'
 
 Amplify.configure(config)
 API.configure(config)
@@ -34,45 +32,46 @@ const[sales, setSales] = useState('')
 const [customers, setCustomers] = useState([])
 const [input, setInput] = useState("")
 
-// async function getData(e) {
+ async function getData(e) {
 // e.preventDefault()
-// let myInit = { // OPTIONAL
-//     headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json',
-//       }, // OPTIONAL
-//       response: true
-//     };
+const options = {
+method: 'GET',
+cache: 'default',
+header: { 'Access-Control-Allow-Origin':'*',
+mode: 'cors',
+'Content-Type':  '*/*' },
+redirect: 'follow'
+};
 
-
+await Axios.post("https://super-server-nu.vercel.app/vendas",options)
 // await API.get('superExpress','/vendas')
-//     .then(response => {
-//     console.log(response)
-//     setSales()
-//     }).catch (error=> {
-//         console.log(error)
-//     })
-// }
+    .then(response => {
+    console.log(response)
+    setSales()
+    }).catch (error=> {
+        console.log(error)
+    })
+}
 
-// useEffect(() => {
-//   getData()  
-  
-//    }, []);
+ useEffect(() => {
+   getData()  
+}, []);
 
 
 
 async function NovaVenda(e){
    // e.preventDefault()
     
-let myInit = { // OPTIONAL
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }, // OPTIONAL
-      response: true
+const options = {
+    method: 'POST',
+    cache: 'default',
+    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
+    'Content-Type':  '*/*' },
+    redirect: 'follow'
     };
 
- await API.post('superExpress','/vendas',{
+
+ await Axios.post("https://super-server-nu.vercel.app/vendas",options,{
       body: {
           idproduct: idproduct,
           product: props.product,
@@ -96,7 +95,7 @@ useEffect(() => {
 return(
     <div>
     <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
-{/*   
+  
     <ShowProducts 
     idproduct = {idproduct} setIdproduct = {setIdproduct} 
     product = {product} setProduct = {setProduct} 
@@ -104,7 +103,7 @@ return(
     qtd = {qtd}     setQtd = {setQtd} 
     price = {price} setPrice = {setPrice}
     total = {total} setTot = {setTot}
-    value = {value} selectValue={selectValue} /> */}
+    value = {value} selectValue={selectValue} /> 
 
     <Card values = {value}/>
     
@@ -112,25 +111,25 @@ return(
 
    <Button onClick={()=>NovaVenda()}>Nova Venda</Button>
 
-    {/* <Button onClick={()=>getData({input})}>API getData</Button> */}
+     <Button onClick={()=>getData({input})}>API getData</Button> 
 {
 
-// sales.map((sales,index)=>(
-//       <div key = {index}>
-//         {sales.length> 0 &&
-//         sales.map((sale)=>(
-//         <Card 
-//         key= {sale.idvendas}
-//         idproduct={sale.idvendas}
-//         product = {sale.product} 
-//         marca= {sale.marca}
-//         qtd={sale.qtd}
-//         price={sale.price}
-//         total={sale.total}
-//         />
-//         ))}
-//        </div>
-//        ))
+sales.map((sales,index)=>(
+      <div key = {index}>
+        {sales.length> 0 &&
+        sales.map((sale)=>(
+        <Card 
+        key= {sale.idvendas}
+        idproduct={sale.idvendas}
+        product = {sale.product} 
+        marca= {sale.marca}
+        qtd={sale.qtd}
+        price={sale.price}
+        total={sale.total}
+        />
+        ))}
+       </div>
+       ))
 }
 </div>
 )
