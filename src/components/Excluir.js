@@ -21,7 +21,7 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.delete()("https://super-server-nu.vercel.app/products",options,{
+await Axios.delete()(`https://super-server-nu.vercel.app/products/${idproduct}`,options,{
 body:{
     idproduct:idproduct
 }
@@ -34,7 +34,7 @@ body:{
 
 useEffect(() => {
         exluirProd()  
-     }, []);
+     }, [idproduct]);
     }
 
 
@@ -45,7 +45,7 @@ return(
             <label htmlFor="id"></label>
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button onClick={delProduct}>Excluir</button>
+        <button onClick={exluirProd}>Excluir</button>
     </div>
 )
 
