@@ -9,7 +9,6 @@ const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
 
 
-
 function getProducts(e){
  // e.preventDefault()
   

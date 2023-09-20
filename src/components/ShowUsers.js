@@ -28,14 +28,12 @@ const options = {
     {
      console.log(users)
     //setLoading(true)
-   
     }
-}
-        
+}  
 useEffect(() => {
  getUsers()
-
 },[])
+
 
 return ( 
     <>

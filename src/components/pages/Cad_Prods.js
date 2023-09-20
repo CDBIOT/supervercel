@@ -2,9 +2,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Axios from "axios";
+import ShowProducts from './ShowProducts';
 
 function Cad_Prods(){
-
 
 const [id, setIdProduct] = useState()
 const [product, setProduct] = useState()
@@ -42,7 +42,6 @@ await Axios.post("https://super-server-nu.vercel.app/products",options, {
         .catch (error=> {
         console.log(error.response)
         })
-       
         });
 }
 
@@ -50,8 +49,6 @@ useEffect(() => {
     CadProducts()  
  }, []);
     
-
-
 return(
 <div>
     <h1> Cadastro de Produtos</h1>
@@ -88,10 +85,10 @@ return(
     { marca }
     { price }
     { qtd }
-        
-        </h4> 
+    </h4> 
        
     </form>
+    <ShowProducts />
 </div>
 
 )
