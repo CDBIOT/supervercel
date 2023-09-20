@@ -32,11 +32,11 @@ body:{
         console.log(error)
     })
 
-useEffect(() => {
-        exluirProd()  
-     }, [idproduct]);
     }
 
+useEffect(() => {
+        exluirProd()  
+}, [idproduct]);
 
 return(
     <div>
