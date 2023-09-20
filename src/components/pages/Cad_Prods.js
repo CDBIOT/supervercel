@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Axios from "axios";
 import ShowProducts from './ShowProducts';
+import Excluir from '../Excluir';
 
 function Cad_Prods(){
 
@@ -89,6 +90,7 @@ return(
        
     </form>
     <ShowProducts />
+    <Excluir />
 </div>
 
 )

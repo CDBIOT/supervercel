@@ -11,10 +11,6 @@ import ShowProducts from './ShowProducts';
 import Notas from '../Notas';
 import Resultado from '../Resultado';
 
-Amplify.configure(config)
-API.configure(config)
-
-
 function Vendas(props){
     
 const [idvendas,setIdvendas] = useState();
@@ -131,6 +127,7 @@ sales.map((sales,index)=>(
        </div>
        ))
 }
+<CadVendas />
 </div>
 )
 

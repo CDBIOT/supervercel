@@ -2,6 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Loader from '../Loader';
+import Excluir from '../Excluir';
 
 const ShowProducts = (props)=> {
 
@@ -58,7 +59,7 @@ return (
          {!loading && <Loader/>}
         </select>
         <h3 >{props.value}  </h3>
-
+        <Excluir />
         </div>
         )
         
