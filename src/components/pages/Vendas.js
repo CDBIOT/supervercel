@@ -22,7 +22,7 @@ const [price, setPrice] = useState()
 const [total,setTot] = useState();
 const [resultado,setResultado]= useState()
 const [value, selectValue] = useState()
-const[sales, setSales] = useState('')
+const[sales, setSales] = useState([])
 
 
 const [customers, setCustomers] = useState([])
@@ -42,8 +42,8 @@ redirect: 'follow'
 await Axios.post("https://super-server-nu.vercel.app/vendas",options)
 // await API.get('superExpress','/vendas')
     .then(response => {
-    console.log(response)
-    setSales()
+    console.log(response.data)
+    setSales(response.data.vendas)
     }).catch (error=> {
         console.log(error)
     })
