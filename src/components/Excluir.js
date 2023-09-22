@@ -10,7 +10,6 @@ const [idproduct, setId] = useState([])
 async function exluirProd(e){
 e.preventDefault()
 
-console.log(`Opa fui excluido ${idproduct}`)
 
 const options = {
     method: 'GET',
@@ -28,6 +27,7 @@ body:{
 })
     .then(response => {
     console.log(response)
+    console.log(`Opa fui excluido ${idproduct}`)
     }).catch (error=> {
         console.log(error)
     })
