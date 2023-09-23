@@ -42,7 +42,7 @@ useEffect(() => {
 
 return(
     <div>
-         <HiPlusCircle/> <HiTrash/>
+         <HiPlusCircle/> <HiTrash onClick={exluirProd}/>
         <div>
             <label htmlFor="id"></label>
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
