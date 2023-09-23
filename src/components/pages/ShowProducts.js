@@ -8,6 +8,7 @@ const ShowProducts = (props)=> {
 
 const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
+const [select, setSelect] = useState([])
 
 
 function getProducts(e){
@@ -39,6 +40,15 @@ useEffect(() => {
   getProducts()
    
 }, [])
+
+function selectValue(e){
+  const[id,checked] = e.target;
+  if(checked){
+setSelect(prev=>[...prev,value]);
+  } else[setSelect(value='')]}
+  console.log(value)
+}
+
 
 return (  
     <div>        
