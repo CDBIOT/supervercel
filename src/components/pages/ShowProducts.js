@@ -45,7 +45,7 @@ function selectValue(e){
   const[id,checked] = e.target;
   if(checked){
 setSelect(prev=>[...prev,props.value]);
-  } else[setSelect(props.value='')]
+  } else[setSelect(...prev,props.value='')]
   console.log(props.value)}
 
 
