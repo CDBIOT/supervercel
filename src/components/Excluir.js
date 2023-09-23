@@ -37,7 +37,7 @@ body:{
     }
 
 useEffect(() => {
-        exluirProd(props.value)  
+        exluirProd()  
 }, [idproduct]);
 
 return(
