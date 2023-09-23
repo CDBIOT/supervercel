@@ -90,7 +90,6 @@ return(
        
     </form>
     <ShowProducts />
-    <Excluir />
 </div>
 
 )

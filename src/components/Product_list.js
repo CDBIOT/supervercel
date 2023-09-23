@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import Axios from "axios";
 import styles from './Show_Prod.module.css';
 import Loader from './Loader';
+import Card from "./Card";
 
 function Product_list() {
     
@@ -54,7 +55,7 @@ return (
         {!loading && <Loader/>}
         </tbody>
         <tfooter>
-       
+       <Card />
         </tfooter>
     </div></>
     )
