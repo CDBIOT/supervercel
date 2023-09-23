@@ -26,8 +26,10 @@ body:{
 }
 })
     .then(response => {
+    
     console.log(response)
     console.log(`Opa fui excluido ${idproduct}`)
+    console.log({value})
     }).catch (error=> {
         console.log(error)
     })
@@ -35,7 +37,7 @@ body:{
     }
 
 useEffect(() => {
-        exluirProd()  
+        exluirProd(props.value)  
 }, [idproduct]);
 
 return(
