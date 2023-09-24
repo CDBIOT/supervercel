@@ -12,7 +12,7 @@ e.preventDefault()
 
 
 const options = {
-    method: 'GET',
+    method: 'DELETE',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
@@ -24,17 +24,16 @@ await Axios.delete(`https://super-server-nu.vercel.app/products/${idproduct}`,op
 body:{
     idproduct:idproduct
 }
-})
-    .then(response => {
-    
-    console.log(response)
-    console.log(`Opa fui excluido ${idproduct}`)
-    //console.log({value})
-    }).catch (error=> {
-        console.log(error)
-    })
 
-    }
+ .then(response => response.json())
+  .then((data)=>{
+    setId(idproduct)
+   //setId(props.filter((props.product)=>props.idproduct !== idproduct))
+    console.log(`Opa fui excluido ${idproduct}`)
+    })
+    .catch ((err)=> console.log(err))
+}
+)}
 
 useEffect(() => {
         exluirProd()  
@@ -42,12 +41,12 @@ useEffect(() => {
 
 return(
     <div>
-         <HiPlusCircle/> <HiTrash onClick={exluirProd}/>
+         <HiPlusCircle/> 
         <div>
             <label htmlFor="id"></label>
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button onClick={exluirProd}>Excluir</button>
+        <button  onClick={exluirProd} ><HiTrash/>Excluir</button>
     </div>
 )
 
