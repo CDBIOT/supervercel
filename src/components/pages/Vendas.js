@@ -126,14 +126,14 @@ sales.map((sales,index)=>(
        ))
 }
 <h4> Cadastro de Venda </h4>
-            <form onSubmit={CadVendas}>
+            <form onSubmit={NovaVenda}>
                 <div>
                     <label htmlFor="idvendas">IdVendas</label>
                     <input type="number" id="idvendas" name="idvendas" placeholder="Digite o idvendas" value={idvendas} onChange={(e) => setIdvendas(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="idproduct">IdProduto</label>
-                    <input type="number" id="idproduct" value={idproduct} placeholder="Digite o id" onChange={(e) => setIdProduct(e.target.value)} />
+                    <input type="number" id="idproduct" value={idproduct} placeholder="Digite o id" onChange={(e) => setIdproduct(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="product">Produto</label>
@@ -153,7 +153,7 @@ sales.map((sales,index)=>(
                 </div>
                 <div>
                     <label htmlFor="total">Total</label>
-                    <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTotal(e.target.value)} />
+                    <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTo(e.target.value)} />
                 </div>
                 <div>
                 
