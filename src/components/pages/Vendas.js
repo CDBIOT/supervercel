@@ -69,10 +69,11 @@ const options = {
 
  await Axios.post("https://super-server-nu.vercel.app/vendas",options,{
       body: {
+          idvendas: idvendas,
           idproduct: idproduct,
-          product: props.product,
-          marca: props.marca,
-          qtd: props.qtd,
+          product: product,
+          marca: marca,
+          qtd: qtd,
           price: price,
           total: total
       }
@@ -124,7 +125,42 @@ sales.map((sales,index)=>(
        </div>
        ))
 }
-<CadVendas />
+<h1> Cadastro de Venda </h1>
+            <form onSubmit={CadVendas}>
+                <div>
+                    <label htmlFor="idvendas">IdVendas</label>
+                    <input type="number" id="idvendas" name="idvendas" placeholder="Digite o idvendas" value={idvendas} onChange={(e) => setIdvendas(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="idproduct">IdProduto</label>
+                    <input type="number" id="idproduct" value={idproduct} placeholder="Digite o id" onChange={(e) => setIdProduct(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="product">Produto</label>
+                    <input type="text" id="product" value={product} placeholder="Produto" onChange={(e) => setProduct(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="marca">Marca</label>
+                    <input type="text" id="marca" value={marca} placeholder="Digite a marca" onChange={(e) => setMarca(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="qtd">Qtd</label>
+                    <input type="number" id="qtd" value={qtd} placeholder="Digite a quantidade" onChange={(e) => setQtd(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="price">Preço</label>
+                    <input type="number" id="price" value={price} placeholder="Digite o Preço" onChange={(e) => setPrice(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="total">Total</label>
+                    <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTotal(e.target.value)} />
+                </div>
+                <div>
+                    <input type="submit" value="Cadastrar" />
+                    <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
+                </div>
+            </form>
+
 </div>
 )
 
