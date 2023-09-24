@@ -90,8 +90,7 @@ useEffect(() => {
 
 return(
     <div>
-    <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
-  
+    
     <ShowProducts 
     idproduct = {idproduct} setIdproduct = {setIdproduct} 
     product = {product} setProduct = {setProduct} 
@@ -100,12 +99,10 @@ return(
     price = {price} setPrice = {setPrice}
     total = {total} setTot = {setTot}
     value = {value} selectValue={selectValue} /> 
-
-    <Card values = {value}/>
     
    <Resultado  Total ={parseFloat(price)*parseFloat(qtd)}/>
 
-   <Button onClick={()=>NovaVenda()}>Nova Venda</Button>
+   <Button onClick={()=>NovaVenda()}> <HiPlusCircle/>Nova Venda <HiShoppingCart /></Button>
 
      <Button onClick={()=>getData({input})}>API getData</Button> 
 {

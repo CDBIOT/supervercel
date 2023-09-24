@@ -83,7 +83,7 @@ return(
     
         </div>
     <h4>
-    {product }
+    { product }
     { marca }
     { price }
     { qtd }
