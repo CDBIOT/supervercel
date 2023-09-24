@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Axios from "axios";
 import ShowProducts from './ShowProducts';
 import Excluir from '../Excluir';
+import Card from '../Card';
 
 function Cad_Prods(){
 
@@ -89,7 +90,7 @@ return(
     </h4> 
        
     </form>
-    <ShowProducts />
+<Card />
 </div>
 
 )

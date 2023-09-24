@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Loader from '../Loader';
 import Excluir from '../Excluir';
+import Card from '../Card';
 
 const ShowProducts = (props)=> {
 
@@ -70,6 +71,7 @@ return (
         </select>
         <h3 >{props.value}  </h3>
         <Excluir />
+        <Card />
         </div>
         )
         
