@@ -153,7 +153,7 @@ sales.map((sales,index)=>(
                 </div>
                 <div>
                     <label htmlFor="total">Total</label>
-                    <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTo(e.target.value)} />
+                    <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTot(e.target.value)} />
                 </div>
                 <div>
                 
