@@ -4,7 +4,6 @@ import { useState, useEffect} from 'react'
 import { Button , Span} from "../../styles/styles";
 import Axios from "axios";
 import Card from '../Card';
-import CadVendas from '../CadVendas';
 import {HiPlusCircle , HiTrash}  from 'react-icons/hi2';
 import {HiShoppingCart} from 'react-icons/hi';
 import ShowProducts from './ShowProducts';
