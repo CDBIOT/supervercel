@@ -106,6 +106,7 @@ return(
    <Button onClick={()=>NovaVenda()}> <HiPlusCircle/>Nova Venda <HiShoppingCart /></Button>
 
      <Button onClick={()=>getData({input})}>API getData</Button> 
+     <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
 {
 
 sales.map((sales,index)=>(
@@ -125,7 +126,7 @@ sales.map((sales,index)=>(
        </div>
        ))
 }
-<h1> Cadastro de Venda </h1>
+<h4> Cadastro de Venda </h4>
             <form onSubmit={CadVendas}>
                 <div>
                     <label htmlFor="idvendas">IdVendas</label>
@@ -156,8 +157,7 @@ sales.map((sales,index)=>(
                     <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTotal(e.target.value)} />
                 </div>
                 <div>
-                    <input type="submit" value="Cadastrar" />
-                    <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
+                
                 </div>
             </form>
 
