@@ -38,7 +38,7 @@ mode: 'cors',
 redirect: 'follow'
 };
 
-await Axios.post("https://super-server-nu.vercel.app/vendas",options)
+await Axios.get("https://super-server-nu.vercel.app/vendas",options)
 // await API.get('superExpress','/vendas')
     .then(response => {
     console.log(response.data)
@@ -104,7 +104,7 @@ return(
 
    <Button onClick={()=>NovaVenda()}> <HiPlusCircle/>Nova Venda <HiShoppingCart /></Button>
 
-     <Button onClick={()=>getData({input})}>API getData</Button> 
+     <Button onClick={()=>getData({input})}>getData</Button> 
      <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
 {
 
