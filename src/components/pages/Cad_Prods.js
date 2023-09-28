@@ -25,7 +25,7 @@ const options = {
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
     'Content-Type':  'application/json' },
-    redirect: 'follow'
+    //redirect: 'follow'
     };
 
 //await API.post("superExpress","/products",options,{
@@ -39,7 +39,8 @@ await Axios.post("https://super-server-nu.vercel.app/products",options, {
     }, 
    
         }).then((response)=>{
-        console.log(product)
+            
+        console.log(body)
         console.log(response)
         .catch (error=> {
         console.log(error.response)

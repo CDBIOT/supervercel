@@ -41,12 +41,19 @@ useEffect(() => {
 
 return(
     <div>
-         <HiPlusCircle/> 
         <div>
             <label htmlFor="id"></label>
+
+            <select onChange={e =>setId(e.target.value)}> 
+                <option value={idproduct}> Select product </option>  
+                 {product.map(min=>{
+            return<option value= {idproduct} key={id}>{idproduct} </option>
+        })}
+        </select>
+
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button  onClick={exluirProd} ><HiTrash/>Excluir</button>
+        <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
     </div>
 )
 
