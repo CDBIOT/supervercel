@@ -37,6 +37,7 @@ body:{
 
 useEffect(() => {
         exluirProd()  
+        
 }, [idproduct]);
 
 return(
