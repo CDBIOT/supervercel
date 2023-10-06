@@ -25,7 +25,7 @@ const options = {
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
     'Content-Type':  'application/json' },
-    //redirect: 'follow'
+    redirect: 'follow'
     };
 
 //await API.post("superExpress","/products",options,{
