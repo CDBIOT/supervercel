@@ -20,10 +20,10 @@ e.preventDefault()
 console.log(`O produto ${product} com preço ${price}`)
 const dados = {
     //id: id,
-    product: {product},
-    marca: {marca},
-    qtd: {qtd},
-    price: {price}
+    product,
+    marca,
+    qtd,
+    price
 }
 const options = {
     method: 'POST',
