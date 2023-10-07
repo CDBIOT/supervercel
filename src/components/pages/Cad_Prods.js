@@ -32,7 +32,7 @@ const options = {
     mode: 'cors',
     'Content-Type':  'application/json' },
     
-    body : JSON.stringify(dados)
+    body : dados
     //redirect: 'follow'
     };
 
