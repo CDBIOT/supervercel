@@ -32,10 +32,10 @@ const options = {
 await Axios.post("https://super-server-nu.vercel.app/products",options, {
     body:{
         //id: id,
-        product: product,
-        marca: marca,
-        qtd: qtd,
-        price: price
+        product: {product},
+        marca: {marca},
+        qtd: {qtd},
+        price: {price}
     }, 
    
         }).then((response)=>{
