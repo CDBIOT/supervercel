@@ -47,8 +47,8 @@ return(
 
             <select onChange={e =>setId(e.target.value)}> 
                 <option value={idproduct}> Select product </option>  
-                 {product.map(min=>{
-            return<option value= {idproduct} key={id}>{idproduct} </option>
+                 {props.map(min=>{
+            return<option value= {idproduct} key={idproduct}>{idproduct} </option>
         })}
         </select>
 

@@ -41,7 +41,7 @@ Axios.post("https://super-server-nu.vercel.app/user",options,{
     
         }).then((response)=>{
             response.json()
-            console.log(data)
+            console.log(response.data)
         })
         .catch (error=> {
             console.log(error.response)
