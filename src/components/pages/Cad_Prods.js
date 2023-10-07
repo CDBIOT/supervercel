@@ -18,27 +18,28 @@ async function CadProducts(e){
 e.preventDefault()
 
 console.log(`O produto ${product} com preço ${price}`)
-    
+const dados = {
+    //id: id,
+    product: {product},
+    marca: {marca},
+    qtd: {qtd},
+    price: {price}
+}
 const options = {
     method: 'POST',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
     'Content-Type':  'application/json' },
+    
+    body : JSON.stringify(dados)
     //redirect: 'follow'
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/products",options, {
-    body:{
-        //id: id,
-        product: {product},
-        marca: {marca},
-        qtd: {qtd},
-        price: {price}
-    }, 
+await Axios.post("https://super-server-nu.vercel.app/products",options  
    
-        }).then((response)=>{
+        ).then((response)=>{
         response.json(response.data)
        // console.log(response.data)
        // console.log(response.body)
