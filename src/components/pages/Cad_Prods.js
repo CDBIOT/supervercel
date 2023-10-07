@@ -40,7 +40,7 @@ await Axios.post("https://super-server-nu.vercel.app/products",options, {
    
         }).then((response)=>{
         response.json(response.data)
-        console.log(data)
+       // console.log(response.data)
        // console.log(response.body)
         })
         .catch (error=> {
