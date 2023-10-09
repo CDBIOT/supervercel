@@ -30,17 +30,15 @@ const options = {
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
-    'Content-Type':  'application/json' },
+    'Content-Type':  'application/json' }
     
    // body : dados
     //redirect: 'follow'
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/products",options  
-   
+await Axios.post("https://super-server-nu.vercel.app/products",options ,dados
         ).then((response)=>{
-        dados,
         response.json(response.data.body)
         console.log(dados)
        console.log(response)
