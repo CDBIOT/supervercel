@@ -39,12 +39,11 @@ const options = {
 //await API.post("superExpress","/products",options,{
 await Axios.post("https://super-server-nu.vercel.app/products",options ,dados
         ).then((response)=>{
-        response.json(response.data.body)
         console.log(dados)
-       console.log(response)
+       console.log(response.data)
         })
         .catch (error=> {
-            console.log(error.response)
+            console.log(error.response.data)
         });
 }
 
