@@ -26,13 +26,13 @@ const dados = {
     price
 }
 const options = {
-    method: 'POST',
+   // method: 'POST',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
     'Content-Type':  'application/json' },
     
-    body : dados
+   // body : dados
     //redirect: 'follow'
     };
 
@@ -40,6 +40,7 @@ const options = {
 await Axios.post("https://super-server-nu.vercel.app/products",options  
    
         ).then((response)=>{
+        dados,
         response.json(response.data.body)
         console.log(dados)
        console.log(response)
