@@ -37,13 +37,13 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/products",options ,dados
+await Axios.post("https://super-server-nu.vercel.app/products" ,dados
         ).then((response)=>{
        // console.log(dados)
-      // console.log(response.data)
+        console.log(response.data)
         })
         .catch (error=> {
-            console.log(error.response.data)
+            console.error(error.response)
         });
 }
 
