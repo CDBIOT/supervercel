@@ -20,7 +20,7 @@ e.preventDefault()
 console.log(`O produto ${product} com preço ${price}`)
 const dados = {
     //id: id,
-     product,marca,qtd,price
+     "product":product,"marca":marca,"qtd":qtd,"price":price
    
 }
 const options = {
