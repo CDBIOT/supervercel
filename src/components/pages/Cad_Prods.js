@@ -20,10 +20,10 @@ e.preventDefault()
 console.log(`O produto ${product} com preço ${price}`)
 const dados = {
     //id: id,
-    product: product,
-    marca: marca,
-    qtd: qtd,
-    price: price
+    product: {product},
+    marca: {marca},
+    qtd: {qtd},
+    price: {price}
 }
 const options = {
    // method: 'POST',
@@ -37,12 +37,9 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/products" ,{
-    product: {product},
-    marca: {marca},
-    qtd: {qtd},
-    price: {price}
-    }).then((response)=>{
+await Axios.post("https://super-server-nu.vercel.app/products" ,
+        dados)
+        .then((response)=>{
        // console.log(dados)
         console.log(response.data)
         })
