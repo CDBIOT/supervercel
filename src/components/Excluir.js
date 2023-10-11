@@ -5,7 +5,7 @@ import Axios from "axios";
 
 function Excluir({props}){
 
-const [idproduct, setId] = useState([])
+const [id, setId] = useState([])
 
 async function exluirProd(e){
 e.preventDefault()
@@ -22,12 +22,12 @@ const options = {
 
 await Axios.delete(`https://super-server-nu.vercel.app/products/${idproduct}`,options,{
 body:{
-    idproduct:idproduct
+    idproduct:id
 }
 
  .then(response => response.json())
   .then((data)=>{
-    setId(idproduct)
+    setId(id)
    //setId(props.filter((props.product)=>props.idproduct !== idproduct))
     console.log(`Opa fui excluido ${idproduct}`)
     })
@@ -46,15 +46,15 @@ return(
             <label htmlFor="id"></label>
 
             <select onChange={e =>setId(e.target.value)}> 
-                <option value={idproduct}> Select product </option>  
-                 {idproduct.map(min=>{
-            return<option value= {idproduct} key={idproduct}>{idproduct} </option>
+                <option value={id}> Select product </option>  
+                 {id.map(min=>{
+            return<option value= {id} key={id}>{id} </option>
         })}
         </select>
 
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
+        <button  onClick={exluirProd} id={id} ><HiTrash/>Excluir</button>
     </div>
 )
 
