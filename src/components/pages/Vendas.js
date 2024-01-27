@@ -4,7 +4,6 @@ import { useState, useEffect} from 'react'
 import { Button , Span} from "../../styles/styles";
 import Axios from "axios";
 import Card from '../Card';
-import CadVendas from '../CadVendas';
 import {HiPlusCircle , HiTrash}  from 'react-icons/hi2';
 import {HiShoppingCart} from 'react-icons/hi';
 import ShowProducts from './ShowProducts';
@@ -39,7 +38,7 @@ mode: 'cors',
 redirect: 'follow'
 };
 
-await Axios.post("https://super-server-nu.vercel.app/vendas",options)
+await Axios.get("https://super-server-nu.vercel.app/vendas",options)
 // await API.get('superExpress','/vendas')
     .then(response => {
     console.log(response.data)
@@ -69,10 +68,11 @@ const options = {
 
  await Axios.post("https://super-server-nu.vercel.app/vendas",options,{
       body: {
+          idvendas: idvendas,
           idproduct: idproduct,
-          product: props.product,
-          marca: props.marca,
-          qtd: props.qtd,
+          product: product,
+          marca: marca,
+          qtd: qtd,
           price: price,
           total: total
       }
@@ -90,8 +90,7 @@ useEffect(() => {
 
 return(
     <div>
-    <HiPlusCircle/> <HiTrash/> <HiShoppingCart />
-  
+    
     <ShowProducts 
     idproduct = {idproduct} setIdproduct = {setIdproduct} 
     product = {product} setProduct = {setProduct} 
@@ -100,14 +99,13 @@ return(
     price = {price} setPrice = {setPrice}
     total = {total} setTot = {setTot}
     value = {value} selectValue={selectValue} /> 
-
-    <Card values = {value}/>
     
    <Resultado  Total ={parseFloat(price)*parseFloat(qtd)}/>
 
-   <Button onClick={()=>NovaVenda()}>Nova Venda</Button>
+   <Button onClick={()=>NovaVenda()}> <HiPlusCircle/>Nova Venda <HiShoppingCart /></Button>
 
-     <Button onClick={()=>getData({input})}>API getData</Button> 
+     <Button onClick={()=>getData({input})}>getData</Button> 
+     <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
 {
 
 sales.map((sales,index)=>(
@@ -127,7 +125,41 @@ sales.map((sales,index)=>(
        </div>
        ))
 }
-<CadVendas />
+<h4> Cadastro de Venda </h4>
+            <form onSubmit={NovaVenda}>
+                <div>
+                    <label htmlFor="idvendas">IdVendas</label>
+                    <input type="number" id="idvendas" name="idvendas" placeholder="Digite o idvendas" value={idvendas} onChange={(e) => setIdvendas(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="idproduct">IdProduto</label>
+                    <input type="number" id="idproduct" value={idproduct} placeholder="Digite o id" onChange={(e) => setIdproduct(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="product">Produto</label>
+                    <input type="text" id="product" value={product} placeholder="Produto" onChange={(e) => setProduct(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="marca">Marca</label>
+                    <input type="text" id="marca" value={marca} placeholder="Digite a marca" onChange={(e) => setMarca(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="qtd">Qtd</label>
+                    <input type="number" id="qtd" value={qtd} placeholder="Digite a quantidade" onChange={(e) => setQtd(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="price">Preço</label>
+                    <input type="number" id="price" value={price} placeholder="Digite o Preço" onChange={(e) => setPrice(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="total">Total</label>
+                    <input type="number" id="total" value={total} placeholder="Total" onChange={(e) => setTot(e.target.value)} />
+                </div>
+                <div>
+                
+                </div>
+            </form>
+
 </div>
 )
 

@@ -12,7 +12,7 @@ const [nome, setName] = useState()
 const [email, setEmail] = useState()
 const [senha, setSenha] = useState()
 
-async function cadastrarUsuario(e){
+async function cadastrarUsuario(e,value){
     e.preventDefault()
     console.log(`O usuario ${nome} usa a senha ${senha}`)
     
@@ -40,13 +40,12 @@ Axios.post("https://super-server-nu.vercel.app/user",options,{
     } ,
     
         }).then((response)=>{
-        console.log(response)
-        .catch (error=> {
-        console.log(error.response)
-
+            response.json()
+            console.log(response.data)
         })
-        console.log(response)
-        });
+        .catch (error=> {
+            console.log(error.response)
+         })
 }
 
 useEffect(() => {

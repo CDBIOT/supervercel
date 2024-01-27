@@ -10,10 +10,9 @@ const [idproduct, setId] = useState([])
 async function exluirProd(e){
 e.preventDefault()
 
-console.log(`Opa fui excluido ${idproduct}`)
 
 const options = {
-    method: 'GET',
+    method: 'DELETE',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
@@ -21,31 +20,41 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.delete()(`https://super-server-nu.vercel.app/products/${idproduct}`,options,{
+await Axios.delete(`https://super-server-nu.vercel.app/products/${idproduct}`,options,{
 body:{
     idproduct:idproduct
 }
-})
-    .then(response => {
-    console.log(response)
-    }).catch (error=> {
-        console.log(error)
-    })
 
-    }
+ .then(response => response.json())
+  .then((data)=>{
+    setId(idproduct)
+   //setId(props.filter((props.product)=>props.idproduct !== idproduct))
+    console.log(`Opa fui excluido ${idproduct}`)
+    })
+    .catch ((err)=> console.log(err))
+}
+)}
 
 useEffect(() => {
         exluirProd()  
+        
 }, [idproduct]);
 
 return(
     <div>
-         <HiPlusCircle/> <HiTrash/>
         <div>
             <label htmlFor="id"></label>
+
+            <select onChange={e =>setId(e.target.value)}> 
+                <option value={idproduct}> Select product </option>  
+                 {idproduct.map(min=>{
+            return<option value= {idproduct} key={idproduct}>{idproduct} </option>
+        })}
+        </select>
+
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button onClick={exluirProd}>Excluir</button>
+        <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
     </div>
 )
 

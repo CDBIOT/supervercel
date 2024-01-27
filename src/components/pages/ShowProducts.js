@@ -3,11 +3,13 @@ import {useEffect, useState} from 'react';
 import Axios from "axios";
 import Loader from '../Loader';
 import Excluir from '../Excluir';
+import Card from '../Card';
 
 const ShowProducts = (props)=> {
 
 const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
+const [select, setSelect] = useState([])
 
 
 function getProducts(e){
@@ -40,6 +42,15 @@ useEffect(() => {
    
 }, [])
 
+function selectValue(e){
+  const[id,checked] = e.target;
+  if(checked){
+setSelect(prev=>[...prev,props.value]);
+  }// else[setSelect(...prev,props.value='')]
+  console.log(props.value)}
+
+
+
 return (  
     <div>        
     <select id = "products" value={props.value} onChange={(e) => props.selectValue(e.target.value)}>
@@ -60,6 +71,7 @@ return (
         </select>
         <h3 >{props.value}  </h3>
         <Excluir />
+        <Card />
         </div>
         )
         

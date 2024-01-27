@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Axios from "axios";
 import ShowProducts from './ShowProducts';
 import Excluir from '../Excluir';
+import Card from '../Card';
 
 function Cad_Prods(){
 
@@ -17,32 +18,31 @@ async function CadProducts(e){
 e.preventDefault()
 
 console.log(`O produto ${product} com preço ${price}`)
-    
+const dados = {
+    //id: id,
+     "product":product,"marca":marca,"qtd":qtd,"price":price
+   
+}
 const options = {
-    method: 'POST',
+   // method: 'POST',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
-    'Content-Type':  'application/json' },
-    redirect: 'follow'
+    'Content-Type':  'application/json' }
+    
+   // body : dados
+    //redirect: 'follow'
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/products",options, {
-    body:{
-        //id: id,
-        product: product,
-        marca: marca,
-        qtd: qtd,
-        price: price
-    }, 
-   
-        }).then((response)=>{
-        console.log(product)
-        console.log(response)
-        .catch (error=> {
-        console.log(error.response)
+await Axios.post("https://super-server-nu.vercel.app/products" ,
+        dados)
+        .then((response)=>{
+       // console.log(dados)
+        console.log(response.data)
         })
+        .catch (error=> {
+            console.error(error.response)
         });
 }
 
@@ -82,15 +82,14 @@ return(
     
         </div>
     <h4>
-    {product }
+    { product }
     { marca }
     { price }
     { qtd }
     </h4> 
        
     </form>
-    <ShowProducts />
-    <Excluir />
+<Card />
 </div>
 
 )
