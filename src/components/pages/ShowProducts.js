@@ -72,8 +72,9 @@ return (
         </select>
         <h3 >{props.value}  </h3>
         <Excluir />
+     
         <Card />
-        <Product_list />
+       
         </div>
         )
         
