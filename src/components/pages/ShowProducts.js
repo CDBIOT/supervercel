@@ -4,6 +4,7 @@ import Axios from "axios";
 import Loader from '../Loader';
 import Excluir from '../Excluir';
 import Card from '../Card';
+import Product_list from '../Product_list';
 
 const ShowProducts = (props)=> {
 
@@ -72,6 +73,7 @@ return (
         <h3 >{props.value}  </h3>
         <Excluir />
         <Card />
+        <Product_list />
         </div>
         )
         
