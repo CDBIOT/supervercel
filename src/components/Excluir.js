@@ -27,9 +27,9 @@ body:{
 
  .then(response => response.json())
   .then((data)=>{
-    setId(idproduct)
+    setId(data.idproduct)
    //setId(props.filter((props.product)=>props.idproduct !== idproduct))
-    console.log(`Opa fui excluido ${idproduct}`)
+    console.log(`Opa fui excluido ${data.idproduct}`)
     })
     .catch ((err)=> console.log(err))
 }
