@@ -54,7 +54,7 @@ setSelect(id);
 
 return (  
     <div>        
-    <select id = "products" value={id} onChange={(e) => selectValue(e.target.value)}>
+    <select id = "products" value={select} onChange={(e) => selectValue(e.target.value)}>
     <option value = "" >Selecione o produto...</option>
         {products.length >0 ?(
         products.map(products => {
