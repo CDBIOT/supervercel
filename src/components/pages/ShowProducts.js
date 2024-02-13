@@ -46,15 +46,15 @@ useEffect(() => {
 function selectValue(e){
   const[id,checked] = e.target;
   if(checked){
-setSelect(prev=>[...prev,props.value]);
+setSelect(value);
   }// else[setSelect(...prev,props.value='')]
-  console.log(props.value)}
+  console.log(value)}
 
 
 
 return (  
     <div>        
-    <select id = "products" value={props.value} onChange={(e) => props.selectValue(e.target.value)}>
+    <select id = "products" value={value} onChange={(e) => selectValue(e.target.value)}>
     <option value = "" >Selecione o produto...</option>
         {products.length >0 ?(
         products.map(products => {
