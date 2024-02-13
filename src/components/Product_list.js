@@ -4,28 +4,37 @@ import Axios from "axios";
 import styles from './Show_Prod.module.css';
 import Loader from './Loader';
 import Card from "./Card";
+ 
 
 function Product_list() {
-    
+
 const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
 
+function getPostgres(){
+   
 const options = {
     method: 'GET',
     cache: 'default',
-    header: { 'Access-Control-Allow-Origin':'*',mode: 'cors',
-    'Content-Type': 'application/json' },
+    header: { 'Access-Control-Allow-Origin':'*',
+    mode: 'cors',
+    'Content-Type': '*/*' },
     redirect: 'follow'
     };
      
     Axios.get("https://super-server-nu.vercel.app/postgre",options)
     .then((response) =>{
-    setProducts(response.data);
-    setLoading(true)
+    setProducts(response.data.products);
+    const data = response.data
+    console.log(data)
     });
-        
+    {
+    console.log(products)
+    setLoading(true)
+    }
+}
 useEffect(() => {
-  Product_list()
+  getPostgres()
 }, [])
 
 
