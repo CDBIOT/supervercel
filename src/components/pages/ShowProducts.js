@@ -73,9 +73,8 @@ return (
         <h3 >{products.marca}  </h3>
         <h3 >{select}  </h3>
         <Excluir />
+        <Product_list />
      
-        <Card />
-       
         </div>
         )
         

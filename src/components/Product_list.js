@@ -55,7 +55,7 @@ return (
         {!loading && <Loader/>}
         </tbody>
         <tfooter>
-       <Card />
+     
         </tfooter>
     </div></>
     )
