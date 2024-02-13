@@ -48,7 +48,7 @@ function selectValue(e){
   if(checked){
 setSelect(value);
   }// else[setSelect(...prev,props.value='')]
-  console.log(value)}
+  console.log(select)}
 
 
 
@@ -70,7 +70,8 @@ return (
         } 
          {!loading && <Loader/>}
         </select>
-        <h3 >{props.value}  </h3>
+        <h3 >{products.marca}  </h3>
+        <h3 >{select}  </h3>
         <Excluir />
      
         <Card />
