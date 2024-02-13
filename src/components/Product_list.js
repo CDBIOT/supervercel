@@ -24,7 +24,7 @@ const options = {
      
     Axios.get("https://super-server-nu.vercel.app/postgre",options)
     .then((response) =>{
-    setProducts(response.data.products);
+    setProducts(response.data);
     const data = response.data
     console.log(data)
     });
@@ -51,8 +51,8 @@ return (
     </table>
   
         <tbody className={styles.tbody}>
-        {products.length >0 ? (
-        products.map((products, index) => (
+        {data.length >0 ? (
+        data.map((products, index) => (
         <tr key = {index}>
         <td width="25%"className={styles.td}>{products.product}</td>
         <td width="25%"className={styles.td}>{products.marca}</td>
