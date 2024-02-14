@@ -42,7 +42,8 @@ return (
     <>
     <div>
     <table className={styles.products_table}>
-    <tr><th className={styles.th} colSpan={4}>
+    <tr><tr><th>PostGre</th></tr>
+    <th className={styles.th} colSpan={4}>
     <td width="25%"className={styles.th}>Produto</td>
     <td width="25%" className={styles.th}>Marca</td>
     <td width="25%" className={styles.th}>Qtd</td>

@@ -55,13 +55,13 @@ setSelect(value.id);
 return (  
     <div>        
     <select id = "products" value={select} onChange={(e) => selectValue(e.target.value)}>
-    <option value = "" >Selecione o produto...</option>
+    <option value = "" >Selecione o produto mongodb...</option>
         {products.length >0 ?(
         products.map(products => {
         return (
                 <option value={products.id} key={products.id}> 
-                {products.marca}
                 {products.product}
+                {products.marca}
                 {products.qtd}
                 {products.price} </option>
                 )  
