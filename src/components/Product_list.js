@@ -51,17 +51,17 @@ return (
     </table>
   
         <tbody className={styles.tbody}>
-        {data.length >0 ? (
+        {
+         
         data.map((products, index) => (
         <tr key = {index}>
         <td width="25%"className={styles.td}>{products.product}</td>
         <td width="25%"className={styles.td}>{products.marca}</td>
         <td width="25%"className={styles.td}>{products.qtd}</td>
         <td width="25%"className={styles.td}>{products.price}</td></tr>
-        ))) : (
-         <td>Não há itens na lista</td>
-        )} 
-        {!loading && <Loader/>}
+        )) 
+        }
+        
         </tbody>
         <tfooter>
      
