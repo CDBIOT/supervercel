@@ -53,7 +53,7 @@ return (
         <tbody className={styles.tbody}>
         {
          
-        data.map((products, index) => (
+        products.map((products, index) => (
         <tr key = {index}>
         <td width="25%"className={styles.td}>{products.product}</td>
         <td width="25%"className={styles.td}>{products.marca}</td>
