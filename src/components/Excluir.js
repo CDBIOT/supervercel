@@ -27,7 +27,7 @@ body:{
 
  .then(response => response.json())
   .then((data)=>{
-    setId(data.idproduct)
+    setId(data.idproduct._id)
    //setId(props.filter((props.product)=>props.idproduct !== idproduct))
     console.log(`Opa fui excluido ${data.idproduct}`)
     })
@@ -50,13 +50,13 @@ return(
      
                  {idproduct.map(option=>{
 
-            return<option value= {option.idproduct} key={idproduct}> {option.idproduct._id} </option>
+            return<option value= {option.idproduct._id} key={idproduct}> {option.idproduct._id} </option>
         })}
         </select>
 
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
+        <button  onClick={exluirProd} idproduct={idproduct._id} ><HiTrash/>Excluir</button>
     </div>
 )
 
