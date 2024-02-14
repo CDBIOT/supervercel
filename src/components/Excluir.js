@@ -49,7 +49,7 @@ return(
             <option value={idproduct}> Select product </option>  
                  {idproduct.map(min=>{
 
-            return<option value= {idproduct} key={idproduct}>{idproduct} </option>
+            return<option value= {idproduct} key={idproduct}> {idproduct._id} </option>
         })}
         </select>
 
