@@ -71,7 +71,7 @@ return (
         } 
          {!loading && <Loader/>}
         </select>
-        <h3 >{value}  </h3>
+        <h3 >{checked}  </h3>
         <h3 >{select}  </h3>
         <Excluir />
         <Product_list />
