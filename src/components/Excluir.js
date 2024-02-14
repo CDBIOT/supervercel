@@ -46,10 +46,11 @@ return(
             <label htmlFor="id"></label>
 
             <select onChange={e =>setId(e.target.value)}> 
-            <option value={idproduct}> Select product </option>  
-                 {idproduct.map(min=>{
+            <option > Select product </option>  
+     
+                 {idproduct.map(option=>{
 
-            return<option value= {idproduct} key={idproduct}> {idproduct._id} </option>
+            return<option value= {option.idproduct} key={idproduct}> {option.idproduct._id} </option>
         })}
         </select>
 
