@@ -46,7 +46,7 @@ useEffect(() => {
 function selectValue(e){
   const[id,checked] = e.target.value;
  if(checked){
-setSelect(id);
+setSelect(e.target.value);
   }// else[setSelect(...prev,props.value='')]
   console.log(select)}
 
