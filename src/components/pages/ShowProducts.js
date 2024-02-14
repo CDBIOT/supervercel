@@ -44,9 +44,9 @@ useEffect(() => {
 }, [])
 
 function selectValue(e){
-  const[id,checked] = e.target;
+  const[id,checked] = e.target.value;
  if(checked){
-setSelect(value.id);
+setSelect(id);
   }// else[setSelect(...prev,props.value='')]
   console.log(select)}
 
@@ -70,7 +70,7 @@ return (
         } 
          {!loading && <Loader/>}
         </select>
-        <h3 >{products.marca}  </h3>
+        <h3 >{value}  </h3>
         <h3 >{select}  </h3>
         <Excluir />
         <Product_list />
