@@ -100,12 +100,12 @@ return(
     total = {total} setTot = {setTot}
     value = {value} selectValue={selectValue} /> 
     
-   <Resultado  Total ={parseFloat(price)*parseFloat(qtd)}/>
+    <Resultado  Total ={parseFloat(price)*parseFloat(qtd)}/>
 
-   <Button onClick={()=>NovaVenda()}> <HiPlusCircle/>Nova Venda <HiShoppingCart /></Button>
+    <Button onClick={()=>NovaVenda()}> <HiPlusCircle/>Nova Venda <HiShoppingCart /></Button>
 
-     <Button onClick={()=>getData({input})}>getData</Button> 
-     <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
+    <Button onClick={()=>getData({input})}>getData</Button> 
+    <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
 {
 
 sales.map((sales,index)=>(
