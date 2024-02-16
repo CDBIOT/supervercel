@@ -76,7 +76,7 @@ return (
          <h3 >{select }</h3>
         </select>
        
-        <h3 >{products }</h3>
+        <h3 >{products.product}</h3>
         <Excluir />
         <Product_list />
      
