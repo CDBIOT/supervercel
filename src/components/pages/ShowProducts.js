@@ -32,7 +32,6 @@ await Axios.get("https://super-server-nu.vercel.app/products",options)
    console.log(data)
    });
    {
-    console.log(products)
    setLoading(true)
   
    }

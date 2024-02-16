@@ -29,7 +29,6 @@ await Axios.get("https://super-server-nu.vercel.app/postgre",options)
     console.log(data)
     });
     {
-    console.log(products)
     setLoading(true)
     }
 }
