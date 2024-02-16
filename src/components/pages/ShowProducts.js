@@ -13,7 +13,7 @@ const [loading, setLoading] = useState(false);
 const [select, setSelect] = useState([])
 
 
-function getProducts(e){
+async function getProducts(e){
  // e.preventDefault()
   
 const options = {
@@ -25,7 +25,7 @@ const options = {
   redirect: 'follow'
   };
 
-   Axios.get("https://super-server-nu.vercel.app/products",options)
+await Axios.get("https://super-server-nu.vercel.app/products",options)
    .then((response) =>{
    setProducts(response.data.products);
    const data = response.data

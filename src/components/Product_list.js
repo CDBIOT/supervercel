@@ -11,7 +11,7 @@ function Product_list() {
 const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
 
-function getPostgres(){
+async function getPostgres(){
    
 const options = {
     method: 'GET',
@@ -22,7 +22,7 @@ const options = {
     redirect: 'follow'
     };
      
-    Axios.get("https://super-server-nu.vercel.app/postgre",options)
+await Axios.get("https://super-server-nu.vercel.app/postgre",options)
     .then((response) =>{
     setProducts(response.data);
     const data = response.data
