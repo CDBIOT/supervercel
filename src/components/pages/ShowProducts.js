@@ -48,7 +48,7 @@ function selectValue(e){
 //setSelect(prev=>[...prev,props.value]);
 setSelect(e.target.value);
  // }// else[setSelect(...prev,props.value='')]
- console.log(select.values)
+// console.log(select.values)
   console.log(select)
 
 }
