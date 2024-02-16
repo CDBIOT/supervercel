@@ -73,9 +73,10 @@ return (
         !loading && <Loader/>)
         } 
          {!loading && <Loader/>}
+         <h3 >{select }</h3>
         </select>
        
-        <h3 >{{select }}</h3>
+        <h3 >{select }</h3>
         <Excluir />
         <Product_list />
      
