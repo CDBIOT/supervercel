@@ -46,9 +46,9 @@ function selectValue(e){
   //const id = e.target.value;
 // if(checked){
 setSelect(prev=>[...prev,props.value]);
-setSelect(e.target.value);
+setSelect(selectValue);
  // }// else[setSelect(...prev,props.value='')]
- console.log(select.values)
+ console.log(selectValue)
   console.log(select)
 
 }
