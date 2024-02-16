@@ -38,14 +38,14 @@ body:{
 useEffect(() => {
         exluirProd()  
         
-}, [idproduct]);
+}, []);
 
 return(
     <div>
         <div>
             <label htmlFor="id"></label>
 
-            <select onChange={e =>setId(e.target.value)}> 
+            <select > 
             <option > Select product </option>  
      
                  {idproduct.map(option=>{
