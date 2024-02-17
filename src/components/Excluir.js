@@ -58,7 +58,7 @@ const dataProd = {
 console.log(idproduct)
 
 }
-await Axios.delete(`https://super-server-nu.vercel.app/products`,dataProd,options,)      
+await Axios.delete('https://super-server-nu.vercel.app/products',`${idproduct}`,options,)      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${idproduct}`,response)
@@ -81,7 +81,7 @@ return(
             )
         })}
         </select>
-            <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
+        <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <button  onClick={exluirProd} idproduct={idproduct} >Excluir<HiTrash/></button>
     </div>
