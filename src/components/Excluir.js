@@ -4,6 +4,33 @@ import {HiPlusCircle , HiTrash}  from 'react-icons/hi2';
 import Axios from "axios";
 
 function Excluir({props}){
+const[products,setProducts] = useState('')
+
+async function getProducts(e){
+        // e.preventDefault()
+         
+       const options = {
+         method: 'GET',
+         cache: 'default',
+         header: { 'Access-Control-Allow-Origin':'*',
+         mode: 'cors',
+         'Content-Type':  '*/*' },
+         redirect: 'follow'
+         };
+       
+       await Axios.get("https://super-server-nu.vercel.app/products",options)
+          .then((response) =>{
+          setProducts(response.data.products);
+          const data = response.data
+          console.log(data)
+          });
+         
+       }
+       
+useEffect(() => {
+    getProducts()
+          
+}, [])
 
 const [idproduct, setId] = useState([])
 
@@ -27,9 +54,8 @@ body:{
 
  .then(response => response.json())
   .then((data)=>{
-    setId(data.idproduct._id)
    //setId(props.filter((props.product)=>props.idproduct !== idproduct))
-    console.log(`Opa fui excluido ${data.idproduct}`)
+    console.log(`Opa fui excluido ${idproduct}`)
     })
     .catch ((err)=> console.log(err))
 }
@@ -46,7 +72,7 @@ return(
             <label htmlFor="id"></label>
             <select > 
             <option > Select product </option>  
-            {idproduct.map(option=>{
+            {data.map(option=>{
             return<option value= {option.idproduct._id} key={idproduct}> {option.idproduct._id} </option>
         })}
         </select>
