@@ -4,12 +4,16 @@ import {HiPlusCircle , HiTrash}  from 'react-icons/hi2';
 import Axios from "axios";
 
 function Excluir({props}){
-const[products,setProducts] = useState('')
+
+const[products,setProducts] = useState([])
+
+const [idproduct, setId] = useState([])
+const [select,setSelect] = useState([])
 
 async function getProducts(e){
-        // e.preventDefault()
+// e.preventDefault()
          
-       const options = {
+const options = {
          method: 'GET',
          cache: 'default',
          header: { 'Access-Control-Allow-Origin':'*',
@@ -18,22 +22,20 @@ async function getProducts(e){
          redirect: 'follow'
          };
        
-       await Axios.get("https://super-server-nu.vercel.app/products",options)
+await Axios.get("https://super-server-nu.vercel.app/products",options)
           .then((response) =>{
           setProducts(response.data.products);
           const data = response.data
           console.log(data)
           });
          
-       }
+}
        
 useEffect(() => {
     getProducts()
           
 }, [])
 
-const [idproduct, setId] = useState([])
-const [select,setSelect] = useState('')
 
 async function exluirProd(e){
 e.preventDefault()
