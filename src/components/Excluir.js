@@ -51,9 +51,9 @@ const options = {
     };
 
 await Axios.delete("https://super-server-nu.vercel.app/products",options,{
-body:{
-    idproduct:idproduct
-    }
+// body:{
+//     idproduct:idproduct
+//     }
 })      
  .then((response) => 
     {
@@ -63,7 +63,6 @@ body:{
 
 useEffect(() => {
      exluirProd()  
-        
 }, [])
 
 return(
@@ -78,7 +77,6 @@ return(
             )
         })}
         </select>
-            <label>{select}</label>
             <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <button  onClick={exluirProd} idproduct={idproduct} >Excluir<HiTrash/></button>
