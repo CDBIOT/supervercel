@@ -44,19 +44,16 @@ return(
     <div>
         <div>
             <label htmlFor="id"></label>
-
             <select > 
             <option > Select product </option>  
-     
-                 {idproduct.map(option=>{
-
+            {idproduct.map(option=>{
             return<option value= {option.idproduct._id} key={idproduct}> {option.idproduct._id} </option>
         })}
         </select>
 
             <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button  onClick={exluirProd} idproduct={idproduct._id} ><HiTrash/>Excluir</button>
+        <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
     </div>
 )
 
