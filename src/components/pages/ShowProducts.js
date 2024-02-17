@@ -48,7 +48,7 @@ function selectValue(e){
 setSelect(prev=>[...prev,props.value]);
 setSelect(selectValue);
  // }// else[setSelect(...prev,props.value='')]
- console.log(selectValue[0])
+// console.log(selectValue[0])
   console.log(select)
 
 }
@@ -57,8 +57,8 @@ setSelect(selectValue);
 
 return (  
     <div>        
-    <select id = "products" value={select} onChange={(e) => selectValue(e.target.value)}>
-    <option value = "" >Selecione o produto mongodb...</option>
+    <select id = "products" value={select} onChange={(e) => setSelect(e.target.value)}>
+    <option value = {products._id} >Selecione o produto mongodb...</option>
         {products.length >0 ?(
         products.map(products => {
         return (
