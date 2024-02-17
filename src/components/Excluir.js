@@ -48,12 +48,14 @@ const options = {
     'Content-Type':  '*/*' },
     redirect: 'follow'
     };
+    
 const dataProd = {
-      idproduct:idproduct
+    id: "651dd7f0c095615e71b297a9"
+      //idproduct:idproduct
       }
-}
 
-await Axios.delete(`https://super-server-nu.vercel.app/products/`,options,dataProd)      
+
+await Axios.delete(`https://super-server-nu.vercel.app/products/`,dataProd,options,)      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${idproduct}`,response)
