@@ -40,7 +40,6 @@ useEffect(() => {
 async function exluirProd(e){
 e.preventDefault()
 
-
 const options = {
     method: 'DELETE',
     cache: 'default',
@@ -50,10 +49,11 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.delete("https://super-server-nu.vercel.app/products",options,{
-// body:{
-//     idproduct:idproduct
-//     }
+await Axios.delete("https://super-server-nu.vercel.app/products",
+{
+//  body:{
+//      idproduct:idproduct
+//      }
 })      
  .then((response) => 
     {
