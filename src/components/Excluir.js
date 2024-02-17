@@ -50,7 +50,7 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.delete('https://super-server-nu.vercel.app/products',idproduct,options,{
+await Axios.delete('https://super-server-nu.vercel.app/products',options,{
 body:{
     idproduct:idproduct
     }
