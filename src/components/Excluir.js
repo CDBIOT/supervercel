@@ -41,7 +41,7 @@ async function exluirProd(e){
 e.preventDefault()
 
 const options = {
-    method: 'DELETE',
+    method: 'delete',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
@@ -49,7 +49,7 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.delete("https://super-server-nu.vercel.app/products",options,
+await Axios.delete("https://super-server-nu.vercel.app/products"+"/"+`${idproduct}`,options,
 {
   data:{
       idproduct:idproduct
