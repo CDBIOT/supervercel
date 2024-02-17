@@ -49,9 +49,9 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.post("https://super-server-nu.vercel.app/products",otions,
+await Axios.delete("https://super-server-nu.vercel.app/products",options,
 {
-  body:{
+  data:{
       idproduct:idproduct
      }
 })      
