@@ -48,13 +48,12 @@ const options = {
     'Content-Type':  '*/*' },
     redirect: 'follow'
     };
+const dataProd = {
+      idproduct:idproduct
+      }
+}
 
-await Axios.delete(`https://super-server-nu.vercel.app/products`+"/"+`${idproduct}`,options,
-{
-//   data:{
-//       idproduct:idproduct
-//      }
-})      
+await Axios.delete(`https://super-server-nu.vercel.app/products/`,options,dataProd)      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${idproduct}`,response)
