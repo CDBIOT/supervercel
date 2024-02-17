@@ -49,11 +49,11 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.DELETE("https://super-server-nu.vercel.app/products",
+await Axios.post("https://super-server-nu.vercel.app/products",otions,
 {
-//  body:{
-//      idproduct:idproduct
-//      }
+  body:{
+      idproduct:idproduct
+     }
 })      
  .then((response) => 
     {
