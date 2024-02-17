@@ -46,15 +46,14 @@ function selectValue(e){
   //const id = e.target.value;
 // if(checked){
 //setSelect(prev=>[...prev,props.value]);
-setSelect(selectValue);
  // }// else[setSelect(...prev,props.value='')]
 // console.log(selectValue[0])
-  console.log(select)
+  console.log(select.product)
 }
 
 return (  
     <div>        
-    <select id = "products" value={select} onChange={(e) => selectValue(e.target.value)}>
+    <select id = "products" value={select} onChange={(e) => setSelect(e.target.value)}>
     <option value = {products._id} >Selecione o produto mongodb...</option>
         {products.length >0 ?(
         products.map(products => {
@@ -73,7 +72,7 @@ return (
          <h3 >{select }</h3>
         </select>
        
-        <h3 >{products.product}</h3>
+        <h3 >{select.product}</h3>
         <Excluir />
         <Product_list />
      
