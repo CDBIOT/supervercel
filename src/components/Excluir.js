@@ -72,7 +72,7 @@ return(
             <label htmlFor="id"></label>
             <select > 
             <option > Select product </option>  
-            {data.map(option=>{
+            {products.map(option=>{
             return<option value= {option.idproduct._id} key={idproduct}> {option.idproduct._id} </option>
         })}
         </select>
