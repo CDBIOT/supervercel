@@ -74,10 +74,8 @@ return(
             <option value = {products.idproduct}> Select product to exclude </option>  
             {products.map(option=>{
             return(
-            <option value= {option.idproduct._id}  key={idproduct}> 
-
-            {option.idproduct._id} 
-            </option>
+                    <option value= {option.id}  key={option.id}> 
+                     {option._id} </option>
             )
         })}
         </select>
