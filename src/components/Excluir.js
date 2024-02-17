@@ -33,6 +33,7 @@ useEffect(() => {
 }, [])
 
 const [idproduct, setId] = useState([])
+const [select,setSelect] = useState('')
 
 async function exluirProd(e){
 e.preventDefault()
@@ -69,15 +70,14 @@ useEffect(() => {
 return(
     <div>
         <div>
-            <label htmlFor="id"></label>
-            <select > 
-            <option > Select product </option>  
+            <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
+            <option value = {products.idproduct}> Select product to exclude </option>  
             {products.map(option=>{
             return<option value= {option.idproduct._id} key={idproduct}> {option.idproduct._id} </option>
         })}
         </select>
 
-            <input type="text" id ="id" name="id" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
+            <input type="text" value="idproduct" placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
     </div>
