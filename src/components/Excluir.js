@@ -81,6 +81,7 @@ return(
             )
         })}
         </select>
+            <label>{select}</label>
             <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
