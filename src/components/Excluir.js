@@ -50,24 +50,21 @@ const options = {
     redirect: 'follow'
     };
 
-await Axios.delete(`https://super-server-nu.vercel.app/products/${idproduct}`,options,{
+await Axios.delete( `https://super-server-nu.vercel.app/products/${idproduct}`,options,{
 body:{
     idproduct:idproduct
-}
-
- .then(response => response.json())
-  .then((data)=>{
-   //setId(props.filter((props.product)=>props.idproduct !== idproduct))
-    console.log(`Opa fui excluido ${idproduct}`)
-    })
-    .catch ((err)=> console.log(err))
-}
+    }
+})      
+ .then((response) => 
+    {
+        console.log(`Opa fui excluido ${idproduct}`)
+    }
 )}
 
 useEffect(() => {
-       // exluirProd()  
+     exluirProd()  
         
-}, []);
+}, [])
 
 return(
     <div>
@@ -84,7 +81,7 @@ return(
             <label>{select}</label>
             <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-        <button  onClick={exluirProd} idproduct={idproduct} ><HiTrash/>Excluir</button>
+        <button  onClick={exluirProd} idproduct={idproduct} >Excluir<HiTrash/></button>
     </div>
 )
 
