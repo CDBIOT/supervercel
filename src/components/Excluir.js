@@ -63,7 +63,7 @@ body:{
 )}
 
 useEffect(() => {
-        exluirProd()  
+       // exluirProd()  
         
 }, []);
 
