@@ -4,6 +4,7 @@ import Axios from "axios";
 import Loader from '../Loader';
 import Excluir from '../Excluir';
 import Card from '../Card';
+import Product_list from '../Product_list';
 
 const ShowProducts = (props)=> {
 
@@ -12,7 +13,7 @@ const [loading, setLoading] = useState(false);
 const [select, setSelect] = useState([])
 
 
-function getProducts(e){
+async function getProducts(e){
  // e.preventDefault()
   
 const options = {
@@ -24,14 +25,13 @@ const options = {
   redirect: 'follow'
   };
 
-   Axios.get("https://super-server-nu.vercel.app/products",options)
+await Axios.get("https://super-server-nu.vercel.app/products",options)
    .then((response) =>{
    setProducts(response.data.products);
    const data = response.data
    console.log(data)
    });
    {
-    console.log(products)
    setLoading(true)
   
    }
@@ -43,24 +43,25 @@ useEffect(() => {
 }, [])
 
 function selectValue(e){
-  const[id,checked] = e.target;
-  if(checked){
-setSelect(prev=>[...prev,props.value]);
-  }// else[setSelect(...prev,props.value='')]
-  console.log(props.value)}
-
-
+  //const id = e.target.value;
+// if(checked){
+//setSelect(prev=>[...prev,props.value]);
+ // }// else[setSelect(...prev,props.value='')]
+// console.log(selectValue[0])
+  console.log(select.product)
+}
 
 return (  
     <div>        
-    <select id = "products" value={props.value} onChange={(e) => props.selectValue(e.target.value)}>
-    <option value = "" >Selecione o produto...</option>
+    <select id = "products" value={select} onChange={(e) => setSelect(e.target.value)}>
+    <option value = {products._id} >Selecione o produto mongodb...</option>
         {products.length >0 ?(
         products.map(products => {
         return (
                 <option value={products.id} key={products.id}> 
-                {products.marca}
+                {products._id}
                 {products.product}
+                {products.marca}
                 {products.qtd}
                 {products.price} </option>
                 )  
@@ -68,10 +69,13 @@ return (
         !loading && <Loader/>)
         } 
          {!loading && <Loader/>}
+         <h3 >{select }</h3>
         </select>
-        <h3 >{props.value}  </h3>
+       
+        <h3 >{select.product}</h3>
         <Excluir />
-        <Card />
+        <Product_list />
+     
         </div>
         )
         
