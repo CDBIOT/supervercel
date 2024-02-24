@@ -5,9 +5,6 @@ import Axios from "axios";
 
 function Excluir({props}){
 
-<<<<<<< HEAD
-const [id, setId] = useState([])
-=======
 const[products,setProducts] = useState([])
 
 const [idproduct, setId] = useState([])
@@ -39,7 +36,6 @@ useEffect(() => {
           
 }, [])
 
->>>>>>> 9344ab64594506a3d9700bf8535d2bcb52d74841
 
 async function exluirProd(e){
 e.preventDefault()
@@ -58,24 +54,9 @@ const dataProd = {
       //idproduct:idproduct
       }
 
-<<<<<<< HEAD
-await Axios.delete(`https://super-server-nu.vercel.app/products/${idproduct}`,options,{
-body:{
-    idproduct:id
-}
-
- .then(response => response.json())
-  .then((data)=>{
-    setId(id)
-   //setId(props.filter((props.product)=>props.idproduct !== idproduct))
-    console.log(`Opa fui excluido ${idproduct}`)
-    })
-    .catch ((err)=> console.log(err))
-=======
 {
 console.log(idproduct)
 
->>>>>>> 9344ab64594506a3d9700bf8535d2bcb52d74841
 }
 await Axios.delete('https://super-server-nu.vercel.app/products/'`${idproduct}`,options)      
  .then((response) => 
@@ -91,14 +72,6 @@ useEffect(() => {
 return(
     <div>
         <div>
-<<<<<<< HEAD
-            <label htmlFor="id"></label>
-
-            <select onChange={e =>setId(e.target.value)}> 
-                <option value={id}> Select product </option>  
-                 {id.map(min=>{
-            return<option value= {id} key={id}>{id} </option>
-=======
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
             <option value = {products.idproduct}> Select product to exclude </option>  
             {products.map(option=>{
@@ -106,16 +79,11 @@ return(
                     <option value= {option.id}  key={option.id}> 
                      {option._id} </option>
             )
->>>>>>> 9344ab64594506a3d9700bf8535d2bcb52d74841
         })}
         </select>
         <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
-<<<<<<< HEAD
-        <button  onClick={exluirProd} id={id} ><HiTrash/>Excluir</button>
-=======
         <button  onClick={exluirProd} idproduct={idproduct} >Excluir<HiTrash/></button>
->>>>>>> 9344ab64594506a3d9700bf8535d2bcb52d74841
     </div>
 )
 
