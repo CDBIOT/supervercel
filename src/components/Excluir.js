@@ -7,7 +7,7 @@ function Excluir({props}){
 
 const[products,setProducts] = useState([])
 
-const [idproduct, setId] = useState([])
+const [_id, setId] = useState([])
 const [select,setSelect] = useState([])
 
 async function getProducts(e){
@@ -51,17 +51,17 @@ const options = {
     
 const dataProd = {
    // id: "651dd7f0c095615e71b297a9",
-    id:products.idproduct
+    _id:products._id
       }
 
 {
 console.log(dataProd)
 
 }
-await Axios.delete('https://super-server-nu.vercel.app/products/'`${id}`,options)      
+await Axios.delete('https://super-server-nu.vercel.app/products/'`${_id}`,options)      
  .then((response) => 
     {
-    console.log(`Opa fui excluido ${idproduct}`,response)
+    console.log(`Opa fui excluido ${_id}`,response)
     console.log(`Opa fui excluido ${dataProd}`,response)
     }
 )}
@@ -74,7 +74,7 @@ return(
     <div>
         <div>
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
-            <option value = {products.idproduct}> Select product to exclude </option>  
+            <option value = {products._id}> Select product to exclude </option>  
             {products.map(option=>{
             return(
                     <option value= {option.id}  key={option.id}> 
