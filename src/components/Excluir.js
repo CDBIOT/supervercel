@@ -41,7 +41,7 @@ async function exluirProd(e){
 e.preventDefault()
 
 const options = {
-    method: 'delete',
+    method: 'DELETE',
     cache: 'default',
     header: { 'Access-Control-Allow-Origin':'*',
     mode: 'cors',
