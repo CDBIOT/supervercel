@@ -49,16 +49,16 @@ const options = {
     redirect: 'follow'
     };
     
-const dataProd = {
+const data = {
    // id: "651dd7f0c095615e71b297a9",
-    _id:products._id
+    _id:_id
       }
 
 {
 console.log(dataProd)
 
 }
-await Axios.delete('https://super-server-nu.vercel.app/products',{data:{_id}},options)      
+await Axios.delete('https://super-server-nu.vercel.app/products',{options,data})      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${_id}`,response)
