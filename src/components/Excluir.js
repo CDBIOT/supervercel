@@ -58,7 +58,7 @@ const dataProd = {
 console.log(dataProd)
 
 }
-await Axios.delete('https://super-server-nu.vercel.app/products/'`${dataProd.id}`,options)      
+await Axios.delete('https://super-server-nu.vercel.app/products/'`${id}`,options)      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${idproduct}`,response)
