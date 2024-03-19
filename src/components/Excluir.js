@@ -51,14 +51,13 @@ const options = {
     
 const data = {
    // id: "651dd7f0c095615e71b297a9",
-    id:"_id"
-      }
+    id:_id      }
 
 {
 console.log(data)
 
 }
-await Axios.delete('https://super-server-nu.vercel.app/products/',{data},options)      
+await Axios.delete('https://super-server-nu.vercel.app/products/',{data:{id}},options)      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${_id}`,response)
