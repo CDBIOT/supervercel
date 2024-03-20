@@ -75,7 +75,7 @@ return(
     <div>
         <div>
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
-            <option value = {products._id}> Select product to exclude </option>  
+            <option value = {products}> Select product to exclude </option>  
             {products.map(option=>{
             return(
                     <option value= {option.id}  key={option.id}> 
@@ -83,7 +83,7 @@ return(
             )
         })}
         </select>
-        <input type="text" value={products._id} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
+        <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <button  onClick={exluirProd} _id={_id} >Excluir<HiTrash/></button>
     </div>
