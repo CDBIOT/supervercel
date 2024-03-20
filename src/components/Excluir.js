@@ -74,7 +74,9 @@ useEffect(() => {
 return(
     <div>
         <div>
+            <select id = "_id" value = {_id} onChange={(e)=> setId(e.target.value)}></select>
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
+            
             <option value = {products}> Select product to exclude </option>  
             {products.map(option=>{
             return(
@@ -85,6 +87,7 @@ return(
         </select>
         <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
+        <label htmlFor="_id"></label>
         <button  onClick={exluirProd} _id={_id} >Excluir<HiTrash/></button>
     </div>
 )
