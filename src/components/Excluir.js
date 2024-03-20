@@ -74,7 +74,7 @@ useEffect(() => {
 return(
     <div>
         <div>
-            <select id = "_id" value = {_id} onChange={(e)=> setId(e.target.value)}></select>
+            <select id = "_id" value = {products._id} onChange={(e)=> setId(e.target.value)}>Select o Id</select>
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
             
             <option value = {products}> Select product to exclude </option>  
