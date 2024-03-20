@@ -54,7 +54,7 @@ const data = {
     id:_id      }
 
 {
-console.log(_id)
+console.log(data.id)
 
 }
 await Axios.delete('https://super-server-nu.vercel.app/products/',{data:{_id}},options)      
