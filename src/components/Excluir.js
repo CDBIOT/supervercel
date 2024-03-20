@@ -5,6 +5,8 @@ import Axios from "axios";
 
 function Excluir({props}){
 
+const URL = "https://super-server-nu.vercel.app/products"
+
 const[products,setProducts] = useState([])
 
 const [_id, setId] = useState([])
@@ -57,7 +59,7 @@ const data = {
 console.log(data.id[_id])
 
 }
-await Axios.delete('https://super-server-nu.vercel.app/products/',{data:{_id}},options)      
+await Axios.delete(URL,{data:{_id}},options)      
  .then((response) => 
     {
     console.log(`Opa fui excluido ${_id}`,response)
