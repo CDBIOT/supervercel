@@ -53,10 +53,10 @@ const options = {
     
 const data = {
    // id: "651dd7f0c095615e71b297a9",
-    id:_id      }
+    _id:_id      }
 
 {
-console.log(data.id[_id])
+console.log(data._id[_id])
 
 }
 await Axios.delete(URL,{data:{_id}},options)      
@@ -83,7 +83,7 @@ return(
             )
         })}
         </select>
-        <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
+        <input type="text" value={_id} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <button  onClick={exluirProd} _id={_id} >Excluir<HiTrash/></button>
     </div>
