@@ -29,6 +29,7 @@ await Axios.get("https://super-server-nu.vercel.app/products",options)
           setProducts(response.data.products);
           const data = response.data
           console.log(data)
+          console.log(data.products._id)
           });
          
 }
