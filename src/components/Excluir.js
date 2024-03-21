@@ -63,7 +63,7 @@ await Axios.delete(URL,{data:{_id}},options)
  .then((response) => 
     {
     console.log(`Opa fui excluido ${_id}`,response)
-    console.log(`Opa fui excluido ${data}`,response)
+    console.log(`Opa fui excluido ${dado}`,response)
     }
 )}
 
@@ -74,7 +74,7 @@ useEffect(() => {
 return(
     <div>
         <div>
-            <select id = "data" value = {data} onChange={(e)=> setId(e.target.value)}>Select o Id</select>
+            <select id = "data" value = {products} onChange={(e)=> setId(e.target.value)}>Select o Id</select>
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
             
             <option value = {products}> Select product to exclude </option>  
