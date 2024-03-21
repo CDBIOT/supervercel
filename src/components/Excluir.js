@@ -57,7 +57,7 @@ const dado = {
     _id:_id  }
 
 {
-console.log(dado._id[_id])
+console.log(dado._id[0])
 
 }
 await Axios.delete(URL,{data:{_id}},options)      
