@@ -45,7 +45,7 @@ e.preventDefault()
 const options = {
     method: 'DELETE',
     cache: 'default',
-    header: { 'Access-Control-Allow-Origin':'*',
+    header: { 'Access-Control-Allow-Origin':'GET,HEAD,PUT,PATCH,POST,DELETE',
     mode: 'cors',
     'Content-Type':  '*/*' },
     redirect: 'follow'
