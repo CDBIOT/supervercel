@@ -51,12 +51,12 @@ const options = {
     redirect: 'follow'
     };
     
-const data = {
+const dado = {
    // id: "651dd7f0c095615e71b297a9",
-    _id:_id      }
+    _id:_id  }
 
 {
-console.log(data._id[_id])
+console.log(dado._id[_id])
 
 }
 await Axios.delete(URL,{data:{_id}},options)      
@@ -74,7 +74,7 @@ useEffect(() => {
 return(
     <div>
         <div>
-            <select id = "_id" value = {products._id} onChange={(e)=> setId(e.target.value)}>Select o Id</select>
+            <select id = "data" value = {data} onChange={(e)=> setId(e.target.value)}>Select o Id</select>
             <select id = "products" value= {select} onChange={(e) => setSelect(e.target.value)}> 
             
             <option value = {products}> Select product to exclude </option>  
