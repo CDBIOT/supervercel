@@ -39,7 +39,7 @@ useEffect(() => {
           
 }, [])
 
-const handleDelete = async (id) => {
+const handleDelete = async (_id) => {
     
 const options = {
     method: 'DELETE',
@@ -50,9 +50,9 @@ const options = {
     redirect: 'follow',
     data: {_id}
     };
-    
+
     try {
-      const res = await Axios.delete(URL, id, options);
+      const res = await Axios.delete(URL, _id, options);
       if (res.data.success) {
         alert(res.data.msg);
       }
