@@ -39,6 +39,16 @@ useEffect(() => {
           
 }, [])
 
+const handleDelete = async (id) => {
+    try {
+      const res = await Axios.delete(URL, id, options);
+      if (res.data.success) {
+        alert(res.data.msg);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 async function exluirProd(e){
 e.preventDefault()
@@ -61,16 +71,17 @@ const dado = {
 console.log(dado._id)
 
 }
-await Axios.delete(URL,options)      
- .then((response) =>  {
-    console.log(`Opa fui excluido ${_id}`,response),
-    console.log(`Opa fui excluido ${dado}`,response)
- }
-
-)}
+  
+// await Axios.delete(URL,options)      
+//  .then((response) =>  {
+//     console.log(`Opa fui excluido ${_id}`,response),
+//     console.log(`Opa fui excluido ${dado}`,response)
+//  })
+}
 
 useEffect(() => {
-     exluirProd()  
+     //exluirProd()
+     handleDelete()  
 }, [])
 
 return(
