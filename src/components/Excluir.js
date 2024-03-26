@@ -62,7 +62,7 @@ console.log(dado._id)
 
 }
 await Axios.delete(URL,options)      
- .then(response =>  {
+ .then((response) =>  {
     console.log(`Opa fui excluido ${_id}`,response),
     console.log(`Opa fui excluido ${dado}`,response)
  }
