@@ -40,6 +40,17 @@ useEffect(() => {
 }, [])
 
 const handleDelete = async (id) => {
+    
+const options = {
+    method: 'DELETE',
+    cache: 'default',
+    header: { 'Access-Control-Allow-Origin':'GET,HEAD,PUT,PATCH,POST,DELETE',
+    mode: 'cors',
+    'Content-Type':  '*/*' },
+    redirect: 'follow',
+    data: {_id}
+    };
+    
     try {
       const res = await Axios.delete(URL, id, options);
       if (res.data.success) {
@@ -72,11 +83,11 @@ console.log(dado._id)
 
 }
   
-// await Axios.delete(URL,options)      
-//  .then((response) =>  {
+// await Axios.delete(URL,options) {     
+//  .then((response) =>  (
 //     console.log(`Opa fui excluido ${_id}`,response),
 //     console.log(`Opa fui excluido ${dado}`,response)
-//  })
+//  ))}
 }
 
 useEffect(() => {
