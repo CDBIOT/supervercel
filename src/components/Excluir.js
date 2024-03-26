@@ -112,7 +112,7 @@ return(
         <input type="text" value={select} placeholder = "Digite id do equip" onChange={(e)=> setId(e.target.value)}/>
         </div>
         <label htmlFor="_id"></label>
-        <button  onClick={exluirProd} _id={_id} >Excluir<HiTrash/></button>
+        <button  onClick={handleDelete} _id={_id} >Excluir<HiTrash/></button>
     </div>
 )
 
