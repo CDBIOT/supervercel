@@ -49,7 +49,8 @@ const options = {
     header: { 'Access-Control-Allow-Origin':'GET,HEAD,PUT,PATCH,POST,DELETE',
     mode: 'cors',
     'Content-Type':  '*/*' },
-    redirect: 'follow'
+    redirect: 'follow',
+    data: {_id}
     };
     
 const dado = {
@@ -60,12 +61,12 @@ const dado = {
 console.log(dado._id)
 
 }
-await Axios.delete(URL,{data:{_id}},options)      
- .then((response) => 
-    {
-    console.log(`Opa fui excluido ${_id}`,response)
+await Axios.delete(URL,options)      
+ .then(response =>  {
+    console.log(`Opa fui excluido ${_id}`,response),
     console.log(`Opa fui excluido ${dado}`,response)
-    }
+ }
+
 )}
 
 useEffect(() => {
