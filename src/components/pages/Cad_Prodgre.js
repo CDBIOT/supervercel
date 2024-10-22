@@ -19,8 +19,7 @@ e.preventDefault()
 
 console.log(`O produto ${product} com preço ${price}`)
 const dados = {
-    //id: id,
-     "product":product,"marca":marca,"qtd":qtd,"price":price
+    "id": id,"product":product,"marca":marca,"qtd":qtd,"price":price
    
 }
 const options = {
@@ -55,10 +54,10 @@ return(
     <h1> Cadastro de Produtos</h1>
     <form onSubmit={CadProductgre}>
     
-        {/* <div>    
+        { <div>    
             <label htmlFor="id"></label>
             <input type="number" value = {id} id ="id" name="id" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
-        </div>  */}
+        </div>  }
          <div> 
             <label htmlFor="product"></label>
             <input type="text"  value = {product} id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
@@ -82,6 +81,7 @@ return(
     
         </div>
     <h4>
+    {id}
     { product }
     { marca }
     { price }
