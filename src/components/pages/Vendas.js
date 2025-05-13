@@ -108,22 +108,22 @@ return(
     <Button onClick={() => setSales(!sales)}>Confirma Venda</Button>
 {
 
-sales.map((sales,index)=>(
-      <div key = {index}>
-        {sales.length> 0 &&
-        sales.map((sale)=>(
-        <Card 
-        key= {sale.idvendas}
-        idproduct={sale.idvendas}
-        product = {sale.product} 
-        marca= {sale.marca}
-        qtd={sale.qtd}
-        price={sale.price}
-        total={sale.total}
-        />
-        ))}
-       </div>
-       ))
+// sales.map((sales,index)=>(
+//       <div key = {index}>
+//         {sales.length> 0 &&
+//         sales.map((sale)=>(
+//         <Card 
+//         key= {sale.idvendas}
+//         idproduct={sale.idvendas}
+//         product = {sale.product} 
+//         marca= {sale.marca}
+//         qtd={sale.qtd}
+//         price={sale.price}
+//         total={sale.total}
+//         />
+//         ))}
+//        </div>
+//        ))
 }
 <h4> Cadastro de Venda </h4>
             <form onSubmit={NovaVenda}>

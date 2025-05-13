@@ -16,7 +16,8 @@ content-type: application/json
 }
 
 ###
-GET https://super-server-eta.vercel.app/user
+DELETE https://super-server-nu.vercel.app/products/651dd7f7c095615e71b297af
+
 
 headers
 {
