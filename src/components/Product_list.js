@@ -22,7 +22,7 @@ const options = {
     redirect: 'follow'
     };
      
-await Axios.get("https://super-server-nu.vercel.app/postgre",options)
+await Axios.get("https://super-server-nu.vercel.app/products",options)
     .then((response) =>{
     setProducts(response.data);
     const data = response.data
