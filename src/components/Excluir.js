@@ -35,7 +35,7 @@ await Axios.get("https://super-server-nu.vercel.app/products",options)
 }
        
 useEffect(() => {
-    getProducts()
+   // getProducts()
           
 }, [])
 
@@ -92,7 +92,7 @@ console.log(dado._id)
 
 useEffect(() => {
      //exluirProd()
-     handleDelete()  
+    // handleDelete()  
 }, [])
 
 return(
