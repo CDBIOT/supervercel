@@ -34,7 +34,7 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/postgre" ,
+await Axios.post("https://super-server-nu.vercel.app/products" ,
         dados)
         .then((response)=>{
        // console.log(dados)

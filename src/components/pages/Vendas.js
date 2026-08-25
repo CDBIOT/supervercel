@@ -38,7 +38,7 @@ mode: 'cors',
 redirect: 'follow'
 };
 
-await Axios.get("https://super-server-nu.vercel.app/vendas",options)
+await Axios.get("https://super-server-nu.vercel.app/sales",options)
 // await API.get('superExpress','/vendas')
     .then(response => {
     console.log(response.data)
@@ -66,7 +66,7 @@ const options = {
     };
 
 
- await Axios.post("https://super-server-nu.vercel.app/vendas",options,{
+ await Axios.post("https://super-server-nu.vercel.app/sales",options,{
       body: {
           idvendas: idvendas,
           idproduct: idproduct,
