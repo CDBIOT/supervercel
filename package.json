@@ -1,7 +1,9 @@
 {
-  "name": "equipamentos",
+  "name": "supervercel",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"  },
   "dependencies": {
     "@aws-amplify/ui-react": "^4.4.0",
     "@aws-sdk/client-dynamodb": "^3.315.0",

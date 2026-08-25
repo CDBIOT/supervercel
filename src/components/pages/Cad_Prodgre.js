@@ -46,7 +46,7 @@ await Axios.post("https://super-server-nu.vercel.app/products" ,
 }
 
 useEffect(() => {
-    CadProductgre()  
+    //CadProductgre()  
  }, []);
     
 return(
