@@ -39,7 +39,7 @@ useEffect(() => {
           
 }, [])
 
-const handleDelete = async (_id) => {
+const handleDelete = async () => {
     
 const options = {
     method: 'DELETE',
