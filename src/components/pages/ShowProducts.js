@@ -73,8 +73,7 @@ return (
         </select>
        
         <h3 >{select.product}</h3>
-        <Excluir />
-        <Product_list />
+        
      
         </div>
         )
