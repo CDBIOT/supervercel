@@ -91,8 +91,8 @@ console.log(dado._id)
 }
 
 useEffect(() => {
-     //exluirProd()
-    // handleDelete()  
+     exluirProd()
+     handleDelete()  
 }, [])
 
 return(
