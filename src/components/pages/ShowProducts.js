@@ -54,7 +54,7 @@ function selectValue(e){
 return (  
     <div>        
     <select id = "products" value={select} onChange={(e) => setSelect(e.target.value)}>
-    <option value = {products._id} >Selecione o produto mongodb...</option>
+    {/* <option value = {products._id} >Selecione o produto mongodb...</option> */}
         {products.length >0 ?(
         products.map(products => {
         return (
