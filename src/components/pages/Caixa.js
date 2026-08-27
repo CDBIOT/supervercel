@@ -6,7 +6,7 @@ import ShowProducts from './ShowProducts';
 import Excluir from '../Excluir';
 import Card from '../Card';
 
-function Cad_Prodgre(){
+function Caixa(){
 
 const [id, setIdProduct] = useState()
 const [product, setProduct] = useState()
@@ -14,7 +14,7 @@ const [marca, setMarca] = useState()
 const [qtd, setQtd] = useState()
 const [price, setPrice] = useState()
     
-async function CadProductgre(e){
+async function Caixa(e){
 e.preventDefault()
 
 console.log(`O produto ${product} com preço ${price}`)
@@ -46,7 +46,7 @@ await Axios.post("https://super-server-nu.vercel.app/products" ,
 }
 
 useEffect(() => {
-    CadProductgre()  
+    Caixa()  
  }, []);
     
 return(
@@ -96,4 +96,4 @@ return(
 
 }
 
-export default Cad_Prodgre
+export default Caixa

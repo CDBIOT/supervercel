@@ -5,13 +5,12 @@
 }
 
 ###
-POST https://super-server-eta.vercel.app/products
+POST https://super-server-nu.vercel.app/caixa/abrir
+
 content-type: application/json
 {
-    "product": "sabonete", 
-    "marca": "lucs", 
-    "price": "1",
-    "qtd":"2"
+    "usuari_id": "User1", 
+    "valor_inicial": 200
    
 }
 
