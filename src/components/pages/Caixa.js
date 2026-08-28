@@ -46,11 +46,7 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/abrir" ,
         .catch (error=> {
             console.error(error.response)
         });
-}
 
-useEffect(() => {
-    Caixa()  
- }, []);
 
 
 const dadosfechar = {
@@ -75,9 +71,22 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/fecharCaixa" ,
 }
 
 
+
+
+
+
+}
+
+useEffect(() => {
+    Caixa()  
+ }, []);
+
+
+
 useEffect(() => {
     fecharCaixa()  
  }, []);
+
 
  
 
