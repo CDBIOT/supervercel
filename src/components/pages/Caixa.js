@@ -50,7 +50,29 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/abrir" ,
 useEffect(() => {
     Caixa()  
  }, []);
-    
+
+
+
+ async function fecharCaixa(){
+
+await Axios.post("https://super-server-nu.vercel.app/caixa/fecharCaixa" ,
+        dados)
+        .then((response)=>{
+       // console.log(dados)
+        console.log(response.data)
+        })
+        .catch (error=> {
+            console.error(error.response)
+        });
+}
+
+
+useEffect(() => {
+    fecharCaixa()  
+ }, []);
+
+ 
+
 return(
 <div>
     <h1> Cadastro de Produtos</h1>
@@ -74,6 +96,10 @@ return(
         </div> 
         <div>
         <input type="submit" value="Caixa"/>
+        </div>
+        
+        <div>
+        <input type="submit" value="fecharCaixa"/>
         </div>
         <div>
     
