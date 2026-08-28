@@ -9,7 +9,7 @@ import Card from '../Card';
 function Caixa(){
 
 const [caixa_id, setCaixaId] = useState()
-const [usuariao_id, setUsuarioId] = useState()
+const [usuario_id, setUsuarioId] = useState()
 const [valor_inicial, setValorInicial] = useState()
 const [status, setStatus] = useState()
     
