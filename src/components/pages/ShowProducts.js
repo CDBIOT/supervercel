@@ -33,12 +33,21 @@ try{
     "https://super-server-nu.vercel.app/products",
     options
   );
+
+  const data = response.data;
+   console.log(data);
   
-   setProducts(response.data);
-   console.log(response.data);
+   const productData = Array.isArray(data.products)?data.products:[];
+
+   setProducts(productsData);
 
 }catch(error){
+
+
     console.log("Erro ao buscar produtos", error);
+  //Evita que products fique undefined em caso de erro
+  setProducts([]);
+
 }finally{
   setLoading(true);
 }
