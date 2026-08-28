@@ -36,7 +36,7 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/caixa" ,
+await Axios.post("https://super-server-nu.vercel.app/caixa/abrir" ,
         dados)
         .then((response)=>{
        // console.log(dados)
