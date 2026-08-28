@@ -38,7 +38,7 @@ await Axios.get("https://super-server-nu.vercel.app/products",options)
 }
 
 useEffect(() => {
- // getProducts()
+  getProducts()
    
 }, [])
 

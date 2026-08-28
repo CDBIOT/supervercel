@@ -28,9 +28,11 @@ headers
 "senha0": "123"
 }
 
+####
+GET  https://super-server-nu.vercel.app/products
 
 ####
-POST https://super-server-eta.vercel.app/products
+POST https://super-server-nu.vercel.app/products
 content-type: application/json
 
 { "product": "sabonete", 
