@@ -16,10 +16,10 @@ const [status, setStatus] = useState()
 async function Caixa(e){
 e.preventDefault()
 
-console.log(`O produto ${product} com preço ${price}`)
+console.log(`O caixa ${caixa_id} com o usuario ${usuario_id}`)
 const dados = {
     "caixa_id": caixa_id,
-    "usuario_id":usuario_id,
+    "usuario_id": usuario_id,
     "valor_inicial":valor_inicial,
     "status":status
 }
@@ -54,7 +54,7 @@ useEffect(() => {
 return(
 <div>
     <h1> Cadastro de Produtos</h1>
-    <form onSubmit={CadProductgre}>
+    <form onSubmit={Caixa}>
     
         { <div>    
             <label htmlFor="caixa_id"></label>
