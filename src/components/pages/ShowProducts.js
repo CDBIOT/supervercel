@@ -19,22 +19,34 @@ async function getProducts(e){
 const options = {
   method: 'GET',
   cache: 'default',
-  header: { 'Access-Control-Allow-Origin':'*',
+  headers: { 'Access-Control-Allow-Origin':'*',
   mode: 'cors',
   'Content-Type':  '*/*' },
   redirect: 'follow'
   };
-
-await Axios.get("https://super-server-nu.vercel.app/products",options)
-   .then((response) =>{
-   setProducts(response.data.products);
-   const data = response.data
-   console.log(data)
-   });
-   {
-   setLoading(true)
   
-   }
+try{
+
+   setLoading(false);
+
+  const response = await Axios.get(
+    "https://super-server-nu.vercel.app/products",
+    options
+  );
+
+  
+   setProducts(response.data.products);
+   
+   console.log(response.data);
+
+}catch(error){
+
+    console.log("Erro ao buscar produtos", error);
+
+}finally{
+  setLoading(true);
+}
+   
 }
 
 useEffect(() => {
@@ -43,41 +55,31 @@ useEffect(() => {
 }, [])
 
 function selectValue(e){
-  //const id = e.target.value;
-// if(checked){
-//setSelect(prev=>[...prev,props.value]);
- // }// else[setSelect(...prev,props.value='')]
-// console.log(selectValue[0])
-  console.log(select.product)
-}
+  const id =Number(e.target.value);
+const produto =  products.find(
 
-return (  
-    <div>        
-   <select id = "products" value={select} onChange={(e) => setSelect(e.target.value)}>
-   {/* <option value = {products.id} >Selecione o produto no banco no estoque ...</option>  */}
-        {products.length >0 ?(
-        products.map(products => {
-        return (
-                <option value={products.id} key={products.id}> 
-                {products.barcode}
-                {products.id}
-                {products.product}
-                {products.marca}
-                {products.qtd}
-                {products.price} </option>
-                )  
-        })):(  
-        !loading && <Loader/>)
-        } 
-         {!loading && <Loader/>}
-         <h3 >{select }</h3>
-        </select>
-       
-        <h3 >{select.product}</h3>
-        
-     
-        </div>
-        )
-        
-    }
-export default ShowProducts
+  product => product.id === id
+);
+
+ setSelect(produto || "");
+  console.log(produto)
+}
+return (
+   <div> {!loading ? ( 
+   <Loader /> 
+  ) : (
+     <> <select id="products" value={select?.id || ""} 
+     onChange={selectValue} >
+       <option value=""> Selecione o produto no estoque... </option>
+        {products.map(product => ( <option value={product.id} key={product.id} > 
+          {product.barcode} - 
+          {product.id} - 
+          {product.product} - 
+          {product.marca} - 
+          {product.qtd} - 
+          R$ {product.price} </option> ))} 
+          </select> {select && ( <h3> Produto selecionado: {select.product} </h3> )} </> )} 
+          </div> 
+          );
+           } 
+           export default ShowProducts;
