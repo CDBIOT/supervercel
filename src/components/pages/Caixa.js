@@ -8,20 +8,22 @@ import Card from '../Card';
 
 function Caixa(){
 
-const [id, setIdProduct] = useState()
-const [product, setProduct] = useState()
-const [marca, setMarca] = useState()
-const [qtd, setQtd] = useState()
-const [price, setPrice] = useState()
+const [caixa_id, setCaixaId] = useState()
+const [usuariao_id, setUsuarioId] = useState()
+const [valor_inicial, setValorInicial] = useState()
+const [status, setStatus] = useState()
     
 async function Caixa(e){
 e.preventDefault()
 
 console.log(`O produto ${product} com preço ${price}`)
 const dados = {
-    "id": id,"product":product,"marca":marca,"qtd":qtd,"price":price
-   
+    "caixa_id": caixa_id,
+    "usuario_id":usuario_id,
+    "valor_inicial":valor_inicial,
+    "status":status
 }
+
 const options = {
    // method: 'POST',
     cache: 'default',
@@ -34,7 +36,7 @@ const options = {
     };
 
 //await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/products" ,
+await Axios.post("https://super-server-nu.vercel.app/caixa" ,
         dados)
         .then((response)=>{
        // console.log(dados)
@@ -55,37 +57,32 @@ return(
     <form onSubmit={CadProductgre}>
     
         { <div>    
-            <label htmlFor="id"></label>
-            <input type="number" value = {id} id ="id" name="id" placeholder = "Digite o id" onChange={(e)=> setIdProduct(e.target.value)}/>
+            <label htmlFor="caixa_id"></label>
+            <input type="number" value = {caixa_id} id ="id" name="id" placeholder = "Digite o id" onChange={(e)=> setCaixaId(e.target.value)}/>
         </div>  }
          <div> 
-            <label htmlFor="product"></label>
-            <input type="text"  value = {product} id ="product" name="product" placeholder = "Digite o produto" onChange={(e)=> setProduct(e.target.value)}/>
+            <label htmlFor="usuariao_id"></label>
+            <input type="text"  value = {usuario_id} id ="usuario_id" name="usuario_id" placeholder = "ID de usuario" onChange={(e)=> setUsuarioId(e.target.value)}/>
         </div>
         <div>
-            <label htmlFor="marca"></label>
-            <input type="text" value = {marca} id= "marca" name="marca" placeholder = "Digite a marca" onChange={(e)=> setMarca(e.target.value)}/>
+            <label htmlFor="valor_inicial"></label>
+            <input type="text" value = {valor_inicial} id= "valor_inicial" name="valor_inicial" placeholder = "Valor inicial" onChange={(e)=> setValorInicial(e.target.value)}/>
         </div>
          <div>
-            <label htmlFor="qtd"></label>
-            <input type="number" value = {qtd}  id= "qtd" name="qtd" placeholder = "Digite a quantidade" onChange={(e)=> setQtd(e.target.value)}/>
+            <label htmlFor="status"></label>
+            <input type="number" value = {status}  id= "status" name="status" placeholder = "Status" onChange={(e)=> setStatus(e.target.value)}/>
         </div> 
         <div>
-            <label htmlFor="price"></label>
-            <input type="number"  value = {price} id= "price" name="price" placeholder = "Digite o Preço" onChange={(e)=> setPrice(e.target.value)}/>
-</div>
-        <div>
-        <input type="submit" value="Cadastrar Produto"/>
+        <input type="submit" value="Caixa"/>
         </div>
         <div>
     
         </div>
     <h4>
-    {id}
-    { product }
-    { marca }
-    { price }
-    { qtd }
+    {caixa_id}
+    { usuario_id }
+    { valor_inicial }
+    { status}
     </h4> 
        
     </form>

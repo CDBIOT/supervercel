@@ -9,10 +9,13 @@ POST https://super-server-nu.vercel.app/caixa/abrir
 
 content-type: application/json
 {
-    "usuari_id": "User1", 
+    "usuario_id": 1, 
     "valor_inicial": 200
    
 }
+
+###
+GET https://super-server-nu.vercel.app/caixa/aberto
 
 ###
 DELETE https://super-server-nu.vercel.app/products/651dd7f7c095615e71b297af
