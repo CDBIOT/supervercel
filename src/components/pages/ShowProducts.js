@@ -39,7 +39,7 @@ try{
   
    const productData = Array.isArray(data.products)?data.products:[];
 
-   setProducts(productsData);
+   setProducts(productData);
 
 }catch(error){
 
