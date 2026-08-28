@@ -48,6 +48,11 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/abrir" ,
         });
 
 
+}
+useEffect(() => {
+    Caixa()  
+ }, []);
+
 
 const dadosfechar = {
     "caixa_id": caixa_id,
@@ -71,15 +76,6 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/fecharCaixa" ,
 }
 
 
-
-
-
-
-}
-
-useEffect(() => {
-    Caixa()  
- }, []);
 
 
 
