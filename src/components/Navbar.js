@@ -25,7 +25,7 @@ return(
             <Link to= "/vendas"> Vendas</Link>
         </li>
         <li className={styles.item}>
-            <Link to="/Cad_Prodgre">Cadastro Produto Postgre</Link>
+            <Link to="/caixa">Caixa</Link>
         </li>
         <li className={styles.item}>
             <Link to="/Cad_Prods">Cadastro Produto</Link>
