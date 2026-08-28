@@ -13,6 +13,7 @@ import Resultado from '../Resultado';
 function Vendas(props){
     
 const [idvendas,setIdvendas] = useState();
+const [barcode,setBarcode] = useState();
 const [idproduct,setIdproduct] = useState();
 const [product,setProduct] = useState();
 const [marca,setMarca] = useState();
@@ -92,6 +93,7 @@ return(
     <div>
     
     <ShowProducts 
+    barcode = {barcode} setBarcode = {setBarcode}
     idproduct = {idproduct} setIdproduct = {setIdproduct} 
     product = {product} setProduct = {setProduct} 
     marca = {marca} setMarca = {setMarca} 

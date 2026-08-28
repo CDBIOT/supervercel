@@ -83,8 +83,10 @@ return (
           {product.marca} - 
           {product.qtd} - 
           R$ {product.price} </option> ))} 
-          </select> {select && ( <h3> Produto selecionado: {select.product} </h3> )} </> )} 
+          </select> {select && ( <h3> Produto selecionado: {select.barcode} {select.id} {select.product} {select.marca} {select.qtd} {select.price}</h3> )} </> )} 
           </div> 
           );
+          
+          <Card />
            } 
            export default ShowProducts;
