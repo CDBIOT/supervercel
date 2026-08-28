@@ -44,6 +44,7 @@ return (
     <tr><tr><th>PostGre</th></tr>
     <th className={styles.th} colSpan={4}>
         
+    <td width="25%"className={styles.th}>Barcode</td>
     <td width="25%"className={styles.th}>Id</td>
     <td width="25%"className={styles.th}>Produto</td>
     <td width="25%" className={styles.th}>Marca</td>
@@ -57,6 +58,7 @@ return (
          
         products.map((products, index) => (
         <tr key = {index}>
+        <td width="25%"className={styles.td}>{products.barcode}</td>
         <td width="25%"className={styles.td}>{products.id}</td>
         <td width="25%"className={styles.td}>{products.product}</td>
         <td width="25%"className={styles.td}>{products.marca}</td>

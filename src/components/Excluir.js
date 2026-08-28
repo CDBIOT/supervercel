@@ -48,11 +48,11 @@ const options = {
     mode: 'cors',
     'Content-Type':  '*/*' },
     redirect: 'follow',
-    data: {_id}
+    data: {id}
     };
 
     try {
-      const res = await Axios.delete(URL, _id, options);
+      const res = await Axios.delete(URL, id, options);
       if (res.data.success) {
         alert(res.data.msg);
       }
@@ -71,12 +71,12 @@ const options = {
     mode: 'cors',
     'Content-Type':  '*/*' },
     redirect: 'follow',
-    data: {_id}
+    data: {id}
     };
     
 const dado = {
    // id: "651dd7f0c095615e71b297a9",
-    _id:_id  }
+    id:id  }
 
 {
 console.log(dado._id)
@@ -105,7 +105,7 @@ return(
             {products.map(option=>{
             return(
                     <option value= {option.id}  key={option.id}> 
-                     {option._id} </option>
+                     {option.id} </option>
             )
         })}
         </select>

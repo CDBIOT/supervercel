@@ -59,6 +59,7 @@ return (
         products.map(products => {
         return (
                 <option value={products.id} key={products.id}> 
+                {products.barcode}
                 {products.id}
                 {products.product}
                 {products.marca}
