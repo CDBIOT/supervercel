@@ -17,6 +17,7 @@ async function Caixa(e){
 e.preventDefault()
 
 console.log(`O caixa ${caixa_id} com o usuario ${usuario_id}`)
+
 const dados = {
     "caixa_id": caixa_id,
     "usuario_id": usuario_id,
@@ -52,11 +53,18 @@ useEffect(() => {
  }, []);
 
 
+const dadosfechar = {
+    "caixa_id": caixa_id,
+    "usuario_id": usuario_id,
+    "valor_inicial":valor_inicial,
+    "status":status
+}
+
 
  async function fecharCaixa(){
 
 await Axios.post("https://super-server-nu.vercel.app/caixa/fecharCaixa" ,
-        dados)
+        dadosfechar)
         .then((response)=>{
        // console.log(dados)
         console.log(response.data)
@@ -95,7 +103,7 @@ return(
             <input type="number" value = {status}  id= "status" name="status" placeholder = "Status" onChange={(e)=> setStatus(e.target.value)}/>
         </div> 
         <div>
-        <input type="submit" value="Caixa"/>
+        <input type="submit" value="AbrirCaixa"/>
         </div>
         
         <div>
