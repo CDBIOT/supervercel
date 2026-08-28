@@ -9,7 +9,7 @@ const URL = "https://super-server-nu.vercel.app/products"
 
 const[products,setProducts] = useState([])
 
-const [_id, setId] = useState([])
+const [id, setId] = useState([])
 const [select,setSelect] = useState([])
 
 async function getProducts(e){
