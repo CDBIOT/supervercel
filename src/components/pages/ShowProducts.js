@@ -33,16 +33,12 @@ try{
     "https://super-server-nu.vercel.app/products",
     options
   );
-
   
-   setProducts(response.data.products);
-   
+   setProducts(response.data);
    console.log(response.data);
 
 }catch(error){
-
     console.log("Erro ao buscar produtos", error);
-
 }finally{
   setLoading(true);
 }
