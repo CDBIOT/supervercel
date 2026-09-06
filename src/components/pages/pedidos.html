@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor & Cia — Cardápio Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-emoji">🍽️</span>
+    <div>
+      <h1>Sabor & Cia</h1>
+      <p>Peça pelo site, sem complicação</p>
+    </div>
+  </div>
+</header>
+
+<nav class="cat-nav" id="cat-nav" aria-label="Categorias do cardápio"></nav>
+
+<main class="menu" id="menu"></main>
+
+<button class="cart-fab" id="cart-fab" aria-label="Abrir carrinho">
+  <span class="cart-fab-icon">🛒</span>
+  <span class="cart-fab-count" id="cart-count">0</span>
+  <span class="cart-fab-total" id="cart-fab-total">R$ 0,00</span>
+</button>
+
+<!-- Carrinho -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de compras">
+  <div class="drawer-header">
+    <h2>Seu pedido</h2>
+    <button class="icon-btn" id="close-cart" aria-label="Fechar carrinho">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="drawer-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <strong id="cart-total">R$ 0,00</strong>
+    </div>
+    <button class="btn-primary" id="checkout-btn">Finalizar pedido</button>
+  </div>
+</aside>
+
+<!-- Checkout -->
+<div class="modal-overlay" id="checkout-overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Finalizar pedido">
+    <div class="modal-header">
+      <h2>Finalizar pedido</h2>
+      <button class="icon-btn" id="close-checkout" aria-label="Fechar">✕</button>
+    </div>
+    <form id="checkout-form" class="modal-body">
+      <label class="field">
+        <span>Nome*</span>
+        <input type="text" id="f-name" required autocomplete="name">
+      </label>
+      <label class="field">
+        <span>Telefone / WhatsApp</span>
+        <input type="tel" id="f-phone" placeholder="(11) 99999-9999" autocomplete="tel">
+      </label>
+
+      <fieldset class="field radio-group">
+        <legend>Tipo de pedido</legend>
+        <label><input type="radio" name="deliveryType" value="retirada" checked> Retirar no local</label>
+        <label><input type="radio" name="deliveryType" value="entrega"> Entrega</label>
+      </fieldset>
+
+      <label class="field" id="address-field" hidden>
+        <span>Endereço de entrega*</span>
+        <input type="text" id="f-address" placeholder="Rua, número, bairro">
+      </label>
+
+      <label class="field">
+        <span>Forma de pagamento</span>
+        <select id="f-payment">
+          <option value="dinheiro">Dinheiro</option>
+          <option value="cartao">Cartão na entrega</option>
+          <option value="pix">Pix</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Observações</span>
+        <textarea id="f-notes" rows="2" placeholder="Ex: sem cebola, ponto da carne, etc."></textarea>
+      </label>
+
+      <div class="modal-summary" id="checkout-summary"></div>
+      <p class="form-error" id="form-error" hidden></p>
+
+      <button type="submit" class="btn-primary" id="submit-order">Confirmar pedido</button>
+    </form>
+  </div>
+</div>
+
+<!-- Confirmação -->
+<div class="modal-overlay" id="confirm-overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Pedido confirmado">
+    <div class="modal-body confirm-body">
+      <div class="confirm-check">✓</div>
+      <h2>Pedido enviado!</h2>
+      <p class="confirm-order-id">Pedido <strong id="confirm-id">#0</strong></p>
+      <div class="status-track" id="status-track"></div>
+      <p class="confirm-total">Total: <strong id="confirm-total">R$ 0,00</strong></p>
+      <button class="btn-secondary" id="new-order-btn">Fazer novo pedido</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
