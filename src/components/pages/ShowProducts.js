@@ -37,7 +37,7 @@ try{
   const data = response.data;
    console.log(data);
   
-   const productData = Array.isArray(data.products)?data.products:[];
+   const productData = Array.isArray(data)?data:[];
 
    setProducts(productData);
 
