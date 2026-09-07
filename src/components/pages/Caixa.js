@@ -8,15 +8,16 @@ import Card from '../Card';
 
 function Caixa(){
 
-const [caixa_id, setCaixaId] = useState()
-const [usuario_id, setUsuarioId] = useState()
-const [valor_inicial, setValorInicial] = useState()
-const [status, setStatus] = useState()
-    
-async function Caixa(e){
-e.preventDefault()
+const [caixa_id, setCaixaId] = useState("");
+const [usuario_id, setUsuarioId] = useState("");
+const [valor_inicial, setValorInicial] = useState("");
+const [status, setStatus] = useState("");
 
-console.log(`O caixa ${caixa_id} com o usuario ${usuario_id}`)
+//ABRIR CAIXA
+    
+async function abrirCaixa(e){
+
+e.preventDefault()
 
 const dados = {
     "caixa_id": caixa_id,
@@ -24,6 +25,8 @@ const dados = {
     "valor_inicial":valor_inicial,
     "status":status
 }
+
+console.log(`O caixa ${caixa_id} com o usuario ${usuario_id}`)
 
 const options = {
    // method: 'POST',
@@ -49,7 +52,7 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/abrir", dados)
 
 }
 useEffect(() => {
-    Caixa()  
+    abrirCaixa()  
  }, []);
 
 
@@ -60,10 +63,11 @@ const dadosfechar = {
     "status":status
 }
 
+//FECHAR CAIXA
 
  async function fecharCaixa(){
 
-await Axios.post("https://super-server-nu.vercel.app/caixa/fecharCaixa" ,
+await Axios.post("https://super-server-nu.vercel.app/caixa/fechar" ,
         dadosfechar)
         .then((response)=>{
        // console.log(dados)
@@ -73,9 +77,6 @@ await Axios.post("https://super-server-nu.vercel.app/caixa/fecharCaixa" ,
             console.error(error.response)
         });
 }
-
-
-
 
 
 useEffect(() => {
@@ -88,12 +89,8 @@ useEffect(() => {
 return(
 <div>
     <h1> Cadastro de Produtos</h1>
-    <form onSubmit={Caixa}>
+    <form onSubmit={abrirCaixa}>
     
-        { <div>    
-            <label htmlFor="caixa_id"></label>
-            <input type="number" value = {caixa_id} id ="id" name="id" placeholder = "Digite o id" onChange={(e)=> setCaixaId(e.target.value)}/>
-        </div>  }
          <div> 
             <label htmlFor="usuariao_id"></label>
             <input type="text"  value = {usuario_id} id ="usuario_id" name="usuario_id" placeholder = "ID de usuario" onChange={(e)=> setUsuarioId(e.target.value)}/>
@@ -107,12 +104,9 @@ return(
             <input type="number" value = {status}  id= "status" name="status" placeholder = "Status" onChange={(e)=> setStatus(e.target.value)}/>
         </div> 
         <div>
-        <input type="submit" value="AbrirCaixa"/>
+        <input type="submit" value="Abrir Caixa"/>
         </div>
         
-        <div>
-        <input type="submit" value="fecharCaixa"/>
-        </div>
         <div>
     
         </div>
@@ -124,6 +118,22 @@ return(
     </h4> 
        
     </form>
+{/* ========================= DADOS DO CAIXA ========================= */}
+
+ {caixa_id && ( 
+<div> <h3>Caixa atual</h3>
+ <p> <strong>Caixa ID:</strong> {caixa_id} </p> 
+ <p> <strong>Usuário:</strong> {usuario_id} </p> 
+ <p> <strong>Valor inicial:</strong> R$ {valor_inicial} </p> 
+ <p> <strong>Status:</strong> {status} </p> 
+ </div> 
+)}
+{/* ========================= FECHAMENTO DO CAIXA ========================= */} 
+{caixa_id && status === "ABERTO" && (
+     <form onSubmit={fecharCaixa}> 
+     <input type="submit" value="Fechar Caixa" />
+      </form> 
+    )}
 <Card />
 </div>
 
