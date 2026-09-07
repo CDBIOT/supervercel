@@ -27,6 +27,10 @@ return(
         <li className={styles.item}>
             <Link to="/caixa">Caixa</Link>
         </li>
+        
+        <li className={styles.item}>
+            <Link to= "/pedidos"> Pedidos</Link>
+        </li>
         <li className={styles.item}>
             <Link to="/Cad_Prods">Cadastro Produto</Link>
         </li>

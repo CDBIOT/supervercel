@@ -13,7 +13,7 @@ import Users from './components/pages/Users';
 import Caixa from './components/pages/Caixa';
 import Cad_Prods from './components/pages/Cad_Prods';
 import ShowProducts from './components/pages/ShowProducts';
-import Product_list from './components/Product_list';
+import Pedidos from './components/pages/Pedidos';
 
 function App() {
   
@@ -29,6 +29,7 @@ function App() {
             <Route exact path="/"       element={<Home/>}></Route>
             <Route path="/vendas"       element={<Vendas/>}></Route>
             <Route path="/Caixa"        element={<Caixa/>} ></Route>
+            <Route path="/Pedidos"      element={<Pedidos/>}></Route>
             <Route path="/Cad_Prods"    element={<Cad_Prods/>} ></Route>
             <Route path="/ShowProducts" element={<ShowProducts/>}></Route>
             <Route path="/Users"        element={<Users/>}></Route>
