@@ -8,10 +8,12 @@ function BarcodeScanner({ onDetected, active = true }) {
   const videoRef = useRef(null);
   const controlsRef = useRef(null);
   const lastRef = useRef({ code: "", at: 0 });
+  const attemptsRef = useRef(0); // quantas varreduras o ZXing já fez
   const onDetectedRef = useRef(onDetected);
   const [error, setError] = useState("");
   const [devices, setDevices] = useState([]);
   const [deviceId, setDeviceId] = useState("");
+  const [info, setInfo] = useState({ res: "-", attempts: 0 });
 
   useEffect(() => {
     onDetectedRef.current = onDetected;
@@ -35,41 +37,65 @@ function BarcodeScanner({ onDetected, active = true }) {
       BarcodeFormat.UPC_E,
       BarcodeFormat.CODE_128,
     ]);
+    // Mais lento por frame, mas lê códigos pequenos, inclinados ou com desfoque.
+    hints.set(DecodeHintType.TRY_HARDER, true);
     const reader = new BrowserMultiFormatReader(hints);
     let cancelled = false;
+    attemptsRef.current = 0;
+
+    // Resolução alta: um EAN-13 em 640x480 (padrão de webcam) fica ilegível.
+    // "ideal" não falha se a câmera não suportar: o navegador usa o mais próximo.
+    const video = {
+      width: { ideal: 1920 },
+      height: { ideal: 1080 },
+      advanced: [{ focusMode: "continuous" }], // ignorado se a câmera não tiver foco
+    };
+    if (deviceId) video.deviceId = { exact: deviceId };
+    else video.facingMode = { ideal: "environment" };
 
     // Atraso curto: no React StrictMode (npm start) o efeito monta, desmonta e monta
     // de novo. Sem isso, o stop() tardio da 1ª montagem apaga o vídeo da 2ª
     // (tela preta e nenhuma leitura).
     const timer = setTimeout(() => {
-    reader
-      .decodeFromVideoDevice(deviceId || undefined, videoRef.current, (result) => {
-        if (!result) return; // frame sem código: normal
-        const code = result.getText();
-        const now = Date.now();
-        const last = lastRef.current;
-        if (code === last.code && now - last.at < DUPLICATE_WINDOW_MS) return;
-        lastRef.current = { code, at: now };
-        if (onDetectedRef.current) onDetectedRef.current(code);
-      })
-      .then((controls) => {
-        if (cancelled) controls.stop();
-        else controlsRef.current = controls;
-        setError("");
-      })
-      .catch((err) => {
-        if (err && err.name === "NotAllowedError") {
-          setError("Permissão da câmera negada. Libere o acesso no navegador.");
-        } else if (err && err.name === "NotFoundError") {
-          setError("Nenhuma câmera encontrada.");
-        } else {
-          setError("Erro ao abrir a câmera.");
-        }
-      });
+      reader
+        .decodeFromConstraints({ video }, videoRef.current, (result) => {
+          attemptsRef.current += 1; // chamado a cada varredura (com ou sem código)
+          if (!result) return; // frame sem código: normal
+          const code = result.getText();
+          const now = Date.now();
+          const last = lastRef.current;
+          if (code === last.code && now - last.at < DUPLICATE_WINDOW_MS) return;
+          lastRef.current = { code, at: now };
+          if (onDetectedRef.current) onDetectedRef.current(code);
+        })
+        .then((controls) => {
+          if (cancelled) controls.stop();
+          else controlsRef.current = controls;
+          setError("");
+        })
+        .catch((err) => {
+          if (err && err.name === "NotAllowedError") {
+            setError("Permissão da câmera negada. Libere o acesso no navegador.");
+          } else if (err && err.name === "NotFoundError") {
+            setError("Nenhuma câmera encontrada.");
+          } else if (err && err.name === "NotReadableError") {
+            setError("A câmera está em uso por outro app ou aba. Feche e tente de novo.");
+          } else {
+            setError(`Erro ao abrir a câmera${err && err.name ? ` (${err.name})` : ""}.`);
+          }
+        });
     }, 250);
+
+    // Diagnóstico: resolução real do vídeo e número de varreduras por segundo.
+    const diag = setInterval(() => {
+      const v = videoRef.current;
+      const res = v && v.videoWidth ? `${v.videoWidth}x${v.videoHeight}` : "-";
+      setInfo({ res, attempts: attemptsRef.current });
+    }, 1000);
 
     return () => {
       clearTimeout(timer);
+      clearInterval(diag);
       cancelled = true;
       if (controlsRef.current) controlsRef.current.stop(); // libera a webcam
       controlsRef.current = null;
@@ -84,6 +110,9 @@ function BarcodeScanner({ onDetected, active = true }) {
         playsInline
         style={{ width: "100%", borderRadius: 8, background: "#000" }}
       />
+      <p style={{ fontSize: 12, opacity: 0.7, margin: "4px 0" }}>
+        Resolução: {info.res} · Varreduras: {info.attempts}
+      </p>
       {devices.length > 1 && (
         <select
           value={deviceId}
@@ -99,6 +128,10 @@ function BarcodeScanner({ onDetected, active = true }) {
         </select>
       )}
       {error && <p style={{ color: "crimson" }}>{error}</p>}
+      <p style={{ fontSize: 12, opacity: 0.7 }}>
+        Dica: segure o código a 20–40 cm, bem iluminado, reto e sem reflexo. Webcam de
+        laptop tem foco fixo: se ficar borrado, afaste um pouco.
+      </p>
     </div>
   );
 }
