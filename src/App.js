@@ -14,6 +14,7 @@ import Caixa from './components/pages/Caixa';
 import Cad_Prods from './components/pages/Cad_Prods';
 import ShowProducts from './components/pages/ShowProducts';
 import Pedidos from './components/pages/Pedidos';
+import CaixaScanner from './components/pages/CaixaScanner';
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
             <Route exact path="/"       element={<Home/>}></Route>
             <Route path="/vendas"       element={<Vendas/>}></Route>
             <Route path="/Caixa"        element={<Caixa/>} ></Route>
+            <Route path="/caixa-scanner" element={<CaixaScanner/>}></Route>
             <Route path="/Pedidos"      element={<Pedidos/>}></Route>
             <Route path="/Cad_Prods"    element={<Cad_Prods/>} ></Route>
             <Route path="/ShowProducts" element={<ShowProducts/>}></Route>
