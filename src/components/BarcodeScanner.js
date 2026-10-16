@@ -38,6 +38,10 @@ function BarcodeScanner({ onDetected, active = true }) {
     const reader = new BrowserMultiFormatReader(hints);
     let cancelled = false;
 
+    // Atraso curto: no React StrictMode (npm start) o efeito monta, desmonta e monta
+    // de novo. Sem isso, o stop() tardio da 1ª montagem apaga o vídeo da 2ª
+    // (tela preta e nenhuma leitura).
+    const timer = setTimeout(() => {
     reader
       .decodeFromVideoDevice(deviceId || undefined, videoRef.current, (result) => {
         if (!result) return; // frame sem código: normal
@@ -62,8 +66,10 @@ function BarcodeScanner({ onDetected, active = true }) {
           setError("Erro ao abrir a câmera.");
         }
       });
+    }, 250);
 
     return () => {
+      clearTimeout(timer);
       cancelled = true;
       if (controlsRef.current) controlsRef.current.stop(); // libera a webcam
       controlsRef.current = null;
