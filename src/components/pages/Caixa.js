@@ -1,144 +1,166 @@
+import React, { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  abrirCaixa,
+  fecharCaixa,
+  fetchCaixaAberto,
+  mensagemDeErro,
+} from "../../services/api";
 
-import React from 'react'
-import { useState, useEffect } from 'react'
-import Axios from "axios";
-import ShowProducts from './ShowProducts';
-import Excluir from '../Excluir';
-import Card from '../Card';
+const brl = (v) =>
+  Number(v || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-function Caixa(){
+const dataBr = (v) => (v ? new Date(v).toLocaleString("pt-BR") : "-");
 
-const [caixa_id, setCaixaId] = useState("");
-const [usuario_id, setUsuarioId] = useState("");
-const [valor_inicial, setValorInicial] = useState("");
-const [status, setStatus] = useState("");
+// Abertura e fechamento do caixa. Nada é enviado ao abrir a página:
+// só a consulta do caixa aberto. Abrir e fechar dependem de clique do operador.
+function Caixa() {
+  const [caixa, setCaixa] = useState(undefined); // undefined = carregando, null = nenhum aberto
+  const [usuarioId, setUsuarioId] = useState("");
+  const [valorInicial, setValorInicial] = useState("");
+  const [resumo, setResumo] = useState(null); // resultado do último fechamento
+  const [msg, setMsg] = useState(null);
+  const [enviando, setEnviando] = useState(false);
 
-//ABRIR CAIXA
-    
-async function abrirCaixa(e){
+  const carregar = useCallback(async () => {
+    try {
+      setCaixa(await fetchCaixaAberto());
+    } catch (error) {
+      setCaixa(null);
+      setMsg({ type: "error", text: "Não foi possível consultar o caixa." });
+    }
+  }, []);
 
-e.preventDefault()
+  useEffect(() => {
+    carregar();
+  }, [carregar]);
 
-const dados = {
-    "caixa_id": caixa_id,
-    "usuario_id": usuario_id,
-    "valor_inicial":valor_inicial,
-    "status":status
-}
+  async function handleAbrir(e) {
+    e.preventDefault();
+    setEnviando(true);
+    setMsg(null);
+    try {
+      await abrirCaixa(usuarioId, valorInicial);
+      setResumo(null);
+      setUsuarioId("");
+      setValorInicial("");
+      setMsg({ type: "ok", text: "Caixa aberto." });
+      await carregar();
+    } catch (error) {
+      setMsg({ type: "error", text: mensagemDeErro(error, "Erro ao abrir o caixa.") });
+    } finally {
+      setEnviando(false);
+    }
+  }
 
-console.log(`O caixa ${caixa_id} com o usuario ${usuario_id}`)
+  async function handleFechar() {
+    if (!window.confirm("Fechar o caixa? Depois disso não será possível vender até abrir outro.")) {
+      return;
+    }
+    setEnviando(true);
+    setMsg(null);
+    try {
+      const fechado = await fecharCaixa();
+      setResumo(fechado);
+      setCaixa(null);
+      setMsg({ type: "ok", text: "Caixa fechado." });
+    } catch (error) {
+      setMsg({ type: "error", text: mensagemDeErro(error, "Erro ao fechar o caixa.") });
+    } finally {
+      setEnviando(false);
+    }
+  }
 
-const options = {
-   // method: 'POST',
-    cache: 'default',
-    header: { 'Access-Control-Allow-Origin':'*',
-    mode: 'cors',
-    'Content-Type':  'application/json' }
-    
-   // body : dados
-    //redirect: 'follow'
-    };
+  const colors = { ok: "green", error: "crimson" };
 
-//await API.post("superExpress","/products",options,{
-await Axios.post("https://super-server-nu.vercel.app/caixa/abrir", dados)
-        .then((response)=>{
-       // console.log(dados)
-        console.log(response.data)
-        })
-        .catch (error=> {
-            console.error(error.response)
-        });
+  return (
+    <div style={{ padding: 16, textAlign: "left", maxWidth: 560 }}>
+      <h1>Caixa</h1>
 
+      {msg && (
+        <p role="status" style={{ color: colors[msg.type] }}>
+          {msg.text}
+        </p>
+      )}
 
-}
-useEffect(() => {
-    abrirCaixa()  
- }, []);
+      {caixa === undefined && <p>Carregando...</p>}
 
-
-const dadosfechar = {
-    "caixa_id": caixa_id,
-    "usuario_id": usuario_id,
-    "valor_inicial":valor_inicial,
-    "status":status
-}
-
-//FECHAR CAIXA
-
- async function fecharCaixa(){
-
-await Axios.post("https://super-server-nu.vercel.app/caixa/fechar" ,
-        dadosfechar)
-        .then((response)=>{
-       // console.log(dados)
-        console.log(response.data)
-        })
-        .catch (error=> {
-            console.error(error.response)
-        });
-}
-
-
-useEffect(() => {
-    fecharCaixa()  
- }, []);
-
-
- 
-
-return(
-<div>
-    <h1> Cadastro de Produtos</h1>
-    <form onSubmit={abrirCaixa}>
-    
-         <div> 
-            <label htmlFor="usuariao_id"></label>
-            <input type="text"  value = {usuario_id} id ="usuario_id" name="usuario_id" placeholder = "ID de usuario" onChange={(e)=> setUsuarioId(e.target.value)}/>
-        </div>
+      {caixa && (
         <div>
-            <label htmlFor="valor_inicial"></label>
-            <input type="text" value = {valor_inicial} id= "valor_inicial" name="valor_inicial" placeholder = "Valor inicial" onChange={(e)=> setValorInicial(e.target.value)}/>
+          <h3>Caixa aberto</h3>
+          <p>
+            <strong>Caixa:</strong> #{caixa.caixa_id}
+          </p>
+          <p>
+            <strong>Usuário:</strong> {caixa.usuario_id}
+          </p>
+          <p>
+            <strong>Valor inicial:</strong> {brl(caixa.valor_inicial)}
+          </p>
+          <p>
+            <strong>Aberto em:</strong> {dataBr(caixa.data_abertura)}
+          </p>
+          <p>
+            <Link to="/caixa-scanner">Ir para o leitor de vendas</Link>
+          </p>
+          <button onClick={handleFechar} disabled={enviando}>
+            Fechar caixa
+          </button>
         </div>
-         <div>
-            <label htmlFor="status"></label>
-            <input type="number" value = {status}  id= "status" name="status" placeholder = "Status" onChange={(e)=> setStatus(e.target.value)}/>
-        </div> 
-        <div>
-        <input type="submit" value="Abrir Caixa"/>
+      )}
+
+      {caixa === null && (
+        <form onSubmit={handleAbrir}>
+          <h3>Abrir caixa</h3>
+          <div>
+            <label htmlFor="usuario_id">Usuário (id) </label>
+            <input
+              type="text"
+              id="usuario_id"
+              value={usuarioId}
+              placeholder="ID do usuário"
+              onChange={(e) => setUsuarioId(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="valor_inicial">Valor inicial (R$) </label>
+            <input
+              type="number"
+              step="0.01"
+              min="0"
+              id="valor_inicial"
+              value={valorInicial}
+              placeholder="0,00"
+              onChange={(e) => setValorInicial(e.target.value)}
+            />
+          </div>
+          <div style={{ marginTop: 8 }}>
+            <button type="submit" disabled={enviando}>
+              Abrir caixa
+            </button>
+          </div>
+        </form>
+      )}
+
+      {resumo && (
+        <div style={{ marginTop: 16 }}>
+          <h3>Resumo do fechamento</h3>
+          <p>
+            <strong>Vendas:</strong> {resumo.qtd_vendas}
+          </p>
+          <p>
+            <strong>Total vendido:</strong> {brl(resumo.total_vendas)}
+          </p>
+          <p>
+            <strong>Valor inicial:</strong> {brl(resumo.valor_inicial)}
+          </p>
+          <p>
+            <strong>Valor final (inicial + vendas):</strong> {brl(resumo.valor_final)}
+          </p>
         </div>
-        
-        <div>
-    
-        </div>
-    <h4>
-    {caixa_id}
-    { usuario_id }
-    { valor_inicial }
-    { status}
-    </h4> 
-       
-    </form>
-{/* ========================= DADOS DO CAIXA ========================= */}
-
- {caixa_id && ( 
-<div> <h3>Caixa atual</h3>
- <p> <strong>Caixa ID:</strong> {caixa_id} </p> 
- <p> <strong>Usuário:</strong> {usuario_id} </p> 
- <p> <strong>Valor inicial:</strong> R$ {valor_inicial} </p> 
- <p> <strong>Status:</strong> {status} </p> 
- </div> 
-)}
-{/* ========================= FECHAMENTO DO CAIXA ========================= */} 
-{caixa_id && status === "ABERTO" && (
-     <form onSubmit={fecharCaixa}> 
-     <input type="submit" value="Fechar Caixa" />
-      </form> 
-    )}
-<Card />
-</div>
-
-)
-
+      )}
+    </div>
+  );
 }
 
-export default Caixa
+export default Caixa;
